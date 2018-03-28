@@ -1,0 +1,93 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Vango Insurance
+    // Bootstrap core CSS
+    link(rel='stylesheet', href='/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/customer/customer.css')
+    block pageStyle
+    
+  body
+    nav.navbar.navbar-fixed-top
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.nav-home
+              a(href='/home')
+                | Inicio 
+                span.sr-only (current)
+            li.nav-faq
+              a(href='/faq') Preguntas frecuentes
+            li.nav-claims
+              a(href='#') Reclamaciones
+            li.nav-giveback
+              a(href='/giveback') Devolver
+            li.nav-blog
+              a(href='#') Blog
+          ul.nav.navbar-nav.navbar-right
+            li.btn-social
+              a(href='#')
+                img(src='/images/customer/facebook1.0x.png', alt='')
+            li.btn-social
+              a(href='#')
+                img(src='/images/customer/twitter1.0x.png', alt='')
+            li.btn-social
+              a(href='#')
+                img(src='/images/customer/instagram1.0x.png', alt='')
+            li.btn-social
+              a(href='#')
+                img(src='/images/customer/youtube1.0x.png', alt='')
+            li.btn-consult
+              a(href='') Consulte nuestros precios
+        // /.navbar-collapse
+        .logo
+          img(src='/images/customer/logo1.5x.png', alt='')
+      // /.container-fluid
+    block pageContent
+    .footer
+      .social
+        p
+          | Síguenos en nuestras redes sociales y
+          br
+          |           entérate de todo lo que  Vango! tiene para ti.
+        ul.social-links-round
+          li
+            a(href='#')
+              img(src='./images/customer/facebook1.0x.png', alt='')
+          li
+            a(href='#')
+              img(src='./images/customer/twitter1.0x.png', alt='')
+          li
+            a(href='#')
+              img(src='./images/customer/instagram1.0x.png', alt='')
+          li
+            a(href='#')
+              img(src='./images/customer/youtube1.0x.png', alt='')
+      ul.footer-menu
+        li
+          a(href='') Términos de servicio
+        li
+          a(href='') Política de privacidad
+        li
+          a(href='') Material legal
+        li
+          a(href='') Empleos
+        li
+          a(href='') Vango! a nivel nacional
+      p.legal
+        | © Vango Insurance We Trust
+    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='/bootstrap/3.3.7/js/bootstrap.min.js')    
+    
+    block pageScript      

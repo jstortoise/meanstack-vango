@@ -1,0 +1,81 @@
+.icon-child{
+  width:75px;
+  height:75px;
+  border-radius: 75px;
+  background-image: url('/images/chatbot/Asset@0.5x.png');
+  background-repeat: no-repeat;    
+  background-color:#d0d0d0;
+  transform: scale(0.8);
+  opacity:0.5;
+}
+
+.on{
+  opacity: 1;
+}
+
+.crane{
+  background-position: -40px -116px;    
+}
+.tire{
+  background-position: -40px -191px;
+}
+.current{
+  background-position: -40px -266px;
+}
+.gasoline{
+  background-position: -40px -341px;
+}
+.mechanic{
+  background-position: -40px -421px;
+}
+.emergency{
+  background-position: -40px -496px;
+}
+.hotel{
+  background-position: -200px -110px;
+}
+.car{
+  background-position: -200px -191px;
+}
+.transportation{
+  background-position: -200px -275px;
+}
+.urgent{
+  background-position: -200px -351px;
+}
+.reference{
+  background-position: -40px -421px;
+}
+.personal{
+  background-position: -40px -496px;
+}
+.telephone1{
+  background-position: -355px -110px;    
+}
+.legal1{
+  background-position: -355px -191px;
+}
+.legal2{
+  background-position: -355px -266px;
+}
+.ambulance{
+  background-position: -510px -120px;
+}
+.telephone2{
+  background-position: -510px -191px;
+}
+.medical1{
+  background-position: -510px -266px;
+}
+.medical2{
+  background-position: -510px -340px;
+}
+.hospital{
+  background-position: -510px -421px;
+}
+.vehicle{
+  background-position: -668px -117px;
+}
+.administrative{
+  background-position: -668px -188px;
+}

@@ -1,0 +1,60 @@
+extends ./layout
+block content
+  .content__inner
+    header.content__title
+      h1 Request Tracker
+    .card
+      .toolbar.toolbar--inner
+        .toolbar__nav
+          a.active(href='') Opened 25
+      .listview.listview--bordered.issue-tracker
+        .listview__item
+          img.listview__img.hidden-sm-down(src='/admin-template/demo/img/contacts/2.jpg', alt='')
+          .listview__content.text-truncate.text-truncate
+            a.listview__heading(href='')
+              | Ed porta ut justo vitae volutpat. Aliquam varius tortor non egestas blandit. Fusce in sem lectus
+            p #148 Opened 2 Days ago by Louie Holmes          
+          .issue-tracker__item.hidden-lg-down
+            i.zmdi.zmdi-time
+            | 17/11/2017 at 12:33          
+          .issue-tracker__item.actions
+            .dropdown.actions__item
+              i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+              .dropdown-menu.dropdown-menu-right.dropdown-menu--active.dropdown-menu--icon
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-check
+                  | Respond
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-close
+                  | Close
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-edit
+                  | Edit
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-delete
+                  | Delete
+        .listview__item
+          img.listview__img.hidden-sm-down(src='/admin-template/demo/img/contacts/3.jpg', alt='')
+          .listview__content.text-truncate
+            a.listview__heading(href='') Dulla vel metus scelerisque ante sollicitudin commodo purus odio
+            p #132 Opened Yesterday by Joseph Hamilton          
+          .issue-tracker__item.hidden-lg-down
+            i.zmdi.zmdi-time
+            | 19/11/2017 at 09:01         
+          .issue-tracker__item.actions
+            .dropdown.actions__item
+              i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+              .dropdown-menu.dropdown-menu-right.dropdown-menu--active.dropdown-menu--icon
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-check
+                  | Respond
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-close
+                  | Close
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-edit
+                  | Edit
+                a.dropdown-item(href='')
+                  i.zmdi.zmdi-delete
+                  | Delete
+        .clearfix.m-4

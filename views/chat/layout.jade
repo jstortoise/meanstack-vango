@@ -1,0 +1,88 @@
+doctype html
+html
+  head
+    title Vango
+    link(rel='stylesheet', href='/bootstrap/4.0/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/chat/sidebar.css')
+    link(rel='stylesheet', href='/animsition/css/animsition.css')
+    link(rel='stylesheet', href='/stylesheets/chat/chat.css')
+    link(rel="stylesheet", href="/stylesheets/chat/header.css")
+    link(rel="stylesheet", href="/tooltipster/dist/css/tooltipster.bundle.min.css")
+    block chatStyle
+  body
+    .header
+      a.navbar-brand(href='#' style="color:black; margin-left: 50px; margin-top: 15px;") Vango
+      a.nav-item.nav-link.restart.active(href='javascript:void(0);' style="color: black; position: absolute; right: 20px; margin-top: -40px;")
+        | Restart 
+      a.nav-item.nav-link.back.active(href='javascript:void(0);' style="color: black; position: absolute; right: 100px; margin-top: -40px;")
+        | Back
+      form#backform(action='/chat/backStage', method='POST')
+      form#restartform(action='/chat/restart', method='POST')
+    .avatar
+      img(src="https://www.lemonade.com/assets/avatars/Maya.jpg", alt="" style="width:80px; height:80px; margin-top:-40px; z-index:1;")
+    #sidebar
+      ul
+        li
+          img(src="https://www.lemonade.com/assets/avatars/Maya.jpg", alt="" style="width:80px; height:80px; margin-left:60px;")
+        li(style="margin-top: 30px;")
+          a(href='#') Home
+        li
+          a(href='#') Virtual Agent
+        li
+          a(href='#') Price
+        li
+          a(href='#') About
+      #sidebar-btn
+        span
+        span
+        span   
+    .animsition
+      block chatContent
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')    
+  script(src='/bootstrap/4.0/js/bootstrap.min.js')
+  script(src='/animsition/js/animsition.min.js')
+  script(src='/tooltipster/dist/js/tooltipster.bundle.min.js')
+  script.
+    var sidebarbtn = document.getElementById('sidebar-btn');
+    var sidebar = document.getElementById('sidebar');
+    sidebarbtn.addEventListener('click', function () {
+      if(sidebar.classList.contains('visible')){
+      sidebar.classList.remove('visible'); 
+      }else {
+        sidebar.className = 'visible';
+      }
+    });
+
+    $(document).ready(function(){
+      $('.chat').addClass('active');
+    })
+
+    $(document).ready(function() {
+      $(".animsition").animsition({
+        inClass: 'fade-in',
+        inDuration: 1500,
+        loading: true,
+        loadingParentElement: 'body', //animsition wrapper element
+        loadingClass: 'animsition-loading',
+        loadingInner: '', // e.g '<img src="loading.svg" />'
+        timeout: false,
+        timeoutCountdown: 5000,
+        onLoadEvent: true,
+        browser: [ 'animation-duration', '-webkit-animation-duration'],
+        // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+        // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+        overlay : false,
+        overlayClass : 'animsition-overlay-slide',
+        overlayParentElement : 'body',
+        transition: function(url){ window.location.href = url; }
+      });
+    });
+  script.
+    $('.back').on('click', function(){
+      $('#backform').submit();
+    })
+    $('.restart').on('click', function(){
+      $('#restartform').submit();
+    })
+  block chatScript

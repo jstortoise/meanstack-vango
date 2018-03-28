@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Vendor styles
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/animate.css/animate.min.css')
+    // App styles
+    link(rel='stylesheet', href='/admin-template/css/app.min.css')
+  body(data-sa-theme='3')
+    .login
+      // Login
+      form#l-login.login__block.active(action='/admin/login', method='POST')
+        .login__block__header
+          i.zmdi.zmdi-account-circle
+          |                     Welcome! Please Sign in
+        .login__block__body
+          .form-group
+            input.form-control.text-center(type='text', placeholder='Email Address', name='email', required)
+          .form-group
+            input.form-control.text-center(type='password', placeholder='Password', name='password', required)
+          button.btn.btn--icon.login__block__btn(href='#')
+            i.zmdi.zmdi-long-arrow-right
+    
+    // Javascript
+    // Vendors
+    script(src='/admin-template/vendors/bower_components/jquery/dist/jquery.min.js')
+    script(src='/admin-template/vendors/bower_components/popper.js/dist/umd/popper.min.js')
+    script(src='/admin-template/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    // App functions and actions
+    script(src='/admin-template/js/app.min.js')
+    

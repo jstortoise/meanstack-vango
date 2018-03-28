@@ -1,0 +1,135 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/custom.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+block content
+  header.content__title
+    h1 Widgets
+    .actions
+      a.actions__item.zmdi.zmdi-trending-up(href='')
+      a.actions__item.zmdi.zmdi-check-all(href='')
+      .dropdown.actions__item
+        i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+        .dropdown-menu.dropdown-menu-right
+          a.dropdown-item(href='') Refresh
+          a.dropdown-item(href='') Manage Widgets
+          a.dropdown-item(href='') Settings
+  .row.quick-stats
+    .col-sm-6.col-md-3
+      .quick-stats__item
+        .quick-stats__info
+          h2 987
+          small Today's Customers
+        .quick-stats__chart.peity-bar 6,4,8,6,5,6,7,8,3,5,9
+    .col-sm-6.col-md-3
+      .quick-stats__item
+        .quick-stats__info
+          h2 35678
+          small This Week's Customers
+        .quick-stats__chart.peity-bar 4,7,6,2,5,3,8,6,6,4,8
+    .col-sm-6.col-md-3
+      .quick-stats__item
+        .quick-stats__info
+          h2 5878
+          small This week's New Customers
+        .quick-stats__chart.peity-bar 9,4,6,5,6,4,5,7,9,3,6
+    .col-sm-6.col-md-3
+      .quick-stats__item
+        .quick-stats__info
+          h2 214k
+          small Total Customers
+        .quick-stats__chart.peity-bar 5,6,3,9,7,5,4,6,5,6,4
+  hr
+  br
+  .row
+    .col-sm-6
+      .card.widget-ratings
+        .card-body.text-center
+          h4.card-title Average Rating 3.0
+          .widget-ratings__star
+            i.zmdi.zmdi-star.active
+            i.zmdi.zmdi-star.active
+            i.zmdi.zmdi-star.active
+            i.zmdi.zmdi-star
+            i.zmdi.zmdi-star
+          .widget-ratings__item
+            .float-left
+              | 1 
+              i.zmdi.zmdi-star
+            .float-right 20
+            .widget-ratings__progress
+              .progress
+                .progress-bar.bg-light(role='progressbar', style='width: 20%;', aria-valuenow='20', aria-valuemin='0', aria-valuemax='100')
+          .widget-ratings__item
+            .float-left
+              | 2 
+              i.zmdi.zmdi-star
+            .float-right 45
+            .widget-ratings__progress
+              .progress
+                .progress-bar.bg-light(role='progressbar', style='width: 45%;', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100')
+          .widget-ratings__item
+            .float-left
+              | 3 
+              i.zmdi.zmdi-star
+            .float-right 60
+            .widget-ratings__progress
+              .progress
+                .progress-bar.bg-light(role='progressbar', style='width: 60%;', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100')
+          .widget-ratings__item
+            .float-left
+              | 4 
+              i.zmdi.zmdi-star
+            .float-right 78
+            .widget-ratings__progress
+              .progress
+                .progress-bar.bg-light(role='progressbar', style='width: 78%;', aria-valuenow='78', aria-valuemin='0', aria-valuemax='100')
+          .widget-ratings__item
+            .float-left
+              | 5 
+              i.zmdi.zmdi-star
+            .float-right 22
+            .widget-ratings__progress
+              .progress
+                .progress-bar.bg-light(role='progressbar', style='width: 22%;', aria-valuenow='22', aria-valuemin='0', aria-valuemax='100')
+    .col-sm-6
+      .card.widget-signups
+        .card-body
+          h4.card-title Most Recent Signups
+          h6.card-subtitle Recent customers during the last 1 hour
+          .widget-signups__list
+            a(data-toggle='tooltip', title='Jani Popovich', href='')
+              img.avatar-img(src='/admin-template/demo/img/profile-pics/1.jpg', alt='')
+            a(data-toggle='tooltip', title='Rosina Lamont', href='')
+              .avatar-char R
+            a(data-toggle='tooltip', title='Wava Vermeulen', href='')
+              .avatar-char W
+            a(data-toggle='tooltip', title='Delisa Sheilds', href='')
+              img.avatar-img(src='/admin-template/demo/img/profile-pics/2.jpg', alt='')
+            a(data-toggle='tooltip', title='Elsy Wilhoit', href='')
+              img.avatar-img(src='/admin-template/demo/img/profile-pics/3.jpg', alt='')
+            a(data-toggle='tooltip', title='Deanne Jeffreys', href='')
+              .avatar-char D
+            a(data-toggle='tooltip', title='ddsds', href='')
+              .avatar-char F
+            a(data-toggle='tooltip', title='Shery Heredia', href='')
+              .avatar-char S
+            a(data-toggle='tooltip', title='Gaylord Coolbaugh', href='')
+              .avatar-char G
+            a(data-toggle='tooltip', title='Lyda Wortman', href='')
+              .avatar-char L
+            a(data-toggle='tooltip', title='Corene Langstaff', href='')
+              img.avatar-img(src='/admin-template/demo/img/profile-pics/4.jpg', alt='')          
+
+block script
+  script(src='/admin-template/vendors/bower_components/peity/jquery.peity.min.js')
+  script(src='/admin-template/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')
+  // Charts and maps
+  script(src='/admin-template/demo/js/other-charts.js')
+  script.
+    
+    $(document).ready(function(){      
+      $('.navigation_customer_nav').addClass('navigation__active');
+      $('.navigation_customer_dashboard').addClass('navigation__active');
+      $('.navigation_customer_nav>a').click();
+    })

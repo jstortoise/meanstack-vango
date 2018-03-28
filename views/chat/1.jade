@@ -1,0 +1,49 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/1.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='' method='POST')
+        p
+          | Hey! I am Vango. I'll get you an awesome
+          br
+          | price in seconds. Ready to go?
+        .form-row(style='margin-top: 50px;')
+          .form-group.col-md-5.offset-md-1
+            input#inputFirstName.form-control(type='text', placeholder='First Name', name='firstName', required)
+          .form-group.col-md-5
+            input#inputLastName.form-control(type='text', placeholder='Last Name', name='lastName', required)
+        .form-row
+          .form-group.col-md-10.offset-md-1
+            input#inputEmail.form-control(type='email', placeholder='Email Address', name='email', required)
+            input#inputPassword.form-control(type='text', placeholder='Password', name='password', value='', style='display:none;', required)
+        button.submit LET'S DO THIS
+block chatScript
+  script.
+    $('.back').hide();
+  script.
+    $('.submit').on('click', function(){
+      var email = $('#inputEmail').val();
+      if(email == '' || $('#inputFirstName').val() == '' || $('#inputLastName').val() == '')
+        return;
+      $.ajax({
+        url:'/chat/chatUserCheck',
+        type:'POST',
+        data:{
+          email:email
+        },
+        success: function(data){
+          if(data.ret == false){
+            $('#child').attr('action', "/chat/signup");
+            $('#inputPassword').val('123');
+            $('#child').submit();
+          }else if(data.ret == true){
+            $('#child').attr('action', "/chat/login");
+            $('#inputPassword').val('123');
+            $('#child').submit();
+          }
+        }
+      })
+    })
+    var email = $('#inputEmail').val();

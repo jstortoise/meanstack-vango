@@ -1,0 +1,105 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/internal.css')
+block content
+  .content__inner
+    .tab-container
+      ul.nav.nav-tabs(role='tablist')
+        li.nav-item
+          a.nav-link.active(data-toggle='tab', href='#internal', role='tab') Internal Suppliers
+        li.nav-item
+          a.nav-link(data-toggle='tab', href='#external', role='tab') External Suppliers
+      .tab-content
+        #internal.tab-pane.active.fade.show(role='tabpanel')
+          .table-responsive
+            table#data-table-1.table
+              thead
+                tr
+                  th No
+                  th Name
+                  th Email
+                  th(style='width: 600px;') Service
+                  th Select
+              tbody
+                - for (var i = 0; i < internal.length; i++) {
+                  tr.row_internal
+                    td #{i+1}
+                    td #{ internal[i].name }
+                    td.internal_email(data-email = '#{ internal[i].email }')
+                      a(href='/admin/supplier/internal/profile/#{internal[i]._id}/about') #{ internal[i].email }
+                    td
+                      - for(var j = 0; j < internal[i].service.length; j++){
+                        div(class='icon-child on #{ internal[i].service[j] }')
+                      - }
+                    td
+                      input(type='checkbox')
+                -}
+        #external.tab-pane.fade(role='tabpanel')
+          .table-responsive
+            table#data-table-2.table
+              thead
+                tr
+                  th No
+                  th Name
+                  th Email
+                  th(style='width: 600px;') Service
+                  th Select
+              tbody
+                - for (var i = 0; i < external.length; i++) {
+                  tr.row_external
+                    td #{i+1}
+                    td #{ external[i].name }
+                    td.external_email(data-email='#{external[i].email}') 
+                      a(href='/admin/supplier/external/profile/#{external[i]._id}/about') #{ external[i].email }
+                    td
+                      - for(var j = 0; j < external[i].service.length; j++){
+                        div(class='icon-child on #{ external[i].service[j] }')
+                      - }
+                    td
+                      input(type='checkbox')
+                -}
+    div(style='text-align:right;')
+      button.btn-save-supplier.btn-outline-secondary(type='button', style='width: 70px; height: 35px;') Save
+block script
+  // Vendors: Data tables
+  script(src='/admin-template/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')
+  script(src='/admin-template/vendors/bower_components/jszip/dist/jszip.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')    
+  script.
+    $(document).ready(function(){
+      $('.navigation_location_nav').addClass('navigation__active');
+      $('.navigation_location_nav > a').click();
+      $('#data-table-1').dataTable();
+      $('#data-table-2').dataTable();
+    })
+
+    $('.btn-save-supplier').on('click', function(){
+      var internal = [];
+      var external = [];
+      var rows = $('.row_internal');
+      for(var i = 0; i < rows.length; i++){
+        if($(rows[i]).find('input')[0].checked){
+          internal.push($($(rows[i]).find('.internal_email')[0]).data('email'));
+        };
+      }
+      var rows = $('.row_external');
+      for(var i = 0; i < rows.length; i++){
+        if($($(rows[i]).find('input')[0]).val() == 'on'){
+          external.push($($(rows[i]).find('.external_email')[0]).data('email'));
+        };
+      }
+      $.ajax({
+        url: '/admin/location/#{state}/#{city}/add_supplier',
+        type: 'POST',
+        data: {
+          internal: internal.toString(),
+          external: external.toString()
+        },
+        success: function(data){
+
+        }
+      })
+    });

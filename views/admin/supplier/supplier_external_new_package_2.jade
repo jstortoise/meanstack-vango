@@ -1,0 +1,146 @@
+extends ../layout
+block stylesheet  
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/package.css')
+block content
+  .content__inner.content__inner--sm.package
+    .card.profile
+      .profile__img
+        img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+      .profile__info
+        h3
+          | #{profile.firstname + ' ' + profile.lastname}
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  #{profile.phone1}
+          li
+            i.zmdi.zmdi-email
+            |  #{profile.email}
+    header.content__title
+      h1 New Package(Type -1)
+    .row.service-wrapper
+      .col-md-8
+        .form-group
+          label Service Type
+          select.select2.service
+            option(value='crane') Crane service
+            option(value='tire') TIRE INSURANCE
+            option(value='current') Current flow
+            option(value='gasoline') Gasoline supply
+            option(value='mechanic') Mechanic References
+            option(value='emergency') Emergency locksmith
+            option(value='hotel') Hotel in case of theft or breakdown
+            option(value='car') Car Rental
+            option(value='transportation') Transportation
+            option(value='urgent') Urgent messages
+            option(value='reference') References for a national trip
+            option(value='personal') Personal assistance
+            option(value='telephone1') Telephone assistance
+            option(value='legal1') Legal assistance
+            option(value='legal2') Legal assistance for theft
+            option(value='ambulance') Ambulance
+            option(value='telephone2') Telephone assistance
+            option(value='medical1') Medical references
+            option(value='medical2') Medical offers
+            option(value='hospital') Hospital Visit
+            option(value='vehicle') Vehicle management
+            option(value='administrative') Administrative management
+      .col-md-4
+        .form-group
+          label Number of Events
+          input.form-control.sos(type='text')
+          i.form-group__bar
+      
+  .content__inner.content__inner--sm
+    .row.btn-wrapper-1
+      a.btn.btn-light.btn--action.btn-minus
+        i.zmdi.zmdi-minus
+      a.btn.btn-light.btn--action.btn-plus
+        i.zmdi.zmdi-plus
+    .row
+      .col-md-4(style='margin-left: auto;')
+        label Total Price
+        input.form-control.total_price(type='text')
+        i.form-group__bar
+    .row.btn-wrapper-2
+      button.btn.btn-outline-secondary.btn-save-package(type='button') Save
+
+block script
+  script(src='/admin-template/vendors/bower_components/select2/dist/js/select2.full.min.js')
+  script.
+    var service_template = 
+      '<div class="row service-wrapper">'+
+          '<div class="col-md-8">'+
+            '<div class="form-group">'+
+              '<label>Service Type</label>'+
+              '<select class="select2 service">'+
+                  '<option value="crane">Crane service</option>'+
+                  '<option value="tire">TIRE INSURANCE</option>'+
+                  '<option value="current">Current flow</option>'+
+                  '<option value="gasoline">Gasoline supply</option>'+
+                  '<option value="mechanic">Mechanic References</option>'+
+                  '<option value="emergency">Emergency locksmith</option>'+
+                  '<option value="hotel">Hotel in case of theft or breakdown</option>'+
+                  '<option value="car">Car Rental</option>'+
+                  '<option value="transportation">Transportation</option>'+
+                  '<option value="urgent">Urgent messages</option>'+
+                  '<option value="reference">References for a national trip</option>'+
+                  '<option value="personal">Personal assistance</option>'+
+                  '<option value="telephone1">Telephone assistance</option>'+
+                  '<option value="legal1">Legal assistance</option>'+
+                  '<option value="legal2">Legal assistance for theft</option>'+
+                  '<option value="ambulance">Ambulance</option>'+
+                  '<option value="telephone2">Telephone assistance</option>'+
+                  '<option value="medical1">Medical references</option>'+
+                  '<option value="medical2">Medical offers</option>'+
+                  '<option value="hospital">Hospital Visit</option>'+
+                  '<option value="vehicle">Vehicle management</option>'+
+                  '<option value="administrative">Administrative management</option>'+
+              '</select>'+
+            '</div>'+
+          '</div>'+
+          '<div class="col-md-4">'+
+            '<div class="form-group">'+
+              '<label>Number of events</label>'+
+              '<input type="text" class="form-control sos">'+
+              '<i class="form-group__bar"></i>'+
+            '</div>'+
+          '</div>'+                    
+      '</div>';
+    $('.zmdi-plus').on('click', function(){
+        $('.package .service-wrapper').last().after(service_template);
+        $('.package .service-wrapper').last().find('.select2').select2();
+    })
+    $('.zmdi-minus').on('click', function(){
+        if($('.package .service-wrapper').length <= 1) return;
+        $('.package .service-wrapper').last().remove();                
+    })
+    $('.btn-save-package').on('click', function(){
+      var package_info = [];
+      for(var i = 0; i < $('.service-wrapper').length; i++){
+        var element = $('.service-wrapper')[i];
+        var service = $(element).find('.select2').val();
+        var number = $(element).find('input').val();
+        package_info.push({
+          name: service,
+          e_number: number
+        })
+      }
+      $.ajax({
+          url: '/admin/supplier/external/add_new_package_2',
+          type: 'POST',
+          data:{
+            id: '#{_id}',
+            data: JSON.stringify(package_info),
+            total: $('.total_price').val()
+          },
+          success: function(data){
+            if(data.ret == true){
+              window.location = '/admin/supplier/external/#{ _id }/portal';
+            }else{
+              alert('Error');
+              window.location = '/admin/supplier/external/#{ _id }/portal';
+            }
+          }
+        })
+    })

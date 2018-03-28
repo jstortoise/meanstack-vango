@@ -1,0 +1,88 @@
+extends layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/giveback.css')
+block pageContent
+  .section1
+    .inner
+      h2 El regalo de Vango!
+      p
+        | Aquí esta nuestra misión: Ofrecer seguros innovadores y  de alta 
+        br
+        |         calidad, para transformalo de un mal necesario en un bien social. 
+        br
+        |         Hemos diseñado VanGo! para sacar lo mejor de las personas, mientras 
+        br
+        |         le damos un empujón a la sociedad para mejorar. 
+        br
+        |         Presentamos el regalo de VanGo!
+  .section2
+    .inner
+      h2 ¿Cómo funciona Vango?
+      ul.list-causes
+        li.cause1
+          img(src='/images/customer/giveback_cause1.png', alt='')
+          p
+            | Obtienes una póliza de Vango! y 
+            br
+            |             sellecionas una organización sin 
+            br
+            |             fines de lucro que te importa
+        li.cause2
+          img(src='/images/customer/giveback_cause2.png', alt='')
+          p
+            | Una vez al año, hacemos un 
+            br
+            |             recuento del dinero no reclamado 
+            br
+            |             dejado por usted y otros que 
+            br
+            |             eligieron su causa
+        li.cause3
+          img(src='/images/customer/giveback_cause3.png', alt='')
+          p
+            | Devolvemos ese dinero no 
+            br
+            |             reclamado a la organización 
+            br
+            |             sin fines de lucro que elija
+  .section3
+    .inner
+      img(src='/images/customer/giveback_ribbon.png', alt='')
+      h2 Grandes Causas 2018
+      p(style='margin-top:50px;')
+        | Para nuestra primera devolución anual daremos el 10%
+        br
+        |         de nuestros ingresos a varias organizaciones benéficas.
+      img(src='/images/customer/giveback_sec3_2.png', alt='')
+  .section4
+    .inner
+      img(src='/images/customer/giveback_sec4_1.png', alt='')
+      h2 Únase al movimiento Giveback
+      p
+        | Decenas de miles de miembros ya respaldan las causas que les importan, 
+        br
+        |           simplemente obteniendo una póliza de seguro Vango! a medida que 
+        br
+        |           crece nuestra comunidad Vango!, su impacto social puede ser aún más 
+        br
+        |            fuerte.
+      a.btn-consult(href='') OBTENER SEGURO Y DEVOLVER
+
+block pageScript
+  script.
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if(scroll < 10){
+        $('.navbar').removeClass('top');
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      }else{
+        $('.navbar').addClass('top');
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+      }
+    });
+
+    $('.nav-giveback').addClass('active');

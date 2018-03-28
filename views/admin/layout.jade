@@ -1,0 +1,213 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Vendor styles
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css')
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/animate.css/animate.min.css')
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.css')
+    link(rel='stylesheet', href='/admin-template/vendors/bower_components/select2/dist/css/select2.min.css')
+    // App styles    
+    link(rel='stylesheet', href='/admin-template/css/app.min.css')
+    block stylesheet
+
+    
+  body(data-sa-theme='3')
+    main.main
+      .page-loader
+        .page-loader__spinner
+          svg(viewbox='25 25 50 50')
+            circle(cx='50', cy='50', r='20', fill='none', stroke-width='2', stroke-miterlimit='10')
+      header.header
+        .navigation-trigger.hidden-xl-up(data-sa-action='aside-open', data-sa-target='.sidebar')
+          i.zmdi.zmdi-menu
+        .logo.hidden-sm-down
+          h1
+            a(href='#')
+              img(src='/images/super-admin/logo.png', alt='')
+              |  1.0
+        form.search
+          .search__inner
+            input.search__text(type='text', placeholder='Search for customers...')
+            i.zmdi.zmdi-search.search__helper(data-sa-action='search-close')
+        ul.top-nav
+          li.hidden-xl-up
+            a(href='', data-sa-action='search-open')
+              i.zmdi.zmdi-search
+          li.dropdown
+            a.top-nav__notify(href='', data-toggle='dropdown')
+              i.zmdi.zmdi-email
+            .dropdown-menu.dropdown-menu-right.dropdown-menu--block
+              .dropdown-header
+                | Messages
+                .actions
+                  a.actions__item.zmdi.zmdi-plus(href='')
+              .listview.listview--hover
+                a.listview__item(href='')
+                  img.listview__img(src='/admin-template/demo/img/profile-pics/1.jpg', alt='')
+                  .listview__content
+                    .listview__heading
+                      | David Belle 
+                      small 12:01 PM
+                    p Cum sociis natoque penatibus et magnis dis parturient montes
+                a.listview__item(href='')
+                  img.listview__img(src='/admin-template/demo/img/profile-pics/2.jpg', alt='')
+                  .listview__content
+                    .listview__heading
+                      | Jonathan Morris
+                      small 02:45 PM
+                    p Nunc quis diam diamurabitur at dolor elementum, dictum turpis vel
+                a.listview__item(href='')
+                  img.listview__img(src='/admin-template/demo/img/profile-pics/3.jpg', alt='')
+                  .listview__content
+                    .listview__heading
+                      | Fredric Mitchell Jr.
+                      small 08:21 PM
+                    p
+                      | Phasellus a ante et est ornare accumsan at vel magnauis blandit turpis at augue ultricies
+                a.listview__item(href='')
+                  img.listview__img(src='/admin-template/demo/img/profile-pics/4.jpg', alt='')
+                  .listview__content
+                    .listview__heading
+                      | Glenn Jecobs
+                      small 08:43 PM
+                    p
+                      | Ut vitae lacus sem ellentesque maximus, nunc sit amet varius dignissim, dui est consectetur neque
+                a.listview__item(href='')
+                  img.listview__img(src='/admin-template/demo/img/profile-pics/5.jpg', alt='')
+                  .listview__content
+                    .listview__heading
+                      | Bill Phillips
+                      small 11:32 PM
+                    p
+                      | Proin laoreet commodo eros id faucibus. Donec ligula quam, imperdiet vel ante placerat
+                a.view-more(href='') View all messages
+          li.dropdown.hidden-xs-down
+            a(href='', data-toggle='dropdown')
+              i.zmdi.zmdi-more-vert
+            .dropdown-menu.dropdown-menu-right
+              a.dropdown-item(href='', data-sa-action='fullscreen') Fullscreen
+              a.dropdown-item(href='') Settings
+          li.hidden-xs-down
+            a.top-nav__themes(href='', data-sa-action='aside-open', data-sa-target='.themes')
+              i.zmdi.zmdi-palette
+        .clock.hidden-md-down
+          .time
+            span.time__hours
+            span.time__min
+            span.time__sec
+      aside.sidebar
+        .scrollbar-inner
+          .user
+            .user__info(data-toggle='dropdown')
+              img.user__img(src='/admin-template/demo/img/profile-pics/8.jpg', alt='')
+              div
+                .user__name Super Administrator
+                .user__email superadmin@vango.com
+            .dropdown-menu
+              a.dropdown-item(href='') Settings
+              a.dropdown-item(href='/admin/logout') Logout
+          ul.navigation
+            li
+              a(href='#')
+                i.zmdi.zmdi-home
+                |  Dashboard
+            li.navigation__sub.navigation_admin_nav
+              a(href='')
+                i.zmdi.zmdi-account-box-o.zmdi-hc-fw
+                |  Admin
+              ul
+                li.navigation_employee_all
+                  a(href='/admin/admin/all') All Employees
+                li.navigation_employee_admin
+                  a(href='/admin/admin/admin') Admin
+                li.navigation_employee_sales_agent
+                  a(href='/admin/admin/sales_agent') Sales Agent
+                li.navigation_employee_new
+                  a(href='/admin/admin/new') New Employee
+            li.navigation__sub.navigation_customer_nav
+              a(href='')
+                i.zmdi.zmdi-accounts.zmdi-hc-fw
+                |  Customer
+              ul
+                li.navigation_customer_dashboard
+                  a(href='/admin/customer/dashboard') Dashboard
+                li.navigation_customer_all
+                  a(href='/admin/customer/all') All Customers
+                li.navigation_customer_active
+                  a(href='/admin/customer/active') Active Customers
+                li.navigation_customer_inactive
+                  a(href='/admin/customer/inactive') Inactive Customers
+            li.navigation__sub.navigation_supplier_nav
+              a(href='')
+                i.zmdi.zmdi-directions-car.zmdi-hc-fw
+                |  Supplier
+              ul
+                li.navigation_supplier_dashbaord
+                  a(href='/admin/supplier/dashboard') Dashboard
+                li.navigation_supplier_internal
+                  a(href='/admin/supplier/internal_list') Internal Suppliers
+                li.navigation_supplier_external
+                  a(href='/admin/supplier/external_list_table') External Suppliers
+                li.navigation_supplier_new
+                  a(href='/admin/supplier/new') Add Supplier
+            li.navigation__sub.navigation_location_nav
+              a(href='')
+                i.zmdi.zmdi-google-maps.zmdi-hc-fw
+                | Location
+              ul
+                li.navigation_location_management
+                  a(href='/admin/location/management') Location Management
+                li.navigation_location_service_area
+                  a(href='/admin/location/service_area') Service Area
+            li
+              a(href='#')
+                i.zmdi.zmdi-calendar
+                |  Calendar
+      .themes
+        .scrollbar-inner
+          a.themes__item(href='', data-sa-value='1')
+            img(src='/admin-template/img/bg/1.jpg', alt='')
+          a.themes__item(href='', data-sa-value='2')
+            img(src='/admin-template/img/bg/2.jpg', alt='')
+          a.themes__item(href='', data-sa-value='3')
+            img(src='/admin-template/img/bg/3.jpg', alt='')
+          a.themes__item(href='', data-sa-value='4')
+            img(src='/admin-template/img/bg/4.jpg', alt='')
+          a.themes__item(href='', data-sa-value='5')
+            img(src='/admin-template/img/bg/5.jpg', alt='')
+          a.themes__item(href='', data-sa-value='6')
+            img(src='/admin-template/img/bg/6.jpg', alt='')
+          a.themes__item(href='', data-sa-value='7')
+            img(src='/admin-template/img/bg/7.jpg', alt='')
+          a.themes__item(href='', data-sa-value='8')
+            img(src='/admin-template/img/bg/8.jpg', alt='')
+          a.themes__item(href='', data-sa-value='9')
+            img(src='/admin-template/img/bg/9.jpg', alt='')
+          a.themes__item(href='', data-sa-value='10')
+            img(src='/admin-template/img/bg/10.jpg', alt='')
+      section.content        
+        block content
+        footer.footer.hidden-xs-down
+          p © Vango Super Administrator. All rights reserved.
+    // Javascript
+    // Vendors
+    script(src='/admin-template/vendors/bower_components/jquery/dist/jquery.min.js')
+    script(src='/admin-template/vendors/bower_components/popper.js/dist/umd/popper.min.js')
+    script(src='/admin-template/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/admin-template/vendors/bower_components/jquery.scrollbar/jquery.scrollbar.min.js')
+    script(src='/admin-template/vendors/bower_components/jquery-scrollLock/jquery-scrollLock.min.js')
+    script(src='/admin-template/vendors/bower_components/dropzone/dist/min/dropzone.min.js')
+    // App functions and actions
+    script(src='/admin-template/js/app.min.js')
+    script.
+      $('.themes__item').on('click', function(){
+        var sa = $(this).data('sa-value');
+        localStorage.sa = sa;
+      })
+      $(document).ready(function(){
+        var sa = localStorage.sa;        
+        $('body').attr('data-sa-theme', sa);
+      })
+    block script

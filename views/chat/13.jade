@@ -1,0 +1,45 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/13.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/14' method='POST')
+        p
+          | Type your zip code around your house
+          br
+          | (where you usually run round).
+        .form-row(style='margin-top: 50px;')
+          .form-group.col-md-10.offset-md-1
+            input#inputZipCode.form-control(type='text', placeholder='e.g. 90006', name='zip')
+        button.btn(disabled='') Next
+    img.map(src='', alt='')
+block chatScript
+  script.
+    var zip = '#{zip}';
+    if(zip){
+      $('#inputZipCode').val(zip);
+      $('.btn').removeAttr('disabled');
+      drawMap(zip);
+    }
+    
+
+    $('#inputZipCode').on('keyup', function(){
+      if($(this).val().length == 5){        
+        $('.btn').removeAttr('disabled');
+        drawMap($('#inputZipCode').val());
+      }else{
+        $('.btn').prop('disabled', true);
+      }
+    })
+    
+    function drawMap(zip){
+      $.ajax({
+          url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + zip + '&key=AIzaSyCyGaRz_XVVZCSaypi1ZY4--FgBFb8V6DE',
+          success: function(data){
+            var lati = data.results[0].geometry.location.lat;
+            var logi = data.results[0].geometry.location.lng;
+            $('.map').attr('src','https://maps.googleapis.com/maps/api/staticmap?center=' + lati + ',' + logi + '&zoom=14&size=400x400&key=AIzaSyDceUnRDdNJ2VQhbnVzIWq7-FOFefTANdA');
+          }
+        })
+    }

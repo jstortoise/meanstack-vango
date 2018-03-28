@@ -1,0 +1,76 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/custom.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+block content
+  .content__inner.content__inner--sm
+    header.content__title
+      h1 Add new Employee
+      small Please input empoyee information
+    .card.new-contact
+      .new-contact__header
+        a.zmdi.zmdi-camera.new-contact__upload(href='')
+        img.new-contact__img(src='/admin-template/demo/img/contacts/user_empty.png', alt='')
+      .card-body
+        .row
+          .col-md-6
+            .form-group
+              label First Name
+              input.form-control(type='text', placeholder='i.e. John')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Last Name
+              input.form-control(type='text', placeholder='i.e. Smith')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Company
+              input.form-control(type='text', placeholder='i.e. Google Inc.')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Job Title
+              input.form-control(type='text', placeholder='i.e. Web Developer')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Email Address
+              input.form-control(type='text', placeholder='i.e. smith@gmail.com')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Website
+              input.form-control(type='text', placeholder='i.e. http://smith.com')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Mobile Phone
+              input.form-control(type='text', placeholder='i.e. +14155552671')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Home Phone
+              input.form-control(type='text', placeholder='i.e. +415 555 2671')
+              i.form-group__bar
+        .form-group
+          label Address
+          textarea.form-control(placeholder='i.e. 711-2880 Nulla St. Mankato, Mississippi, 96522.')
+          i.form-group__bar
+        .form-group
+          label Notes
+          textarea.form-control
+          i.form-group__bar
+        .clearfix
+        .mt-5.text-center
+          a.btn.btn-light(href='') Save Employee
+          a.btn.btn-light(href='') Clear
+
+block script
+  script.
+    $(document).ready(function(){
+      $('.navigation_admin_nav').addClass('navigation__active');
+      $('.navigation_employee_new').addClass('navigation__active');
+      $('.navigation_admin_nav > a').click();
+    })
+    

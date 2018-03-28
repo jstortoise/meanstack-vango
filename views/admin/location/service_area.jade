@@ -1,0 +1,131 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/location/service_area.css')
+block content
+  .content__inner(style='padding-top: 50px;')
+    header.content__title
+      h4(style='padding-bottom: 30px; text-align:center;') SERVICE AREA
+      .actions
+        a.btn.btn-light(data-toggle='modal', data-target='#new_city') + Add New Area
+    .table-responsive
+      table#data-table-1.table
+        thead
+          tr
+            th(style='width: 100px;') State
+            th(style='width: 100px;') City
+            th(style='width: 600px;') Complience
+            th(style='width: 100px;') Status
+            th(style='width: 100px;') Action
+        tbody
+          - for(var i = 0; i < service_area.length; i++){
+            tr
+              td #{service_area[i].state}
+              td #{service_area[i].city}
+              td
+                - for(var j = 0; j < all_services.length; j++){
+                  - if(service_area[i].service.includes(all_services[j]))
+                      div(class='icon-child on #{ all_services[j] }')
+                  - else
+                      div(class='icon-child #{ all_services[j] }')
+                - }
+              td
+                p(class='#{service_area[i].status}') #{service_area[i].status}
+              td
+                .dropdown.actions__item(style='margin: auto;')
+                  i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+                  .dropdown-menu.dropdown-menu-right
+                    a.dropdown-item(href='') Active
+                    a.dropdown-item(href='/admin/location/#{service_area[i].state}/#{service_area[i].city}/compliance') Complience
+                    a.dropdown-item(href='/admin/location/#{service_area[i].state}/#{service_area[i].city}/service_area_delete') Delete
+          - }
+          
+  #new_city.modal.fade(data-backdrop='false', data-keyboard='true', tabindex='-1', style='z-index: 5;')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5.modal-title.pull-left Select City
+        .modal-body
+          .row
+            .col-md-6
+              .form-group
+                label(for='') State
+                select.select2.state
+                  - for(var i = 0; i < states.length; i++){
+                    option #{states[i].name}
+                  - }
+            .col-md-6
+              .form-group
+                label City Name
+                select.select2.city
+                i.form-group__bar
+        .modal-footer
+          button.btn.btn-link.btn-add(type='button') Add New Area
+          button.btn.btn-link(type='button', data-dismiss='modal') Close
+block script
+  script(src='/admin-template/vendors/bower_components/select2/dist/js/select2.full.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')
+  script.
+    $(document).ready(function(){
+      $('.navigation_location_nav').addClass('navigation__active');
+      $('.navigation_location_service_area').addClass('navigation__active');
+      $('.navigation_location_nav > a').click();
+
+      $('#data-table-1').dataTable();
+    })
+    $(document).ready(function(){
+      var state = $('.state').val();
+      $('.btn-add').attr('disabled', true);
+      $.ajax({
+        type: 'POST',
+        url: '/admin/location/get_cities',
+        data:{
+          state: state
+        },
+        success: function(data){
+          var optionhtml = '';
+          for(var i = 0; i < data.ret.length; i++){
+            optionhtml += '<option>'+data.ret[i].city + '</option>';
+          }
+          $('.city').html(optionhtml);
+          $('.btn-add').attr('disabled', false);
+        }
+      })
+    })
+    $('.state').on('change', function(){
+      var state = $('.state').val();
+      $('.btn-add').attr('disabled', true);
+      $.ajax({
+        type: 'POST',
+        url: '/admin/location/get_cities',
+        data:{
+          state: state
+        },
+        success: function(data){
+          var optionhtml = '';
+          for(var i = 0; i < data.ret.length; i++){
+            optionhtml += '<option>'+data.ret[i].city + '</option>';
+          }
+          $('.city').html(optionhtml);
+          $('.btn-add').attr('disabled', false);
+        }
+      })
+    })
+    $('.btn-add').on('click', function(){
+      var state = $('.state').val();
+      var city = $('.city').val();
+      $.ajax({
+        type: 'POST',
+        url: '/admin/location/new_service_area',
+        data:{
+          state: state,
+          city: city
+        },
+        success: function(data){
+          if(data.ret == true)
+            location.reload();
+        }
+      })
+    })

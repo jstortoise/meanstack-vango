@@ -1,0 +1,59 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/8.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/9' method='POST')
+        p
+          | Have you had any incidents since 2016?
+        .form-row.ans-1
+          .form-group.col-md-2.offset-md-2
+            .option-wrapper.wrapper-1
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 Flat tire
+                i(style='margin-top: 35px;')
+          .form-group.col-md-2
+            .option-wrapper.wrapper-2
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 Broke tire at street
+                i(style='margin-top: 35px;')
+          .form-group.col-md-2
+            .option-wrapper.wrapper-3
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 Vandalism to tires
+                i(style='margin-top: 35px;')
+          .from-group.col-md-2
+            .option-wrapper.wrapper-4
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 Flat tire more than 3 times
+                i
+        input.incidents(type='text' value='', style='display:none', name='incident', required)
+        button.btn(disabled='') Next
+block chatScript
+  script.
+    var incident = '#{incident}';
+    if(incident){
+      $('.wrapper-'+incident).addClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.incidents').val(incident);
+    }
+
+    for(var i = 1; i < 5; i++){      
+      $('.wrapper-'+i.toString()).on('click', function(){
+        for(var j = 1; j < 5; j++){
+          $('.wrapper-'+j.toString()).removeClass('on');
+        }        
+        $(this).addClass('on');
+        $('.btn').removeAttr('disabled');        
+        for(var j = 1; j < 5; j++){
+          if($('.wrapper-'+j.toString()).hasClass('on'))
+            $('.incidents').val(j);
+        }
+      })
+    }
+    

@@ -1,0 +1,71 @@
+@media screen and (max-width: 992px) {
+    .form-row{
+        padding-left:0px;
+        padding-right:0px;    
+    }
+}
+@media screen and (min-width: 992px) {
+    .form-row{
+        padding-left:0px;
+        padding-right:0px;    
+    }
+}
+
+.birthday-wrapper{
+    width:350px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.option-wrapper{    
+    border: 1px #DADADA solid
+}
+
+.option-wrapper .icon-option-wrapper{
+    padding: 10px 10px;
+}
+
+.option-wrapper .icon-option-wrapper img{
+    width: 25px;
+    margin-left: -20px;
+    margin-right: 20px;
+}
+
+.option-wrapper .icon-option-wrapper span{
+    font: 700 1rem "Lato", "Helvetica Neue", Arial, sans-serif;
+    color: #4A4A4A;
+}
+
+.option-wrapper input{
+    border-bottom: 0;
+    height: 45px;
+    border-radius: 0;
+    text-align: center;
+    margin: 0;
+    font: 700 1rem "Lato", "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff;
+    color: #4A4A4A;    
+    border:0px #DADADA solid;
+    border-left: 1px #DADADA solid;
+    padding: 10px 10px;
+    float: right;
+}
+.option-wrapper input::-webkit-input-placeholder{    
+    color: rgb(187, 187, 187);
+}
+.option-wrapper input::-moz-placeholder{    
+    color: rgb(187, 187, 187);
+}
+.option-wrapper input::-ms-input-placeholder{    
+    color: rgb(187, 187, 187);
+}
+.option-wrapper input::-moz-placeholder{    
+    color: rgb(187, 187, 187);
+}
+
+#mm, #dd{
+    width: 50px;
+}
+#yyyy{
+    width: 100px;
+}

@@ -1,0 +1,10 @@
+.widget-ratings__star{
+  margin: 0px;
+}
+.dataTables_buttons{
+  display: none;
+}
+.contacts__img img{
+  width: 120px;
+  height: 120px;
+}

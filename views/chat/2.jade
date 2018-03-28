@@ -1,0 +1,55 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/2.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/3' method='POST')
+        p
+          | Hi, #{name.firstName}. Nice to meet you.
+          br
+          | Are you single or get married?
+        .form-row.ans-1
+          .form-group.col-md-5.offset-md-1
+            .option-wrapper.wrapper-1
+              img(src='https://www.lemonade.com/assets/web_chat/renter-b553ffcb7e81b5cb417a7a7e1849f4a7dceabe58d3e6ebd1dcdcd448bd6b6736.png', alt='')
+              .icon-option-wrapper
+                h5 Single
+                i
+          .form-group.col-md-5
+            .option-wrapper.wrapper-2
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h5 Couple
+                i
+        input.mariteral(type='text' value='', style='display:none', name='mariteral', required)
+        button.btn(disabled='') Next
+  
+block chatScript
+  script.
+    var mariteral = '#{mariteral}';
+    if(mariteral == 'Single'){
+      $('.wrapper-1').addClass('on');
+      $('.wrapper-2').removeClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.mariteral').val('Single');
+    }else if(mariteral == 'Couple'){
+      $('.wrapper-2').addClass('on');
+      $('.wrapper-1').removeClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.mariteral').val('Couple');
+    }
+
+    $('.wrapper-1').on('click', function(){
+      $(this).addClass('on');
+      $('.wrapper-2').removeClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.mariteral').val('Single');
+    })
+
+    $('.wrapper-2').on('click', function(){
+      $(this).addClass('on');
+      $('.wrapper-1').removeClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.mariteral').val('Couple');
+    })

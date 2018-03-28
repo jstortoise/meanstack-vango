@@ -1,0 +1,28 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/9.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/10' method='POST')
+        p
+          | What is your spouse name?
+        .form-row(style='margin-top: 50px;')
+          .form-group.col-md-10.offset-md-1
+            input#inputSpouseName.form-control(type='text', name='name', required)
+        button.btn(disabled='true') Next
+
+block chatScript
+  script.
+    var spouseName = '#{spouseName}';
+    if(spouseName){
+      $('#inputSpouseName').val(spouseName);
+      $('.btn').removeAttr('disabled');
+    }
+
+    $('#inputSpouseName').on('keyup', function(){
+      if($(this).val() != '')
+        $('.btn').removeAttr('disabled');
+      else
+        $('.btn').prop('disabled', true);
+    })

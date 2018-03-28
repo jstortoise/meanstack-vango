@@ -1,0 +1,14 @@
+.service-group{
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+}
+.tooltip_templates{
+  display: none;
+}
+#dropzone-upload{
+  background: transparent;
+}
+.stage_2_internal_save::hover{
+  background: transparent;
+}

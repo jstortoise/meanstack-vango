@@ -1,0 +1,52 @@
+extends ./layout
+block stylesheet
+  link(rel="stylesheet", href="/admin-template/vendors/bower_components/lightgallery/dist/css/lightgallery.min.css")  
+block content
+  .content__inner.content__inner--sm
+    
+    .card.profile
+      .profile__img
+        img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+      .profile__info
+        h3
+          | #{profile.firstname + ' ' + profile.lastname}
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  #{profile.phone1}
+          li
+            i.zmdi.zmdi-email
+            |  #{profile.email}
+    .toolbar
+      nav.toolbar__nav
+        a(href='/supplier/esupplier/supplier') Profile
+        a(href='/supplier/esupplier/document') Document
+        a.active Service Area
+    .card
+      .card-body
+        .row
+          - for(var i = 0; i < service_area.length; i++){
+            .col-md-3
+              .form-group
+                label State
+                input.stage_1_supplier_first_name.form-control(type='text', value='#{service_area[i].state}', disabled='')
+                i.form-group__bar
+            .col-md-3
+              .form-group
+                label City
+                input.stage_1_supplier_first_name.form-control(type='text', value='#{service_area[i].city}', disabled='')
+                i.form-group__bar
+          - }
+        
+
+block script
+  script(src='/admin-template/vendors/bower_components/autosize/dist/autosize.min.js')  
+  script(src='/admin-template/vendors/bower_components/lightgallery/dist/js/lightgallery-all.min.js')
+  script.
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+    })
+
+    $(document).ready(function() {
+        $(".photos").lightGallery(); 
+    });

@@ -1,0 +1,71 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/5.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/6' method='POST')
+        p
+          | How many miles do you run per day?
+        .form-row.ans-1
+          .form-group.col-md-2
+            .option-wrapper.wrapper-1
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 5 miles
+                i.on
+          .form-group.col-md-2
+            .option-wrapper.wrapper-2
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 10 miles
+                i
+          .form-group.col-md-2
+            .option-wrapper.wrapper-3
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 15 miles
+                i
+          .from-group.col-md-2
+            .option-wrapper.wrapper-4
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 25 miles
+                i
+          .form-group.col-md-2
+            .option-wrapper.wrapper-5
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 50 miles
+                i
+          .form-group.col-md-2
+            .option-wrapper.wrapper-6
+              img(src='https://www.lemonade.com/assets/web_chat/owner-859db2e914a9962fb324d3df8931d46c921becb948bfe75bc770bd35a8c424ec.png', alt='')
+              .icon-option-wrapper
+                h6 50+ miles
+                i
+        input.miles(type='text' value='', style='display:none', name='miles', required)
+        button.btn(disabled='') Next
+block chatScript
+  script.
+    var miles = '#{miles}';
+    if(miles){
+      $('.wrapper-'+miles).addClass('on');
+      $('.btn').removeAttr('disabled');
+      $('.miles').val(miles);
+    }
+
+    for(var i = 1; i < 7; i++){
+      $('.wrapper-'+i.toString()).on('click', function(){
+        for(var j = 1; j < 7; j++){
+          $('.wrapper-'+j.toString()).removeClass('on');
+        }
+        $(this).addClass('on');
+        $('.btn').removeAttr('disabled');
+        for(var j = 1; j < 7; j++){
+          if($('.wrapper-'+j.toString()).hasClass('on'))
+            $('.miles').val(j);
+        }
+      })
+    }
+    

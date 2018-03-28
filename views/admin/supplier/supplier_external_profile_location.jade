@@ -1,0 +1,58 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/external.css')
+block content
+  .content__inner.content__inner--sm
+    header.content__title
+      .actions
+        a(href="/admin/supplier/external_list", class="actions__item zmdi zmdi-long-arrow-return zmdi-hc-fw")
+        .dropdown.actions__item        
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='/admin/supplier/external/delete/#{_id}') Delete
+            a.dropdown-item(href='') Edit
+    .card.profile
+      .profile__img
+        img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+      .profile__info
+        h3
+          | #{profile.firstname + ' ' + profile.lastname}
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  #{profile.phone1}
+          li
+            i.zmdi.zmdi-email
+            |  #{profile.email}
+    .toolbar
+      nav.toolbar__nav
+        a(href='/admin/supplier/external/profile/#{ _id }/about') About
+        a(href='/admin/supplier/external/profile/#{ _id }/document') Document
+        a.active Service Area
+        a(href='/admin/supplier/external/#{ _id }/portal') Portal
+        a(href='/admin/supplier/external/profile/#{ _id }/workdiary') History
+    .card
+      .card-body
+        .row
+          - for(var i = 0; i < service_area.length; i++){
+            .col-md-3
+              .form-group
+                label State
+                input.stage_1_supplier_first_name.form-control(type='text', value='#{service_area[i].state}', disabled='')
+                i.form-group__bar
+            .col-md-3
+              .form-group
+                label City
+                input.stage_1_supplier_first_name.form-control(type='text', value='#{service_area[i].city}', disabled='')
+                i.form-group__bar
+          - }
+
+block script
+  script(src='/admin-template/vendors/bower_components/autosize/dist/autosize.min.js')  
+  script.
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_external').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+    })

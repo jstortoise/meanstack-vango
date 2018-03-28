@@ -1,0 +1,40 @@
+extends ./layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/supplier/icon.css')
+  link(rel="stylesheet", href='/stylesheets/supplier/esupplier.css')
+block content
+  .content__inner
+    header.content__title
+      h1 Packages
+    .row.groups
+      - for(var i = 0; i < package_type1.length; i++){
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .groups__item
+          a(href='/supplier/esupplier/package_1/#{package_type1[i]._id}')
+            .groups__img
+              .avatar-img.avatar-img-1(class='#{package_type1[i].service[0] != undefined? package_type1[i].service[0].name+" icon-child": ""}')
+              .avatar-img.avatar-img-2(class='#{package_type1[i].service[1] != undefined? package_type1[i].service[1].name+" icon-child": ""}')
+              .avatar-img.avatar-img-3(class='#{package_type1[i].service[2] != undefined? package_type1[i].service[2].name+" icon-child": ""}')
+              .avatar-img.avatar-img-4(class='#{package_type1[i].service[3] != undefined? package_type1[i].service[3].name+" icon-child": ""}')
+            .groups__info
+              strong Negotiation Type-1
+              small #{package_type1[i].service.length} services          
+      - }
+      - for(var i = 0; i < package_type2.length; i++){
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .groups__item
+          a(href='/supplier/esupplier/package_2/#{package_type2[i]._id}')
+            .groups__img
+              .avatar-img.avatar-img-1(class='#{package_type2[i].service[0] != undefined? package_type2[i].service[0].name+" icon-child": ""}')
+              .avatar-img.avatar-img-2(class='#{package_type2[i].service[1] != undefined? package_type2[i].service[1].name+" icon-child": ""}')
+              .avatar-img.avatar-img-3(class='#{package_type2[i].service[2] != undefined? package_type2[i].service[2].name+" icon-child": ""}')
+              .avatar-img.avatar-img-4(class='#{package_type2[i].service[3] != undefined? package_type2[i].service[3].name+" icon-child": ""}')
+            .groups__info
+              strong Negotiation Type-2
+              small #{package_type2[i].service.length} services          
+      - }
+block script
+  script.
+    $(document).ready(function(){      
+      $('.navigation_negotiation_nav').addClass('navigation__active');
+    })    

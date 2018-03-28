@@ -1,0 +1,250 @@
+extends ../layout
+block stylesheet  
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/package.css')
+block content
+  .content__inner.package
+    .card.profile
+      .profile__img
+        img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+      .profile__info
+        h3
+          | #{profile.firstname + ' ' + profile.lastname}
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  #{profile.phone1}
+          li
+            i.zmdi.zmdi-email
+            |  #{profile.email}
+    header.content__title
+      h1 Package(Type -2)
+    - for(var i = 0; i < package.service.length; i++){
+      .row.service-wrapper
+        .col-md-8
+          .form-group
+            label Service Type
+            select.select2.service(disabled='')
+              - if(package.service[i].name == "crane"){
+                option(value='crane' selected) Crane service
+              - }else{
+                option(value='crane') Crane service
+              - }
+              - if(package.service[i].name == "tire"){
+                option(value='tire' selected) TIRE INSURANCE
+              - }else{
+                option(value='tire') TIRE INSURANCE
+              - }
+              - if(package.service[i].name == "current"){
+                option(value='current' selected) Current flow
+              - }else{
+                option(value='current') Current flow
+              - }
+              - if(package.service[i].name == "gasoline"){
+                option(value='gasoline' selected) Gasoline supply
+              - }else{
+                option(value='gasoline') Gasoline supply
+              - }
+              - if(package.service[i].name == "mechanic"){
+                option(value='mechanic' selected) Mechanic References
+              - }else{
+                option(value='mechanic') Mechanic References
+              - }              
+              - if(package.service[i].name == "emergency"){
+                option(value='emergency' selected) Emergency locksmith
+              - }else{
+                option(value='emergency') Emergency locksmith
+              - }
+              - if(package.service[i].name == "hotel"){
+                option(value='hotel' selected) Hotel in case of theft or breakdown
+              - }else{
+                option(value='hotel') Hotel in case of theft or breakdown
+              - }
+              - if(package.service[i].name == "car"){
+                option(value='car' selected) Car Rental
+              - }else{
+                option(value='car') Car Rental
+              - }
+              - if(package.service[i].name == "transportation"){
+                option(value='transportation' selected) Transportation
+              - }else{
+                option(value='transportation') Transportation
+              - }
+              - if(package.service[i].name == "urgent"){
+                option(value='urgent' selected) Urgent messages
+              - }else{
+                option(value='urgent') Urgent messages
+              - }
+              - if(package.service[i].name == "reference"){
+                option(value='reference' selected) References for a national trip
+              - }else{
+                option(value='reference') References for a national trip
+              - }
+              - if(package.service[i].name == "personal"){
+                option(value='personal' selected) Personal assistance
+              - }else{
+                option(value='personal') Personal assistance
+              - }              
+              - if(package.service[i].name == "telephone1"){
+                option(value='telephone1' selected) Telephone assistance
+              - }else{
+                option(value='telephone1') Telephone assistance
+              - }
+              - if(package.service[i].name == "legal1"){
+                option(value='legal1' selected) Legal assistance
+              - }else{
+                option(value='legal1') Legal assistance
+              - }
+              - if(package.service[i].name == "legal2"){
+                option(value='legal2' selected) Legal assistance for theft
+              - }else{
+                option(value='legal2') Legal assistance for theft
+              - }
+              - if(package.service[i].name == "ambulance"){
+                option(value='ambulance' selected) Ambulance
+              - }else{
+                option(value='ambulance') Ambulance
+              - }
+              - if(package.service[i].name == "telephone2"){
+                option(value='telephone2' selected) Telephone assistance
+              - }else{
+                option(value='telephone2') Telephone assistance
+              - }
+              - if(package.service[i].name == "medical1"){
+                option(value='medical1' selected) Medical references
+              - }else{
+                option(value='medical1') Medical references
+              - }
+              - if(package.service[i].name == "medical2"){
+                option(value='medical2' selected) Medical offers
+              - }else{
+                option(value='medical2') Medical offers
+              - }
+              - if(package.service[i].name == "hospital"){
+                option(value='hospital' selected) Hospital Visit
+              - }else{
+                option(value='hospital') Hospital Visit
+              - }
+              - if(package.service[i].name == "vehicle"){
+                option(value='vehicle' selected) Vehicle management
+              - }else{
+                option(value='vehicle') Vehicle management
+              - }
+              - if(package.service[i].name == "administrative"){
+                option(value='administrative' selected) Administrative management
+              - }else{
+                option(value='administrative') Administrative management
+              - }
+        .col-md-4
+          .form-group
+            label Number of Events
+            input.form-control.sos(type='text' value='#{package.service[i].e_number}' disabled='')
+            i.form-group__bar        
+    - }
+  .content__inner
+    .row
+      .col-md-4(style='margin-left: auto;')
+        label Total Price
+        input.form-control.total_price(type='text' value='#{package.price}')
+        i.form-group__bar
+    .row.btn-wrapper-1.in__active.save
+      a.btn.btn-light.btn--action.btn-minus
+        i.zmdi.zmdi-minus
+      a.btn.btn-light.btn--action.btn-plus
+        i.zmdi.zmdi-plus
+    .row.btn-wrapper-2.in__active.save
+      button.btn.btn-outline-secondary.btn-save-package(type='button') Save
+  .content__inner
+    .row.btn-wrapper-2
+      button.btn.btn-outline-secondary.btn-edit-package(type='button') Edit
+block script
+  script(src='/admin-template/vendors/bower_components/select2/dist/js/select2.full.min.js')
+  script.
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_external').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+    })
+    var service_template = 
+      '<div class="row service-wrapper">'+
+          '<div class="col-md-8">'+
+            '<div class="form-group">'+
+              '<label>Service Type</label>'+
+              '<select class="select2 service">'+
+                  '<option value="crane">Crane service</option>'+
+                  '<option value="tire">TIRE INSURANCE</option>'+
+                  '<option value="current">Current flow</option>'+
+                  '<option value="gasoline">Gasoline supply</option>'+
+                  '<option value="mechanic">Mechanic References</option>'+
+                  '<option value="emergency">Emergency locksmith</option>'+
+                  '<option value="hotel">Hotel in case of theft or breakdown</option>'+
+                  '<option value="car">Car Rental</option>'+
+                  '<option value="transportation">Transportation</option>'+
+                  '<option value="urgent">Urgent messages</option>'+
+                  '<option value="reference">References for a national trip</option>'+
+                  '<option value="personal">Personal assistance</option>'+
+                  '<option value="telephone1">Telephone assistance</option>'+
+                  '<option value="legal1">Legal assistance</option>'+
+                  '<option value="legal2">Legal assistance for theft</option>'+
+                  '<option value="ambulance">Ambulance</option>'+
+                  '<option value="telephone2">Telephone assistance</option>'+
+                  '<option value="medical1">Medical references</option>'+
+                  '<option value="medical2">Medical offers</option>'+
+                  '<option value="hospital">Hospital Visit</option>'+
+                  '<option value="vehicle">Vehicle management</option>'+
+                  '<option value="administrative">Administrative management</option>'+
+              '</select>'+
+            '</div>'+
+          '</div>'+
+          '<div class="col-md-4">'+
+            '<div class="form-group">'+
+              '<label>Number of events</label>'+
+              '<input type="text" class="form-control sos">'+
+              '<i class="form-group__bar"></i>'+
+            '</div>'+
+          '</div>'+                    
+      '</div>';
+    $('.zmdi-plus').on('click', function(){
+      $('.package .service-wrapper').last().after(service_template);
+      $('.package .service-wrapper').last().find('.select2').select2();
+    })
+    $('.zmdi-minus').on('click', function(){
+      if($('.package .service-wrapper').length <= 1) return;
+      $('.package .service-wrapper').last().remove();                
+    })
+    $('.btn-save-package').on('click', function(){
+      var package_info = [];
+      for(var i = 0; i < $('.service-wrapper').length; i++){
+        var element = $('.service-wrapper')[i];
+        var service = $(element).find('.select2').val();
+        var number = $(element).find('input').val();
+        package_info.push({
+          name: service,
+          e_number: number
+        })
+      }
+      $.ajax({
+          url: '/admin/supplier/external/edit_package_2',
+          type: 'POST',
+          data:{
+            id: '#{_id}',
+            data: JSON.stringify(package_info),
+            total: $('.total_price').val()
+          },
+          success: function(data){
+            if(data.ret == true){              
+              setTimeout(function(){
+                window.location = '/admin/supplier/external/#{supplier_id}/portal';
+              }, 1000);
+            }else{
+              alert('Error');
+            }
+          }
+        })
+    })
+
+    $('.btn-edit-package').on('click', function(){
+      $('.save').removeClass('in__active');
+      $(this).addClass('in__active');
+      $('.select2').removeAttr('disabled');
+      $('input').removeAttr('disabled');
+    })

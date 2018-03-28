@@ -1,0 +1,9 @@
+.dataTables_buttons{
+  display:none;
+}
+.select2-search{
+  display: none;
+}
+.dataTables_info{
+    padding-top: 0px;
+}

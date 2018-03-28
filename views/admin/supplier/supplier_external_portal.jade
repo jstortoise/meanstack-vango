@@ -1,0 +1,77 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/package.css')
+block content
+  .content__inner
+    header.content__title
+      h1 Packages
+    .row.groups
+      - for(var i = 0; i < package_type1.length; i++){
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .groups__item
+          a(href='/admin/supplier/external/package_1/#{package_type1[i]._id}')
+            .groups__img
+              .avatar-img.avatar-img-1(class='#{package_type1[i].service[0] != undefined? package_type1[i].service[0].name+" icon-child": ""}')
+              .avatar-img.avatar-img-2(class='#{package_type1[i].service[1] != undefined? package_type1[i].service[1].name+" icon-child": ""}')
+              .avatar-img.avatar-img-3(class='#{package_type1[i].service[2] != undefined? package_type1[i].service[2].name+" icon-child": ""}')
+              .avatar-img.avatar-img-4(class='#{package_type1[i].service[3] != undefined? package_type1[i].service[3].name+" icon-child": ""}')
+            .groups__info
+              strong Negotiation Type-1
+              small #{package_type1[i].service.length} services
+          .actions
+            .dropdown.actions__item
+              i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+              .dropdown-menu.dropdown-menu-right
+                a.dropdown-item(href='', data-demo-action='delete-listing') Delete
+
+      - }
+      - for(var i = 0; i < package_type2.length; i++){
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .groups__item
+          a(href='/admin/supplier/external/package_2/#{package_type2[i]._id}')
+            .groups__img
+              .avatar-img.avatar-img-1(class='#{package_type2[i].service[0] != undefined? package_type2[i].service[0].name+" icon-child": ""}')
+              .avatar-img.avatar-img-2(class='#{package_type2[i].service[1] != undefined? package_type2[i].service[1].name+" icon-child": ""}')
+              .avatar-img.avatar-img-3(class='#{package_type2[i].service[2] != undefined? package_type2[i].service[2].name+" icon-child": ""}')
+              .avatar-img.avatar-img-4(class='#{package_type2[i].service[3] != undefined? package_type2[i].service[3].name+" icon-child": ""}')
+            .groups__info
+              strong Negotiation Type-2
+              small #{package_type2[i].service.length} services
+          .actions
+            .dropdown.actions__item
+              i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+              .dropdown-menu.dropdown-menu-right
+                a.dropdown-item(href='', data-demo-action='delete-listing') Delete
+
+      - }
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .groups__item
+          a.new_package
+            .groups__img.new__group
+              img.plus-img(src='/images/super-admin/plus.png', alt='')
+            .groups__info.new__group
+              strong Add
+              small New Packaage
+  button.btn.btn-light.open_modal(data-toggle='modal', data-target='#modal-small', style='display: none;') Small modal
+  #modal-small.modal.fade(tabindex='-1')
+    .modal-dialog.modal-sm
+      .modal-content
+        .modal-header
+          h5.modal-title.pull-left New Package
+        .modal-body
+          | Please choose Package Type
+        .modal-footer
+          a.btn.btn-link(href = '/admin/supplier/external/#{ _id }/new_package_1', type='button') Type-1
+          a.btn.btn-link(href = '/admin/supplier/external/#{ _id }/new_package_2', type='button') Type-2
+
+block script
+  script.
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_external').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+    })
+    $('.new_package').on('click', function(){
+      $('.open_modal').click();
+    })

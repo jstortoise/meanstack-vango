@@ -1,0 +1,32 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/14.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/15' method='GET')
+        p
+          | Well, based on information, I recommend you to take one of these coverages.
+          | (You can choose in details in next step.)
+        .form-row.ans-1
+          .form-group.col-6
+            .option-wrapper
+              img(src='/images/chatbot/1.jpg', alt='')
+              .icon-option-wrapper
+                h4 SOS Coverage
+              div
+                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
+                div(style='color: white;margin-top: -100px;')
+                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
+                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
+                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+
+              button(type='submit').select Choose
+          .form-group.col-6
+            .option-wrapper
+              img(src='/images/chatbot/2.jpg', alt='')
+              .icon-option-wrapper
+                h4 Basic Coverage
+                img(src='/images/chatbot/5.jpg', alt='')
+              button.select Choose
+        button.btn(type='submit') More Plans

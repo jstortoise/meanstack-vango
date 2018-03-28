@@ -1,0 +1,285 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/15.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/16' method='GET')
+        p
+          | Great! You can choose additional plans here.
+        .form-row.ans-1
+          .form-group.col-md-8.offset-md-2
+            .option-wrapper
+              .icon-option-wrapper
+                div
+                  .circle(style="width: 120px; height: 120px; background: rgb(51, 54, 211);; border-radius: 120px; margin-left: auto; margin-right: auto;")
+                  div(style='color: white;margin-top: -100px;')
+                    h2(style="font-size:3.5rem; margin-left: -25px;") $5
+                    h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
+                    h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+              .row(style="margin-top: 30px;")
+                .col-md-6
+                  .row
+                    h6(style="margin-right: auto; margin-left: auto;") ROADSIDE ASSISTANCE
+                  .row                    
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.crane.on(data-tooltip-content='#tooltip_crane')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.tire(data-tooltip-content='#tooltip_tire')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.current(data-tooltip-content='#tooltip_current')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.gasoline(data-tooltip-content='#tooltip_gasoline')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.mechanic(data-tooltip-content='#tooltip_mechanic')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.emergency(data-tooltip-content='#tooltip_emergency')
+                .col-md-6
+                  .row
+                    h6(style="margin-right: auto; margin-left: auto;") TRAVEL ASSISTANCE
+                  .row                    
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.hotel(data-tooltip-content='#tooltip_hotel')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.car(data-tooltip-content='#tooltip_car')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.transportation(data-tooltip-content='#tooltip_transportation')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.urgent(data-tooltip-content='#tooltip_urgent')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.reference(data-tooltip-content='#tooltip_reference')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.personal(data-tooltip-content='#tooltip_personal')
+              .row
+                .col-md-6
+                  .row
+                    h6(style="margin-right: auto; margin-left: auto;") LEGAL ASSISTANCE
+                  .row                    
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.telephone1(data-tooltip-content='#tooltip_telephone1')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.legal1(data-tooltip-content='#tooltip_legal1')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.legal2(data-tooltip-content='#tooltip_legal2')
+                  .row
+                    h6(style="margin-right: auto; margin-left: auto;") SPECIALTIES
+                  .row
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.vehicle(data-tooltip-content='#tooltip_vehicle')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.administrative(data-tooltip-content='#tooltip_administrative')
+                .col-md-6
+                  .row
+                    h6(style="margin-right: auto; margin-left: auto;") MEDIC ASSISTANCE
+                  .row                    
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.ambulance(data-tooltip-content='#tooltip_ambulance')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.telephone2(data-tooltip-content='#tooltip_telephone2')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.medical1(data-tooltip-content='#tooltip_medical1')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.medical2(data-tooltip-content='#tooltip_medical2')
+                    .col-md-4
+                      a(href='javascript:void(0);')
+                        .icon-child.hospital(data-tooltip-content='#tooltip_hospital')
+              div(style='margin-top: 20px;')
+                input#agree(type='checkbox', checked='checked')
+                label(for='agree') I agree to the &nbsp
+                a(href='#', style='color:#FF0083;') terms of service.
+        button.btn(type='submit') Next
+  #coverage
+    .container
+      p
+        | Coverage Amounts
+      .card-deck
+        .card
+          .icon-cover.hotel
+          .card-body
+            h5.card-title Hotel Incidents Service
+            p.card-text
+              | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+          .card-footer
+            small.text-muted To know more...
+        .card
+          .icon-cover.hotel
+          .card-body
+            h5.card-title Hotel Incidents Service
+            p.card-text
+              | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+          .card-footer
+            small.text-muted To know more...
+        .card
+          .icon-cover.hotel
+          .card-body
+            h5.card-title Hotel Incidents Service
+            p.card-text
+              | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+          .card-footer
+            small.text-muted To know more...
+  #extra
+    .container
+      p
+        | Add Extra Coverage
+
+  .tooltip_templates
+    span#tooltip_crane
+      | Nuestra asistencia de grúa Vango 
+      br
+      | es exactamente lo que imaginas 
+      br
+      | y has estado buscando
+    span#tooltip_tire
+      | El seguro de llantas perfecto 
+      br
+      | es cuando una avería o pinchadura 
+      br
+      | solo fue un suspiro para continuar tu viaje
+    span#tooltip_current
+      | Por lo menos una vez en la vida  tu auto se quedará sin Batería,   situación fácil de resolver, 
+      br
+      | solo a un toque de tu aplicación Vango 
+      br
+      | y enviaremos pasa corriente
+    span#tooltip_gasoline
+      | ¿Sabes que pasa cuando te quedas sin gasolina?   Ves inalcanzable terminar él camino.
+      br
+      | La conciencia te dice contacta a Vango, cuando llega la gasolina cada minuto se vuelve un milagro,
+      br
+      | entonces, te enamoras de tu seguro VANGO
+    span#tooltip_mechanic
+      | Si necesitas tutorial exprés de mecánica 
+      br
+      | llámanos Vango te asesora vía Facetime o telefónica.
+    span#tooltip_emergency
+      | ¿Dejaste tus llaves dentro del auto? no te preocupes
+      br
+      | Un cerrajero Vango puede prevenirte un dolor de cabeza
+    span#tooltip_hotel
+      | En Vango pagamos tu hotel
+      br
+      | para demostrarte de que estamos hechos 
+    span#tooltip_car
+      | Si sonríes después del robo o avería 
+      br
+      | es porque el seguro Vango
+      br
+      | te ha pagado la renta de un auto
+    span#tooltip_transportation
+      | Si te pagan transporte de autobús
+      br
+      | después de un robo o avería 
+      br
+      | tu seguro Vango ha valido la pena
+    span#tooltip_urgent
+      | En los momentos difíciles de incomunicación, 
+      br
+      | llama a tu asistente Vangu,
+      br
+      | el mandará tus mensajes urgentes
+    span#tooltip_reference
+      | Lo más importante de un viaje es la diversión, Sin embargo, al final, 
+      br
+      | es importante saber a dónde iras. Tu APP Vangu te da referencias
+      br
+      | previas a un viaje nacional.
+    span#tooltip_personal
+      | Si requieres reservar u agendar 
+      br
+      | Solo da un toque a tu asistente personal 
+      br
+      | guardado en tu APP Vangu!
+    span#tooltip_telephone1
+      | La vida a veces es impredecible,  pero con tu Asistencia Legal Automovilística Vango, defenderás tu 
+      br
+      | libertad, tranquilidad y patrimonio. 
+    span#tooltip_legal1
+      | La Asistencia Médica de tu seguro Vango 
+      br
+      | es como comprar un médico y un ángel de la guarda.
+    span#tooltip_legal2
+      | Con el tiempo podrá olvidar
+      br
+      | cuando le robaron o se averío su auto,
+      br
+      | pero La Asistencia Legal VANGO 
+      br
+      | durará eternamente en su memoria 
+    span#tooltip_ambulance
+      | La vida es frágil, y el riesgo que te suceda un accidente por causa de tus llantas, 
+      br
+      | está presente todos los días. Sin embargo, más vale estar preparado para ello.
+      br
+      | Seguro Vango con Asistencia de Ambulancia.
+    span#tooltip_telephone2
+      | La mayor prueba,
+      br
+      | de que la Consultoría Medica de Vango funciona,
+      br
+      | es cuando nuestros asegurados siguen vivos
+    span#tooltip_medical1
+      | Si te pagan transporte de autobús
+      br
+      | después de un robo o avería 
+      br
+      | tu seguro Vango ha valido la pena
+    span#tooltip_medical2
+      | No te fíes de cualquiera,
+      br
+      | mejor confía en los Doctores y Especialistas 
+      br
+      | recomendados por tu seguro Vango
+    span#tooltip_hospital
+      | Hay días de esos en que le cuerpo falla
+      br
+      | Pero si tienes seguro Vango
+      br
+      | Podrás elegir Consulta 
+      br
+      | por Videollamada o en Consultorio
+    span#tooltip_vehicle
+      | Tenencias, cambio de placas, licencias de conductor, son sinónimos de 
+      br
+      | perder el tiempo, Usa la Gestoría Vehicular del seguro Vango, Y no 
+      br
+      | pierdas un solo minuto sin aprovechar tu tiempo
+    span#tooltip_administrative
+      | Los tramites de: PASAPORTE, IFE, CURP, ACTA DE NACIMINETO, RFC son como rompecabezas de la vida.
+      br
+      | Con la Gestoría Administrativa de tu seguro Vango,
+      br
+      | te ayudamos a armarlos.
+block chatScript
+  script.
+    $(document).ready(function() {
+        $('.icon-child').tooltipster();
+    });
+
+    $('.icon-child').on('click', function(){
+      if($(this).hasClass('on')){
+        $(this).removeClass('on');
+      }else{
+        $(this).addClass('on');        
+      }
+    })

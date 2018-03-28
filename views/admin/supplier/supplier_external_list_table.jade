@@ -1,0 +1,55 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/external.css')
+block content
+  .content__inner
+    header.content__title
+      h1 EXTERNAL SUPPLIERS
+      .actions
+        .dropdown.actions__item
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='/admin/supplier/external_list') Panel View
+            a.dropdown-item(href='/admin/supplier/external_list_table') List VIew    
+    .table-responsive
+      table#data-table.table
+        thead
+          tr
+            th Name
+            th Email
+            th Ratings
+            th Status
+            th Action
+        tbody
+          - for (var i = 0; i < profile.length; i++) {
+            tr
+              td #{ profile[i].name }
+              td 
+                a(href='/admin/supplier/external/profile/#{profile[i]._id}/about') #{ profile[i].email }
+              td #{ profile[i].rating }
+              td
+                p.active_customer(style='width: 50px; background: green;') #{ profile[i].status }
+              td                
+                .dropdown.actions__item
+                  i.zmdi.zmdi-more-vert(data-toggle="dropdown")
+                  .dropdown-menu.dropdown-menu-right
+                    a(href='/admin/supplier/external/#{profile[i]._id}/portal', class="dropdown-item")
+                      | Portal
+                    a(href='/admin/supplier/external/delete/#{profile[i]._id}' class="dropdown-item")
+                      | Delete
+          -}
+block script
+  // Vendors: Data tables
+  script(src='/admin-template/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')
+  script(src='/admin-template/vendors/bower_components/jszip/dist/jszip.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')    
+  script.
+  script.
+      
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_external').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+    })

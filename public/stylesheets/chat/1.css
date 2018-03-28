@@ -1,0 +1,14 @@
+
+.submit {
+  margin-top: 20px;
+  height: 46px;
+  width: 200px;
+  border-radius: .25rem;
+  background: rgb(51, 54, 211);
+  background-position: 0 0;
+  color: white;
+}
+
+.submit:hover {
+  transform: scale(1.05);
+}

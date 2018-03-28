@@ -1,0 +1,78 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/custom.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+block content
+  .content__inner.content__inner--sm
+    header.content__title
+      h1 Malinda Hollaway
+      small Web/UI Developer, Edinburgh, Scotland
+      .actions
+        a.actions__item.zmdi.zmdi-trending-up(href='')
+        a.actions__item.zmdi.zmdi-check-all(href='')
+        .dropdown.actions__item
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='') Refresh
+            a.dropdown-item(href='') Manage Widgets
+            a.dropdown-item(href='') Settings
+    .card.profile
+      .profile__img
+        img(src='/admin-template/demo/img/contacts/2.jpg', alt='')
+        a.zmdi.zmdi-camera.profile__img__edit(href='')
+      .profile__info
+        p
+          | Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magnae tiam porta sem malesuada magna mollis euismod.
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  308-360-8938
+          li
+            i.zmdi.zmdi-email
+            |  malinda@inbound.plus
+          li
+            i.zmdi.zmdi-twitter
+            |  @mallinda-hollaway
+    .toolbar
+      nav.toolbar__nav
+        a.active(href='') About
+        a(href='') Coverage
+        a(href='') Contacts
+      .actions
+        i.actions__item.zmdi.zmdi-search(data-sa-action='toolbar-search-open')
+      .toolbar__search
+        input(type='text', placeholder='Search...')
+        i.toolbar__search__close.zmdi.zmdi-long-arrow-left(data-sa-action='toolbar-search-close')
+    .card
+      .card-body
+        h4.card-body__title.mb-4 About Mallinda Hollaway
+        p
+          | Pellentesque vitae quam quis tellus dignissim faucibus. Suspendisse mattis felis at faucibus lobortis. Sed sit amet tellus dolor. Fusce quis sollicitudin velit. Praesent gravida ullamcorper lectus et tincidunt. Phasellus lectus quam, porta pharetra feugiat in, auctor eget dolor.
+        p
+          | Vestibulum tincidunt imperdiet egestas. In in nunc vitae elit tincidunt tristique id eu justo. Quisque gravida maximus orci, vulputate pharetra mauris commodo at. Mauris eget fermentum ipsum, quis faucibus neque. Fusce eleifend sapien sit amet convallis rhoncus. Proin commodo lacinia lectus, et tempus turpis.
+        br
+        h4.card-body__title.mb-4 Contact Information
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            | 308-360-8938
+          li
+            i.zmdi.zmdi-email
+            | robertbosborne@inbound.plus
+          li
+            i.zmdi.zmdi-facebook
+            | robertbosborne
+          li
+            i.zmdi.zmdi-twitter
+            | @robertbosborne
+          li
+            i.zmdi.zmdi-pin
+            | 5470 Madison Street Severna Park, MD 21146
+
+block script
+  script.
+    $(document).ready(function(){      
+      $('.navigation_customer_nav').addClass('navigation__active');
+      $('.navigation_customer_nav>a').click();
+    })
+    

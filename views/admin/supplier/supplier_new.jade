@@ -1,0 +1,676 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/admin-template/vendors/bower_components/dropzone/dist/dropzone.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/new.css')
+  link(rel="stylesheet", href='/tooltipster/dist/css/tooltipster.bundle.min.css')
+  link(rel='stylesheet', href='/admin-template/vendors/bower_components/sweetalert2/dist/sweetalert2.min.css')
+block content
+  .content__inner.content__inner--sm
+    header.content__title
+      h1 Add new supplier
+    .stage_1.card.new-contact
+      .new-contact__header
+        input.inputprofileimagefile(type='file' onchange="readURL(this);" style='display:none;', accept='image/*')
+        a.zmdi.zmdi-camera.new-contact__upload.profile_img_upload
+        img.new-contact__img.profile_img(src='/admin-template/demo/img/contacts/user_empty.png', alt='')
+      .card-body
+        .row
+          .col-md-6
+            .form-group
+              label Supplier Type
+              select.stage_1_supplier_type.select2(data-minimum-results-for-search='Infinity')
+                option(value='internal') Internal Supplier
+                option(value='external') External Supplier
+          .col-md-6
+            .form-group
+              label First Name
+              input.stage_1_supplier_first_name.form-control(type='text')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Last Name
+              input.stage_1_supplier_last_name.form-control(type='text')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Company(Optional)
+              input.stage_1_supplier_company_name.form-control(type='text')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Email Address
+              input.stage_1_supplier_email.form-control(type='text')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Phone Number 1
+              input.stage_1_supplier_phone_1.form-control(type='text')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Phone Number 2(Optional)
+              input.stage_1_supplier_phone_2.form-control(type='text')
+              i.form-group__bar
+        .form-group
+          label Address(Optional)
+          textarea.stage_1_supplier_address.form-control.textarea-autosize(placeholder='i.e. 711-2880 Nulla St. Mankato, Mississippi, 96522.')
+          i.form-group__bar        
+        .clearfix
+    .stage_2
+      .internal_supplier.card.new-contact
+        .new-contact__header
+          img.new-contact__img.profile_img(src='/admin-template/demo/img/contacts/user_empty.png', alt='')
+        .card-body
+          .row.price-group
+            .col-md-6
+              .form-group
+                label Supplier Name
+                input.stage_2_supplier_name.form-control(type='text', placeholder='i.e. John', disabled='')
+                i.form-group__bar
+            .col-md-6
+              .form-group
+                label Supplier Type
+                select.stage_2_supplier_type.select2(data-minimum-results-for-search='Infinity', disabled='')
+                  option Internal Supplier
+                  option External Supplier
+            .col-md-12(style='text-align:center; margin-top: 20px; margin-bottom: 20px;')
+              div
+                h2 Total Cost : $
+                  span.total_value
+            .col-md-4
+              .form-group
+                label Salary
+                input.stage_2_salary.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Car Lease
+                input.stage_2_car_lease.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Cell Phone
+                input.stage_2_cell_phone.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Gasoline
+                input.stage_2_gasoline.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Maintenance Shaving
+                input.stage_2_maintenance_shaving.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Supplies
+                input.stage_2_supplies.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+            .col-md-4
+              .form-group
+                label Extra
+                input.stage_2_extra.form-control(type='text', placeholder='USD', onkeypress='return event.charCode >= 48 && event.charCode <= 57')
+                i.form-group__bar
+        .card-body
+          .col-md-12(style='text-align:center; margin-top: 20px; margin-bottom: 20px;')
+            div
+              h2 Service
+          .row(style="margin-top: 30px;")
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") ROADSIDE ASSISTANCE
+              .row
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.crane.on(data-tooltip-content='#tooltip_crane', data-name='crane')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.tire(data-tooltip-content='#tooltip_tire', data-name='tire')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.current(data-tooltip-content='#tooltip_current', data-name='current')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.gasoline(data-tooltip-content='#tooltip_gasoline', data-name='gasoline')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.mechanic(data-tooltip-content='#tooltip_mechanic', data-name='mechanic')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.emergency(data-tooltip-content='#tooltip_emergency', data-name='emergency')
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") TRAVEL ASSISTANCE
+              .row                    
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.hotel(data-tooltip-content='#tooltip_hotel', data-name='hotel')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.car(data-tooltip-content='#tooltip_car', data-name='car')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.transportation(data-tooltip-content='#tooltip_transportation', data-name='trasnportation')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.urgent(data-tooltip-content='#tooltip_urgent', data-name='urgent')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.reference(data-tooltip-content='#tooltip_reference', data-name='reference')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.personal(data-tooltip-content='#tooltip_personal', data-name='personal')
+          .row
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") LEGAL ASSISTANCE
+              .row(style='padding-bottom: 30px;')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.telephone1(data-tooltip-content='#tooltip_telephone1', data-name='telephon1')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.legal1(data-tooltip-content='#tooltip_legal1', data-name='legal1')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.legal2(data-tooltip-content='#tooltip_legal2', data-name='legal2')
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") SPECIALTIES
+              .row
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.vehicle(data-tooltip-content='#tooltip_vehicle', data-name='vehicle')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.administrative(data-tooltip-content='#tooltip_administrative', data-name='administrative')
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") MEDIC ASSISTANCE
+              .row                    
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.ambulance(data-tooltip-content='#tooltip_ambulance', data-name='ambulance')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.telephone2(data-tooltip-content='#tooltip_telephone2', data-name='telephone2')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.medical1(data-tooltip-content='#tooltip_medical1', data-name='medical1')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.medical2(data-tooltip-content='#tooltip_medical2', data-name='medical2')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.hospital(data-tooltip-content='#tooltip_hospital', data-name='hospital')
+                    
+          .form-group(style='margin-top: 30px;')
+            label Notes(Optional)
+            textarea.stage_2_internal_note.form-control.textarea-autosize
+            i.form-group__bar
+        
+        .row(style='margin-left: auto; margin-right: 30px; margin-bottom: 20px;')
+          button.stage_2_internal_save.btn.btn-outline-secondary(type='button') Save
+      .external_supplier.card.new-contact
+        .new-contact__header
+          img.new-contact__img.profile_img(src='/admin-template/demo/img/contacts/user_empty.png', alt='')
+        .card-body
+          .row
+            .col-md-6
+              .form-group
+                label Supplier Name
+                input.stage_2_supplier_name.form-control(type='text', placeholder='i.e. John', disabled='')
+                i.form-group__bar
+            .col-md-6
+              .form-group
+                label Supplier Type
+                select.select2(data-minimum-results-for-search='Infinity', disabled='')
+                  option Internal Supplier
+                  option(selected='') External Supplier            
+                      
+        .card-body.upload-wrapper
+          .row
+            .col-md-12
+              label Image Data
+            .col-md-12
+              .dropzone#dropzone-upload
+          .row(style='margin-top:30px;')
+            .col-md-12
+              .form-group
+                label Document
+                input.document_file.form-control(name='myFile', type='file', accept='.pdf')         
+          .form-group
+            label Notes
+            textarea.form-control.textarea-autosize
+            i.form-group__bar        
+        .row(style='margin-left: auto; margin-right: 30px; margin-bottom: 20px;')
+          button.stage_2_external_save.btn-save.btn.btn-outline-secondary(type='button') Save
+
+    nav
+      ul.pagination.justify-content-end
+        li.page-item.pagination-prev
+          a.page-link.page_previous
+        li.page-item.active.page_item_1
+          a.page-link.page_1 1
+        li.page-item.page_item_2
+          a.page-link.page_2 2
+        li.page-item.pagination-next
+          a.page-link.page_next
+ 
+  .tooltip_templates
+    span#tooltip_crane
+      | Nuestra asistencia de grúa Vango 
+      br
+      | es exactamente lo que imaginas 
+      br
+      | y has estado buscando
+    span#tooltip_tire
+      | El seguro de llantas perfecto 
+      br
+      | es cuando una avería o pinchadura 
+      br
+      | solo fue un suspiro para continuar tu viaje
+    span#tooltip_current
+      | Por lo menos una vez en la vida  tu auto se quedará sin Batería,   situación fácil de resolver, 
+      br
+      | solo a un toque de tu aplicación Vango 
+      br
+      | y enviaremos pasa corriente
+    span#tooltip_gasoline
+      | ¿Sabes que pasa cuando te quedas sin gasolina?   Ves inalcanzable terminar él camino.
+      br
+      | La conciencia te dice contacta a Vango, cuando llega la gasolina cada minuto se vuelve un milagro,
+      br
+      | entonces, te enamoras de tu seguro VANGO
+    span#tooltip_mechanic
+      | Si necesitas tutorial exprés de mecánica 
+      br
+      | llámanos Vango te asesora vía Facetime o telefónica.
+    span#tooltip_emergency
+      | ¿Dejaste tus llaves dentro del auto? no te preocupes
+      br
+      | Un cerrajero Vango puede prevenirte un dolor de cabeza
+    span#tooltip_hotel
+      | En Vango pagamos tu hotel
+      br
+      | para demostrarte de que estamos hechos 
+    span#tooltip_car
+      | Si sonríes después del robo o avería 
+      br
+      | es porque el seguro Vango
+      br
+      | te ha pagado la renta de un auto
+    span#tooltip_transportation
+      | Si te pagan transporte de autobús
+      br
+      | después de un robo o avería 
+      br
+      | tu seguro Vango ha valido la pena
+    span#tooltip_urgent
+      | En los momentos difíciles de incomunicación, 
+      br
+      | llama a tu asistente Vangu,
+      br
+      | el mandará tus mensajes urgentes
+    span#tooltip_reference
+      | Lo más importante de un viaje es la diversión, Sin embargo, al final, 
+      br
+      | es importante saber a dónde iras. Tu APP Vangu te da referencias
+      br
+      | previas a un viaje nacional.
+    span#tooltip_personal
+      | Si requieres reservar u agendar 
+      br
+      | Solo da un toque a tu asistente personal 
+      br
+      | guardado en tu APP Vangu!
+    span#tooltip_telephone1
+      | La vida a veces es impredecible,  pero con tu Asistencia Legal Automovilística Vango, defenderás tu 
+      br
+      | libertad, tranquilidad y patrimonio. 
+    span#tooltip_legal1
+      | La Asistencia Médica de tu seguro Vango 
+      br
+      | es como comprar un médico y un ángel de la guarda.
+    span#tooltip_legal2
+      | Con el tiempo podrá olvidar
+      br
+      | cuando le robaron o se averío su auto,
+      br
+      | pero La Asistencia Legal VANGO 
+      br
+      | durará eternamente en su memoria 
+    span#tooltip_ambulance
+      | La vida es frágil, y el riesgo que te suceda un accidente por causa de tus llantas, 
+      br
+      | está presente todos los días. Sin embargo, más vale estar preparado para ello.
+      br
+      | Seguro Vango con Asistencia de Ambulancia.
+    span#tooltip_telephone2
+      | La mayor prueba,
+      br
+      | de que la Consultoría Medica de Vango funciona,
+      br
+      | es cuando nuestros asegurados siguen vivos
+    span#tooltip_medical1
+      | Si te pagan transporte de autobús
+      br
+      | después de un robo o avería 
+      br
+      | tu seguro Vango ha valido la pena
+    span#tooltip_medical2
+      | No te fíes de cualquiera,
+      br
+      | mejor confía en los Doctores y Especialistas 
+      br
+      | recomendados por tu seguro Vango
+    span#tooltip_hospital
+      | Hay días de esos en que le cuerpo falla
+      br
+      | Pero si tienes seguro Vango
+      br
+      | Podrás elegir Consulta 
+      br
+      | por Videollamada o en Consultorio
+    span#tooltip_vehicle
+      | Tenencias, cambio de placas, licencias de conductor, son sinónimos de 
+      br
+      | perder el tiempo, Usa la Gestoría Vehicular del seguro Vango, Y no 
+      br
+      | pierdas un solo minuto sin aprovechar tu tiempo
+    span#tooltip_administrative
+      | Los tramites de: PASAPORTE, IFE, CURP, ACTA DE NACIMINETO, RFC son como rompecabezas de la vida.
+      br
+      | Con la Gestoría Administrativa de tu seguro Vango,
+      br
+      | te ayudamos a armarlos.
+
+block script
+  script(src='/admin-template/vendors/bower_components/select2/dist/js/select2.full.min.js')
+  script(src='/admin-template/vendors/bower_components/autosize/dist/autosize.min.js')
+  script(src='/admin-template/vendors/bower_components/sweetalert2/dist/sweetalert2.min.js')
+  script(src='/tooltipster/dist/js/tooltipster.bundle.min.js')
+  script.
+    //Stage Variable
+    var stage = 1;
+    $(document).ready(function(){
+      //SideBar menu
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_new').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+
+      //Stage2 Hide
+      $('.stage_2').hide();
+    })
+
+    //Event for pagenation
+    $('.pagination-prev').on('click', function(){      
+      stage = 1;
+      $('.stage_2').hide();
+      $('.stage_1').show();
+      $('.page_item_1').addClass('active');
+      $('.page_item_2').removeClass('active');
+      $("html, body").animate({ scrollTop: 0 }, "0.5");
+    })
+    $('.page_1').on('click', function(){
+      stage = 1;
+      $('.stage_1').show();
+      $('.stage_2').hide();
+      $('.page_item_1').addClass('active');
+      $('.page_item_2').removeClass('active');
+      $("html, body").animate({ scrollTop: 0 }, "0.5");
+    })
+    $('.page_2').on('click', function(){
+      if(stage1_validation() == false) return;
+      stage = 2;
+      $('.stage_1').hide();
+      $('.stage_2').show();
+      $('.page_item_2').addClass('active');
+      $('.page_item_1').removeClass('active');
+      $('.stage_2_supplier_name').val($('.stage_1_supplier_first_name').val() + ' ' + $('.stage_1_supplier_last_name').val());
+      if($('.stage_1_supplier_type').val() == 'internal'){
+        $('.internal_supplier').show();
+        $('.external_supplier').hide();
+      }else{
+        $('.internal_supplier').hide();
+        $('.external_supplier').show();
+      }
+      $("html, body").animate({ scrollTop: 0 }, "0.5");
+    })
+    $('.pagination-next').on('click', function(){
+      if(stage1_validation() == false) return;
+      stage =2;
+      $('.stage_1').hide();
+      $('.stage_2').show();
+      $('.page_item_2').addClass('active');
+      $('.page_item_1').removeClass('active');
+      $('.stage_2_supplier_name').val($('.stage_1_supplier_first_name').val() + ' ' + $('.stage_1_supplier_last_name').val());
+      if($('.stage_1_supplier_type').val() == 'internal'){
+        $('.internal_supplier').show();
+        $('.external_supplier').hide();
+      }else{
+        $('.internal_supplier').hide();
+        $('.external_supplier').show();
+      }
+      $("html, body").animate({ scrollTop: 0 }, "0.5");
+    })
+
+    //Image File Select
+    $('.profile_img_upload').on('click', function(){
+      $('.inputprofileimagefile').click();
+    })
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('.profile_img')
+                  .attr('src', e.target.result)
+          };
+          reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    //Add Validation
+    function stage1_validation(){
+      if($('.stage_1_supplier_type').val() == null){
+        return false;
+      }else if($('.stage_1_supplier_first_name').val() == ''){        
+        $('.stage_1_supplier_first_name').addClass('is-invalid');
+        return false;
+      }else if($('.stage_1_supplier_last_name').val() == ''){
+        $('.stage_1_supplier_last_name').addClass('is-invalid');
+        return false;
+      }else if($('.stage_1_supplier_email').val() == '' || !validateEmail($('.stage_1_supplier_email').val())){        
+        $('.stage_1_supplier_email').addClass('is-invalid');
+        return false;
+      }else if($('.stage_1_supplier_phone_1').val() == ''){
+        $('.stage_1_supplier_phone_1').addClass('is-invalid');
+        return false;
+      }
+      return true;
+    }
+    $('input').on('keyup', function(){
+      $(this).removeClass('is-invalid');
+    })
+
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+
+    //Stage2 Internal Supplier Service Icons Event
+    $(document).ready(function() {
+        $('.icon-child').tooltipster();
+    });
+    $('.icon-child').on('click', function(){
+      if($(this).hasClass('on')){
+        $(this).removeClass('on');
+      }else{
+        $(this).addClass('on');        
+      }
+    })
+
+    //Stage2 Internal Price input Event
+    $('.price-group input').on('keyup', function(){
+      var price = {};
+      price.salary = $('.stage_2_salary').val()?$('.stage_2_salary').val():"0";
+      price.car_lease = $('.stage_2_car_lease').val()?$('.stage_2_car_lease').val():"0";
+      price.cell_phone = $('.stage_2_cell_phone').val()?$('.stage_2_cell_phone').val():"0";
+      price.gasoline = $('.stage_2_gasoline').val()?$('.stage_2_gasoline').val():"0";
+      price.maintenance_shaving = $('.stage_2_maintenance_shaving').val()?$('.stage_2_maintenance_shaving').val():"0";
+      price.supplies = $('.stage_2_supplies').val()?$('.stage_2_supplies').val():"0";
+      price.extra = $('.stage_2_extra').val()?$('.stage_2_extra').val():"0";
+      price.total = Number(price.salary)+Number(price.car_lease)+Number(price.cell_phone)+Number(price.gasoline)+Number(price.maintenance_shaving)+Number(price.supplies)+Number(price.extra);
+      $('.total_value').html(price.total);
+    })
+
+  script.
+    //Event for Save Button.
+    $('.stage_2_internal_save').on('click', function(){
+      //console.log(Dropzone.forElement('#dropzone-upload').getAcceptedFiles());
+      if($('.stage_1_supplier_type').val() == 'internal'){
+        var formData = new FormData();
+        formData.append('firstname', $('.stage_1_supplier_first_name').val());
+        formData.append('lastname', $('.stage_1_supplier_last_name').val());
+        formData.append('companyname', $('.stage_1_supplier_company_name').val());
+        formData.append('email', $('.stage_1_supplier_email').val());
+        formData.append('phone1', $('.stage_1_supplier_phone_1').val());
+        formData.append('phone2', $('.stage_1_supplier_phone_2').val());
+        formData.append('address', $('.stage_1_supplier_address').val());
+        formData.append('profileimage', document.getElementsByClassName('inputprofileimagefile')[0].files[0]);
+        formData.append('price', getPriceString());
+        formData.append('service', getServiceString());
+        formData.append('note', $('.stage_2_internal_note').val());
+        var request = new XMLHttpRequest();
+        request.open('POST', '/admin/supplier/new_internal_supplier');        
+        request.onreadystatechange = function() {
+          if (request.readyState === 4) {
+            var response = JSON.parse(request.responseText);
+            if(response.ret == 'success'){
+              swal({
+                title: 'Good job!',
+                text: 'New supplier is added.',
+                type: 'success', // 'success', 'info', 'warning', 'question'
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-sm btn-light',
+                background: 'rgba(0, 0, 0, 0.96)'
+              })
+              setTimeout(function(){
+                $('.page_1').click();
+              }, 2000);
+            }else if(response.ret == 'fail'){
+              swal({
+                title: 'Error!',
+                text: 'Server Error.',
+                type: 'warning', // 'success', 'info', 'warning', 'question'
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-sm btn-light',
+                background: 'rgba(0, 0, 0, 0.96)'
+              })
+            }else if(response.ret == 'exist'){
+              swal({
+                title: 'Exist!',
+                text: 'Supplier with same email is existed.',
+                type: 'info', // 'success', 'info', 'warning', 'question'
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-sm btn-light',
+                background: 'rgba(0, 0, 0, 0.96)'
+              })
+            }
+          }
+        }
+        request.send(formData);
+      }else if($('.stage_1_supplier_type').val() == 'external'){
+
+      }
+    })
+    function getPriceString(){
+      var price = {};
+      price.salary = $('.stage_2_salary').val()?$('.stage_2_salary').val():"0";
+      price.car_lease = $('.stage_2_car_lease').val()?$('.stage_2_car_lease').val():"0";
+      price.cell_phone = $('.stage_2_cell_phone').val()?$('.stage_2_cell_phone').val():"0";
+      price.gasoline = $('.stage_2_gasoline').val()?$('.stage_2_gasoline').val():"0";
+      price.maintenance_shaving = $('.stage_2_maintenance_shaving').val()?$('.stage_2_maintenance_shaving').val():"0";
+      price.supplies = $('.stage_2_supplies').val()?$('.stage_2_supplies').val():"0";
+      price.extra = $('.stage_2_extra').val()?$('.stage_2_extra').val():"0";
+      price.total = Number(price.salary)+Number(price.car_lease)+Number(price.cell_phone)+Number(price.gasoline)+Number(price.maintenance_shaving)+Number(price.supplies)+Number(price.extra);
+      return JSON.stringify(price);
+    }
+    function getServiceString(){
+      var s_icons = $('.icon-child')
+      var service = {};
+      for(var i = 0; i < s_icons.length; i++){
+        var name = $(s_icons[i]).data('name');
+        if($(s_icons[i]).hasClass('on')){
+          service[name] = 'on';
+        }else{
+          service[name] = 'off';
+        }        
+      }
+      return JSON.stringify(service);
+    }
+  script.
+    //Event for Save Button.
+    $('.stage_2_external_save').on('click', function(){
+      var files = Dropzone.forElement('#dropzone-upload').getAcceptedFiles();
+      var length = files.length;
+      var formData = new FormData();
+      formData.append('firstname', $('.stage_1_supplier_first_name').val());
+      formData.append('lastname', $('.stage_1_supplier_last_name').val());
+      formData.append('companyname', $('.stage_1_supplier_company_name').val());
+      formData.append('email', $('.stage_1_supplier_email').val());
+      formData.append('phone1', $('.stage_1_supplier_phone_1').val());
+      formData.append('phone2', $('.stage_1_supplier_phone_2').val());
+      formData.append('address', $('.stage_1_supplier_address').val());
+      formData.append('profileimage', document.getElementsByClassName('inputprofileimagefile')[0].files[0]);
+      formData.append('toolimagelength', length);
+      for(var i = 0; i < length; i++){
+        formData.append('image'+i.toString(), files[i]);        
+      }
+      if(document.getElementsByClassName('document_file')[0].files){
+        formData.append('document', document.getElementsByClassName('document_file')[0].files[0]);
+      }
+
+      var request = new XMLHttpRequest();
+      request.open('POST', '/admin/supplier/new_external_supplier');
+      request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+          var response = JSON.parse(request.responseText);
+          if(response.ret == 'success'){
+            swal({
+              title: 'Good job!',
+              text: 'New supplier is added.',
+              type: 'success', // 'success', 'info', 'warning', 'question'
+              buttonsStyling: false,
+              confirmButtonClass: 'btn btn-sm btn-light',
+              background: 'rgba(0, 0, 0, 0.96)',
+            });
+            setTimeout(function(){
+              window.location = '/admin/supplier/external/'+response.id+'/portal'
+            }, 2000);
+            
+          }else if(response.ret == 'fail'){
+            swal({
+              title: 'Error!',
+              text: 'Server Error.',
+              type: 'warning', // 'success', 'info', 'warning', 'question'
+              buttonsStyling: false,
+              confirmButtonClass: 'btn btn-sm btn-light',
+              background: 'rgba(0, 0, 0, 0.96)'
+            })
+          }else if(response.ret == 'exist'){
+            swal({
+              title: 'Exist!',
+              text: 'Supplier with same email is existed.',
+              type: 'info', // 'success', 'info', 'warning', 'question'
+              buttonsStyling: false,
+              confirmButtonClass: 'btn btn-sm btn-light',
+              background: 'rgba(0, 0, 0, 0.96)'
+            })
+          }
+        }
+      }
+      request.send(formData);      
+    });

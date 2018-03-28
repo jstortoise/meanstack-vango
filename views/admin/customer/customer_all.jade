@@ -1,0 +1,93 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/custom.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+block content
+  .content__inner
+    header.content__title
+      .actions
+        a.actions__item.zmdi.zmdi-trending-up(href='')
+        a.actions__item.zmdi.zmdi-check-all(href='')
+        .dropdown.actions__item
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='') Refresh
+            a.dropdown-item(href='') Manage Widgets
+            a.dropdown-item(href='') Settings
+    .card
+      .card-body
+        h4.card-title Our Customers
+        h6.card-subtitle All customers that take cover our insurance.
+        .table-responsive
+          table#data-table.table
+            thead
+              tr
+                th Name
+                th Email
+                th Thumbnail
+                th Seller
+                th Ratings
+                th Due Diligence
+                th Action
+            tbody
+              tr
+                td Bader Al
+                td 
+                  a(href='/admin/customer/profile') bravedragon623@yandex.com
+                td
+                td Web Bot
+                td 5.0
+                td
+                  p.active_customer(style='width: 50px; background: green;') Active
+                td Action
+              tr
+                td Bader Al
+                td bravedragon623@yandex.com
+                td
+                td Web Bot
+                td 5.0
+                td
+                  p.active_customer(style='width: 50px; background: red;') Urgent
+                td Action
+              tr
+                td Bader Al
+                td bravedragon623@yandex.com
+                td
+                td Web Bot
+                td 5.0
+                td
+                  p.active_customer(style='width: 50px; background: green;') Active
+                td Action
+              tr
+                td Bader Al
+                td bravedragon623@yandex.com
+                td
+                td Web Bot
+                td 5.0
+                td
+                  p.active_customer(style='width: 50px; background: #54542b;') Pending
+                td Action
+              tr
+                td Bader Al
+                td bravedragon623@yandex.com
+                td
+                td Web Bot
+                td 5.0
+                td
+                  p.active_customer(style='width: 50px; background: green;') Active
+                td Action
+  
+block script
+  // Vendors: Data tables
+  script(src='/admin-template/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')
+  script(src='/admin-template/vendors/bower_components/jszip/dist/jszip.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.html5.min.js')    
+  script.
+    $(document).ready(function(){      
+      $('.navigation_customer_nav').addClass('navigation__active');
+      $('.navigation_customer_all').addClass('navigation__active');
+      $('.navigation_customer_nav>a').click();
+    })
+    

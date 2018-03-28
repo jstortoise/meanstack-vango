@@ -1,0 +1,142 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/location/management.css')
+block content
+  .content__inner(style='padding-top: 50px;')
+    h4(style='padding-bottom: 30px; text-align:center;') LOCATION MANAGEMENT
+    .row
+      .col-md-6
+        .card
+          .card-body
+            .actions
+              a.btn.btn-light(data-toggle='modal', data-target='#new_state') + Add New State
+            div(style='text-align:center; margin-bottom: 30px;')
+              h3 State
+            .table-responsive
+              table#data-table-1.table
+                thead
+                  tr
+                    th No
+                    th State
+                    th(style='width: 30px;') Action
+                tbody
+                  - for(var i = 0; i < states.length; i++){
+                    tr
+                      td #{i + 1}
+                      td #{states[i].name}
+                      td
+                        .dropdown.actions__item
+                          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+                          .dropdown-menu.dropdown-menu-right
+                            a.dropdown-item(href='/admin/location/#{states[i].name}/delete') Delete
+                  - }                  
+      .col-md-6
+        .card
+          .card-body
+            .actions
+              a.btn.btn-light(data-toggle='modal', data-target='#new_city') + Add New City
+            div(style='text-align: center; margin-bottom: 30px;')
+              h3 City
+            .table-responsive
+              table#data-table-2.table
+                thead
+                  tr
+                    th No
+                    th State
+                    th City
+                    th(style='width: 30px;') Action
+                tbody
+                  - for(var i = 0; i < cities.length; i++){
+                    tr
+                      td #{i + 1}
+                      td #{cities[i].state}
+                      td #{cities[i].city}
+                      td
+                        .dropdown.actions__item
+                          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+                          .dropdown-menu.dropdown-menu-right
+                            a.dropdown-item(href='/admin/location/#{cities[i].state}/#{cities[i].city}/delete') Delete
+                  - }                  
+  #new_city.modal.fade(data-backdrop='false', data-keyboard='true', tabindex='-1', style='z-index: 5;')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5.modal-title.pull-left Add City
+        .modal-body
+          .row
+            .col-md-6
+              .form-group
+                label(for='') State
+                select.select2.select_state
+                  - for(var i = 0; i < states.length; i++){
+                    option(value='#{states[i].name}') #{states[i].name}
+                  - }
+            .col-md-6
+              .from-group
+                label(for='') City
+                input.form-control.city(type='text')
+        .modal-footer
+          button.btn.btn-link.btn-save-city(type='button') Save changes
+          button.btn.btn-link(type='button', data-dismiss='modal') Close
+  #new_state.modal.fade(data-backdrop='false', data-keyboard='true', tabindex='-1', style='z-index: 5;')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5.modal-title.pull-left Add State
+        .modal-body
+          .row
+            .col-md-12
+              .from-group
+                label(for='') State
+                input.form-control.state(type='text')
+        .modal-footer
+          button.btn.btn-link.btn-save-state(type='button') Save changes
+          button.btn.btn-link.btn-close(type='button', data-dismiss='modal') Close
+block script
+  script(src='/admin-template/vendors/bower_components/select2/dist/js/select2.full.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net/js/jquery.dataTables.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js')
+  script(src='/admin-template/vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js')
+  script.
+    $(document).ready(function(){      
+      $('.navigation_location_nav').addClass('navigation__active');
+      $('.navigation_location_management').addClass('navigation__active');
+      $('.navigation_location_nav > a').click();
+
+      $('#data-table-1').dataTable();
+      $('#data-table-2').dataTable();
+    })
+    //
+    
+    //
+    $('.btn-save-state').on('click', function(){
+      var state = $('.state').val();
+      $.ajax({
+        url: '/admin/location/add_state',
+        type: 'POST',
+        data: {
+          state: state
+        },
+        success: function(data){
+          if(data.ret == true)
+            location.reload();
+        }
+      })
+    });
+    $('.btn-save-city').on('click', function(){
+      var city = $('.city').val();
+      var state = $('.select_state').val();
+      $.ajax({
+        url: '/admin/location/add_city',
+        type: 'POST',
+        data:{
+          state: state,
+          city: city
+        },
+        success: function(data){
+          if(data.ret == true){
+            location.reload();
+          }
+        }
+      })
+    })

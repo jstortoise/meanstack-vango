@@ -1,0 +1,102 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/custom.css')
+  link(rel='stylesheet', href='/stylesheets/super-admin/admin.css')
+block content
+  .content__inner
+    header.content__title
+      h1 Employees
+      .actions
+        a.actions__item.zmdi.zmdi-trending-up(href='')
+        a.actions__item.zmdi.zmdi-check-all(href='')
+        .dropdown.actions__item
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='') Refresh
+            a.dropdown-item(href='') Manage Widgets
+            a.dropdown-item(href='') Settings
+    .toolbar
+      nav.toolbar__nav
+        a.active(href='') All Employees
+        a(href='') Admin
+        a(href='') Sales Agent
+      .actions
+        i.actions__item.zmdi.zmdi-search(data-sa-action='toolbar-search-open')
+        a.actions__item.zmdi.zmdi-info-outline.hidden-xs-down(href='')
+        .dropdown.actions__item.hidden-xs-down
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='') Refresh
+            a.dropdown-item(href='') Delete
+            a.dropdown-item(href='') Settings
+      .toolbar__search
+        input(type='text', placeholder='Search...')
+        i.toolbar__search__close.zmdi.zmdi-long-arrow-left(data-sa-action='toolbar-search-close')
+    .contacts.row    
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/7.jpg', alt='')
+          .contacts__info
+            strong Charles Spencer
+            small charles@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/8.jpg', alt='')
+          .contacts__info
+            strong Vickie Reed
+            small reed@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/9.jpg', alt='')
+          .contacts__info
+            strong Lauren Ruiz
+            small ruiz@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/10.jpg', alt='')
+          .contacts__info
+            strong Marlene Vasquez
+            small vasquez@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/11.jpg', alt='')
+          .contacts__info
+            strong Loretta Morrisonz
+            small morrisonz@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/12.jpg', alt='')
+          .contacts__info
+            strong Yvonne Wood
+            small wood@example.com
+          button.contacts__btn Following
+      .col-xl-2.col-lg-3.col-sm-4.col-6
+        .contacts__item
+          a.contacts__img(href='')
+            img(src='/admin-template/demo/img/contacts/13.jpg', alt='')
+          .contacts__info
+            strong Denise Franklin
+            small franklin@example.com
+          button.contacts__btn Following
+    a.btn.btn-light.btn--action.btn--fixed(href='')
+      i.zmdi.zmdi-plus
+
+block script
+  script.
+    $(document).ready(function(){
+      $('.navigation_admin_nav').addClass('navigation__active');
+      $('.navigation_employee_sales_agent').addClass('navigation__active');
+      $('.navigation_admin_nav > a').click();
+    })
+    

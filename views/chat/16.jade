@@ -1,0 +1,25 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/16.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/17' method='GET')
+        p
+          | Are you gong to book another car?
+          br
+          |  Multiple car Insurance can get discount service.
+        .form-row.ans-1
+          .form-group.col-md-12
+            .option-wrapper.on
+              .icon-option-wrapper
+                h5 YES
+                i.on
+          .col-md-4
+          .form-group.col-md-12
+            .option-wrapper
+              .icon-option-wrapper
+                h5 No
+                i
+        button.btn(type='submit') Next
+

@@ -1,0 +1,136 @@
+extends ./layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/supplier/icon.css')
+block content
+  .content__inner.content__inner--sm      
+      .card.profile
+        .profile__img
+          img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+        .profile__info
+          h3
+            | #{profile.firstname + ' ' + profile.lastname}
+          ul.icon-list
+            li
+              i.zmdi.zmdi-phone
+              |  #{profile.phone1}
+            li
+              i.zmdi.zmdi-email
+              |  #{profile.email}
+      .toolbar
+        nav.toolbar__nav
+          a(href='/supplier/isupplier/profile') Profile
+          a.active Coverage
+          a(href='/supplier/isupplier/location') Service Area
+      .card
+        .card-body
+          .row.price-group            
+            .col-md-12(style='text-align:center; margin-top: 20px; margin-bottom: 20px;')
+              div
+                h2 Total Cost : #{total}$
+                  span.total_value
+            - for (var i = 0; i < price.length; i++) {
+              - if(price[i].name != 'total'){
+              .col-md-4
+                .form-group
+                  label #{price[i].name}
+                  input.stage_2_salary.form-control(type='text', value='#{price[i].value}', disabled='')
+                  i.form-group__bar
+              - }
+            
+            - }
+        .card-body
+          .col-md-12(style='text-align:center; margin-top: 20px; margin-bottom: 20px;')
+            div
+              h2 Service
+          .row(style="margin-top: 30px;")
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") ROADSIDE ASSISTANCE
+              .row
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.crane(data-tooltip-content='#tooltip_crane', data-name='crane', class='#{service["crane"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.tire(data-tooltip-content='#tooltip_tire', data-name='tire', class='#{service["tire"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.current(data-tooltip-content='#tooltip_current', data-name='current', class='#{service["current"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.gasoline(data-tooltip-content='#tooltip_gasoline', data-name='gasoline', class='#{service["gasoline"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.mechanic(data-tooltip-content='#tooltip_mechanic', data-name='mechanic', class='#{service["mechanic"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.emergency(data-tooltip-content='#tooltip_emergency', data-name='emergency', class='#{service["emergency"]}')
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") TRAVEL ASSISTANCE
+              .row                    
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.hotel(data-tooltip-content='#tooltip_hotel', data-name='hotel', class='#{service["hotel"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.car(data-tooltip-content='#tooltip_car', data-name='car', class='#{service["car"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.transportation(data-tooltip-content='#tooltip_transportation', data-name='trasnportation', class='#{service["trasnportation"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.urgent(data-tooltip-content='#tooltip_urgent', data-name='urgent', class='#{service["urgent"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.reference(data-tooltip-content='#tooltip_reference', data-name='reference', class='#{service["reference"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.personal(data-tooltip-content='#tooltip_personal', data-name='personal', class='#{service["personal"]}')
+          .row
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") LEGAL ASSISTANCE
+              .row(style='padding-bottom: 30px;')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.telephone1(data-tooltip-content='#tooltip_telephone1', data-name='telephon1', class='#{service["telephon1"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.legal1(data-tooltip-content='#tooltip_legal1', data-name='legal1', class='#{service["legal1"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.legal2(data-tooltip-content='#tooltip_legal2', data-name='legal2', class='#{service["legal2"]}')
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") SPECIALTIES
+              .row
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.vehicle(data-tooltip-content='#tooltip_vehicle', data-name='vehicle', class='#{service["vehicle"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.administrative(data-tooltip-content='#tooltip_administrative', data-name='administrative', class='#{service["administrative"]}')
+            .col-md-6.service-group
+              .row
+                h6(style="margin-right: auto; margin-left: auto;") MEDIC ASSISTANCE
+              .row                    
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.ambulance(data-tooltip-content='#tooltip_ambulance', data-name='ambulance', class='#{service["ambulance"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.telephone2(data-tooltip-content='#tooltip_telephone2', data-name='telephone2', class='#{service["telephone2"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.medical1(data-tooltip-content='#tooltip_medical1', data-name='medical1', class='#{service["medical1"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.medical2(data-tooltip-content='#tooltip_medical2', data-name='medical2', class='#{service["medical2"]}')
+                .col-md-4
+                  a(href='javascript:void(0);')
+                    .icon-child.hospital(data-tooltip-content='#tooltip_hospital', data-name='hospital', class='#{service["hospital"]}')
+block script
+  script.
+    $(document).ready(function(){      
+      $('.navigation_employee_nav').addClass('navigation__active');
+    })

@@ -1,0 +1,65 @@
+extends ./layout
+block content
+  .content__inner.content__inner--sm
+    .card.profile
+      .profile__img
+        img(src='/uploads/supplier/profile/#{ profile.profileimagename || "empty.jpg" }', alt='')
+      .profile__info
+        h3
+          | #{profile.firstname + ' ' + profile.lastname}
+        ul.icon-list
+          li
+            i.zmdi.zmdi-phone
+            |  #{profile.phone1}
+          li
+            i.zmdi.zmdi-email
+            |  #{profile.email}
+    .toolbar
+      nav.toolbar__nav
+        a.active Profile
+        a(href='/supplier/isupplier/coverage') Coverage
+        a(href='/supplier/isupplier/location') Service Area
+    .card
+      .card-body
+        .row          
+          .col-md-6
+            .form-group
+              label First Name
+              input.stage_1_supplier_first_name.form-control(type='text', value='#{profile.firstname}', disabled='')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Last Name
+              input.stage_1_supplier_last_name.form-control(type='text', value='#{profile.lastname}', disabled='')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Company(Optional)
+              input.stage_1_supplier_company_name.form-control(type='text', value='#{profile.companyname}', disabled='')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Email Address
+              input.stage_1_supplier_email.form-control(type='text', value='#{profile.email}', disabled='')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Phone Number 1
+              input.stage_1_supplier_phone_1.form-control(type='text', value='#{profile.phone1}', disabled='')
+              i.form-group__bar
+          .col-md-6
+            .form-group
+              label Phone Number 2(Optional)
+              input.stage_1_supplier_phone_2.form-control(type='text', value='#{profile.phone2}', disabled='')
+              i.form-group__bar
+        .form-group
+          label Address(Optional)
+          textarea.stage_1_supplier_address.form-control.textarea-autosize(value='#{profile.note}', disabled='')
+          i.form-group__bar        
+        .clearfix
+block script
+  script(src='/admin-template/vendors/bower_components/autosize/dist/autosize.min.js')
+  script.
+    $(document).ready(function(){      
+      $('.navigation_employee_nav').addClass('navigation__active');
+    })

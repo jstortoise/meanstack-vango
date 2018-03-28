@@ -1,0 +1,27 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/3.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/5' method='POST')
+        p
+          | Select Year Brand Model of your car
+        .form-row(style='margin-top: 50px;')
+          .form-group.col-md-10.offset-md-1
+            input#inputCarModel.form-control(type='text', placeholder='e.g. 2010 Honda Civic', name='carModel', required, value='')
+        button.btn(disabled='') Next
+block chatScript  
+  script.
+    var carModel = '#{carModel}';
+    if(carModel != ''){
+      $('#inputCarModel').val(carModel);
+      $('.btn').removeAttr('disabled');
+    }
+      
+    $('#inputCarModel').on('keyup', function(){
+      if($(this).val() != '')
+        $('.btn').removeAttr('disabled');
+      else
+        $('.btn').prop('disabled', true);
+    })

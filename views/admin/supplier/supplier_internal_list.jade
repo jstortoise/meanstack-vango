@@ -1,0 +1,38 @@
+extends ../layout
+block stylesheet
+  link(rel='stylesheet', href='/stylesheets/super-admin/supplier/internal.css')
+block content
+  .content__inner
+    header.content__title
+      h1 INTERNAL SUPPLIERS
+      .actions
+        .dropdown.actions__item
+          i.zmdi.zmdi-more-vert(data-toggle='dropdown')
+          .dropdown-menu.dropdown-menu-right
+            a.dropdown-item(href='/admin/supplier/internal_list') Panel View
+            a.dropdown-item(href='/admin/supplier/internal_list_table') List VIew    
+    .contacts.row
+      - for (var i = 0; i < profile.length; i++) {
+        .col-xl-2.col-lg-3.col-sm-4.col-6
+          .contacts__item
+            a.contacts__img(href='/admin/supplier/internal/profile/#{ profile[i]._id }/about')
+              img(src='/uploads/supplier/profile/#{ profile[i].profileimagename }', alt='')
+            .contacts__info
+              strong #{ profile[i].name }
+              small #{ profile[i].email }
+              .widget-ratings__star               
+                i(class='zmdi zmdi-star #{ Number(profile[i].rating) >= 1 ? "active": "inactive"}')
+                i(class='zmdi zmdi-star #{ Number(profile[i].rating) >= 2 ? "active": "inactive"}')
+                i(class='zmdi zmdi-star #{ Number(profile[i].rating) >= 3 ? "active": "inactive"}')
+                i(class='zmdi zmdi-star #{ Number(profile[i].rating) >= 4 ? "active": "inactive"}')
+                i(class='zmdi zmdi-star #{ Number(profile[i].rating) > 4.5 ? "active": "inactive"}')
+            h4(style='margin-top: 20px;') $#{ profile[i].total } / month
+      - }
+block script
+  script.
+    $(document).ready(function(){      
+      $('.navigation_supplier_nav').addClass('navigation__active');
+      $('.navigation_supplier_internal').addClass('navigation__active');
+      $('.navigation_supplier_nav > a').click();
+    })
+    

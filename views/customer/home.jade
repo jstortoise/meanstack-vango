@@ -1,0 +1,127 @@
+extends layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/home.css')
+  link(rel='stylesheet', href='/youtube/dist/jquery.yu2fvl.css')
+block pageContent
+  .section1
+    .inner
+      h1
+        | OLVIDA TODO LO QUE SABES
+        br
+        |           SOBRE SEGUROS
+      p Todo instantáneo. Precios asesinos. Gran corazón.
+      a.btn-consult(href='/chat/1') Consulte nuestros precios
+      a.btn-video(href='https://www.youtube.com/watch?v=vpO8sZDxOGI')
+        i
+        | Ver el vídeo
+    .in-the-press
+  .section2
+    .inner
+      h2 Vango! te soluciona la vida
+      p
+        | Asegura y protege las llantas de tu vehículo ante cualquier
+        br
+        |         circunstancia.
+  .section3
+    .inner
+      h2 Todo instantáneo
+      p
+        | Nuestra inteligencia artificial, creará el seguro perfecto para ti.
+        br
+        |         Fácil y Rápido.
+      a.btn-video(href='https://www.youtube.com/watch?v=vpO8sZDxOGI')
+        i
+        | Mira la aplicación Vango! en acción
+  .section4
+    .inner
+      h2
+        | Precios que matan,
+        br
+        |         Suscripción anual
+      ul.list-insurance
+        li
+          img(src='/images/customer/1.jpg', alt='', style='width:150px;')
+          small anual, por
+          em $499
+          a(href='') COMPRAR AHORA
+        li
+          img(src='/images/customer/2.jpg', alt='', style='width:150px;')
+          small anual, por
+          em $995
+          a(href='') COMPRAR AHORA
+        li
+          img(src='/images/customer/3.jpg', alt='', style='width:150px;')
+          small anual, por
+          em $1495
+          a(href='') COMPRAR AHORA
+        li
+          img(src='/images/customer/4.jpg', alt='', style='width:150px;')
+          small anual, por
+          em $1999
+          a(href='') COMPRAR AHORA
+  .section5
+    .inner
+      h2 ¿Cómo funciona Vango?
+      p
+        | Vango! Revierte el modelo de seguro tradicional. Tratamos las primas que paga
+        br
+        |         como si fuera su dinero, no el nuestro. Con VanGo! todo se vuelve simple y transparente.
+        br
+        |         Tomamos una tarifa fija, pagamos los reclamos súper rápido y le devolvemos lo
+        br
+        |         que queda a las causas que le interesan.
+      ul.list-slices
+        li
+          img(src='/images/customer/slice1.png', alt='')
+          p
+            | Una tarifa transparente del 10%
+            br
+            |             para ejecutar todo
+        li
+          img(src='/images/customer/slice2.png', alt='')
+          p
+            | Pagamos reclamos
+            br
+            |             súper rápido
+        li
+          img(src='/images/customer/slice3.png', alt='')
+          p
+            | Si hay dinero de sobra,
+            br
+            |             lo damos de nuevo a causas
+  .section6
+    .inner
+      ul
+        li.social-impact
+          h4 Designed for Social Impact
+          p
+            | Texto que avala las Certificaciones Certificaciones
+            br
+            |             certificaciones
+        li.a-rated
+          h4 A-Rated and Backed by Giants
+          p
+            | Texto que avala las Certificaciones Certificaciones
+            br
+            |             certificaciones
+block pageScript
+  script(src='/youtube/dist/jquery.yu2fvl.min.js')
+  script.
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if(scroll < 10){
+        $('.navbar').removeClass('top');
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      }else{
+        $('.navbar').addClass('top');
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+      }
+    });
+    $('.btn-video').yu2fvl();
+    $('.nav-home').addClass('active');
+
+

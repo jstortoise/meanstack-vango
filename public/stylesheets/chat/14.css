@@ -1,0 +1,31 @@
+@media screen and (max-width: 992px) {
+    .form-row{
+        padding-left:0px;
+        padding-right:0px;    
+    }
+}
+@media screen and (min-width: 992px) {
+    .form-row{
+        padding-left:0px;
+        padding-right:0px;    
+    }
+}
+
+.option-wrapper{    
+    padding:15px;
+    border: 1px #DADADA solid
+}
+.option-wrapper.on{
+    background: #F7F7F7;
+}
+.option-wrapper img{
+    max-width: 300px;
+    margin-top: 5px;
+}
+.option-wrapper .icon-option-wrapper{
+    margin-top: 20px;
+}
+
+.select{
+    background-color:#4e4e4e
+}

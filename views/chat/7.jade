@@ -1,0 +1,63 @@
+extends layout
+block chatStyle
+  link(rel='stylesheet', href='/stylesheets/chat/7.css')
+block chatContent
+  .container
+    #parent
+      form#child(action='/chat/8' method='POST')
+        p
+          | What is your day of birth?
+        .form-row.ans-1
+          .form-group.birthday-wrapper
+            .option-wrapper
+              .icon-option-wrapper(style='display:inline-block;')
+                img(src='https://www.lemonade.com/assets/web_chat/renter-b553ffcb7e81b5cb417a7a7e1849f4a7dceabe58d3e6ebd1dcdcd448bd6b6736.png', alt='')
+                span Birthday              
+              input#yyyy(type='text', placeholder='yyyy', name='yyyy', maxlength='4', onkeypress='validate(event)', tabindex='3')
+              input#dd(type='text', placeholder='dd', name='dd', maxlength='2', onkeypress='validate(event)', tabindex='2')
+              input#mm(type='text', placeholder='mm', name='mm', maxlength='2', onkeypress='validate(event)', tabindex='1')
+        button.btn(disabled='', tabindex='4') Next
+block chatScript
+  script.
+    var mm = '#{birthday.mm}';
+    var dd = '#{birthday.dd}';
+    var yyyy = '#{birthday.yyyy}';
+    if(mm && dd && yyyy){
+      $('#mm').val(mm);
+      $('#dd').val(dd);
+      $('#yyyy').val(yyyy);
+      $('.btn').removeAttr('disabled');
+    }
+
+    $('form input').keyup(function() {
+        var empty = false;
+        $('form input').each(function() {
+            if ($(this).val() == '') {
+                empty = true;
+            }
+        });
+
+        if(Number($('#yyyy').val()) > 2100 || Number($('#yyyy').val() < 1900))
+          empty = true;
+        if(Number($('#mm').val()) > 12 || Number($('#yyyy').val() < 1))
+          empty = true;
+        if(Number($('#dd').val()) > 31 || Number($('#dd').val() < 1))
+          empty = true;
+
+        if (empty) {
+            $('.btn').attr('disabled', 'disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
+        } else {
+            $('.btn').removeAttr('disabled'); // updated according to http://stackoverflow.com/questions/7637790/how-to-remove-disabled-attribute-with-jquery-ie
+        }
+    });
+
+    function validate(evt) {
+      var theEvent = evt || window.event;
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode( key );
+      var regex = /[0-9]|\./;
+      if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+      }
+    }
