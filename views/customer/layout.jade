@@ -8,7 +8,7 @@ html(lang='en')
     link(rel='stylesheet', href='/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/customer/customer.css')
     block pageStyle
-    
+
   body
     nav.navbar.navbar-fixed-top
       .container-fluid
@@ -24,12 +24,12 @@ html(lang='en')
           ul.nav.navbar-nav
             li.nav-home
               a(href='/home')
-                | Inicio 
+                | Inicio
                 span.sr-only (current)
             li.nav-faq
               a(href='/faq') Preguntas frecuentes
-            li.nav-claims
-              a(href='#') Reclamaciones
+            li.nav-services
+              a(href='/services') Servicios
             li.nav-giveback
               a(href='/giveback') Devolver
             li.nav-blog
@@ -86,8 +86,8 @@ html(lang='en')
           a(href='') Vango! a nivel nacional
       p.legal
         | © Vango Insurance We Trust
-    
+
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
-    script(src='/bootstrap/3.3.7/js/bootstrap.min.js')    
-    
-    block pageScript      
+    script(src='/bootstrap/3.3.7/js/bootstrap.min.js')
+
+    block pageScript

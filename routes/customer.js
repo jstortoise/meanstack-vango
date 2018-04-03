@@ -9,5 +9,7 @@ router.get('/', function(req, res){
 router.get('/home', customer.home);
 router.get('/faq', customer.faq);
 router.get('/giveback', customer.giveback);
+router.get('/claims', customer.claims);
+router.get('/services', customer.services);
 
 module.exports = router;
