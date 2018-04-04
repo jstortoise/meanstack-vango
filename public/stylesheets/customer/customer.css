@@ -1,6 +1,6 @@
 
 .navbar{
-  padding:10px;
+  padding: 35px 20px 25px;
   background: white;
 }
 .navbar-header .icon-bar{
@@ -24,7 +24,7 @@
   margin-top:10px;
 }
 .navbar-right li a{
-  padding:5px!important;
+  padding: 10px 5px;
 }
 .logo{
   text-align:center; 
@@ -38,17 +38,18 @@
   margin-top: 70px;
 }
 .top .logo img{  
-  margin-top: 15px;
-  transform: scale(0.7);  
+  margin-top: 40px;
+  transform: scale(1, 1);  
 }
 .top.navbar{
   border-bottom: 1px rgb(201, 201, 201) solid;
 }
 .navbar .btn-consult{
   text-align: center;
-  width:180px;
-  background-color: #333399;
-  font: 700 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;
+  width: 230px;
+  /*background-color: #333399;*/
+  background: linear-gradient(to bottom, #376fd7 , #133890, #01135c);
+  font: 400 1.4rem/6rem "Lato", "Helvetica Neue", Arial, sans-serif;
   position: relative;
   text-transform: uppercase;
   border-radius: 6px;
@@ -56,7 +57,7 @@
 }
 .navbar .btn-consult a{  
   color:white;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .footer{
