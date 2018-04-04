@@ -28,7 +28,7 @@
     left: 0;
     bottom: 0;
     top: 0;
-    background: url(/images/customer/home/home/bg_clouds.png) 0% 0% repeat;
+    background: url(/images/customer/home/bg_clouds.png) 0% 0% repeat;
     z-index: -1;
     background-size: contain;
     -moz-animation: MOVE-BG 60s infinite linear;
