@@ -8,9 +8,7 @@ block pageContent
       .clouds-bg
     .inner
       h1
-        | OLVIDA TODO LO QUE SABES
-        br
-        |           SOBRE SEGUROS
+        | OLVIDA TODO LO QUE SABES SOBRE SEGUROS
       p Todo instantáneo. Precios asesinos. Gran corazón.
       img(src="/images/customer/home/heart.png")
       a.btn-consult(href='/chat/1') Consulte nuestros precios
@@ -22,44 +20,36 @@ block pageContent
     .inner
       h2 Vango! te soluciona la vida
       p
-        | Asegura y protege las llantas de tu vehículo ante cualquier
-        br
-        |         circunstancia.
+        | Asegura y protege las llantas de tu vehículo ante cualquier circunstancia.
   .section3
     .inner
-      h2 Comience con nuestra calculadora de precios y cobertura rápida
+      h3 Comience con nuestra calculadora de precios y cobertura rápida
       p Seleccione todas las opciones que se apliquen a usted
       ul.list-insurance-type
         li
-          img(src='/images/customer/home/section2_1.png', alt='', style='')
+          img(src='/images/customer/home/section2_1.png')
+          img.tick(src='/images/customer/home/tick.svg')
           p Soltero
         li
           img(src='/images/customer/home/section2_2.png', alt='', style='')
+          img.tick(src='/images/customer/home/tick.svg')
           p 25 o más
         li
           img(src='/images/customer/home/section2_3.png', alt='', style='')
-          p
-            | Cambié mis llantas
-            br
-            | recientemente
+          img.tick(src='/images/customer/home/tick.svg')
+          p Cambié mis llantas recientemente
         li
           img(src='/images/customer/home/section2_4.png', alt='', style='')
-          p
-            | Cobertura de seguro
-            br
-            | para dos
+          img.tick(src='/images/customer/home/tick.svg')
+          p Cobertura de seguro para dos
         li
           img(src='/images/customer/home/section2_5.png', alt='', style='')
-          p
-            | Manejo a más
-            br
-            | de 100 Km/h
+          img.tick(src='/images/customer/home/tick.svg')
+          p Manejo a más de 100 Km/h
         li
           img(src='/images/customer/home/section2_6.png', alt='', style='')
-          p
-            | Recorro más de
-            br
-            | 10 Km diarios
+          img.tick(src='/images/customer/home/tick.svg')
+          p Recorro más de 10 Km diarios
       ul.list-insurance-method
         li
           .method-content.sos
@@ -174,21 +164,6 @@ block pageContent
             | Si hay dinero de sobra,
             br
             |             lo damos de nuevo a causas
-  //- .section6
-  //-   .inner
-  //-     ul
-  //-       li.social-impact
-  //-         h4 Designed for Social Impact
-  //-         p
-  //-           | Texto que avala las Certificaciones Certificaciones
-  //-           br
-  //-           |             certificaciones
-  //-       li.a-rated
-  //-         h4 A-Rated and Backed by Giants
-  //-         p
-  //-           | Texto que avala las Certificaciones Certificaciones
-  //-           br
-  //-           |             certificaciones
   .section9
     .inner
       .stats
@@ -229,5 +204,8 @@ block pageScript
     });
     $('.btn-video').yu2fvl();
     $('.nav-home').addClass('active');
+    $('.section3 .inner ul.list-insurance-type li').on('click', function() {
+      $(this).toggleClass('active');
+    });
 
 
