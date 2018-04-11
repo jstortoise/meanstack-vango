@@ -1,0 +1,169 @@
+h1 {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 1.3;
+  padding-bottom: 10px;
+  color: #4A4A4A;
+}
+h2 {
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 35px;
+}
+h4 {
+  font-size: 24px;
+}
+p {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.navbar{
+  padding: 35px 20px 25px;
+  background: white;
+}
+.navbar-header .icon-bar{
+  background-color:#4A4A4A;
+}
+.navbar-header .navbar-toggle{
+  float: right;
+}
+.navbar ul li a{  
+  background-color: transparent;
+  color: #676767;
+  font-size: 120%;
+}
+.navbar ul li.active a{  
+  color:#4A4A4A;
+}
+.navbar ul li a:hover{
+  text-decoration: underline;
+}
+.navbar-right{
+  margin-top:10px;
+}
+.navbar-right li a{
+  padding: 10px 5px;
+}
+.logo{
+  text-align: left;
+  height: 0px;
+  width: 100%;
+  top: 0px;
+  color: #676767;
+}
+.logo img {
+  transition: .1s;
+  border-right: 5px;
+  border-style: solid;
+  padding-right: 20px;
+}
+.logo span {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.top .logo img {
+  margin-top: 40px;
+  transform: scale(1, 1);  
+}
+.logo-small {
+  display: none;
+  margin-top: 25px;
+}
+.logo-medium {
+  display: none;
+}
+.logo-large {
+  display: initial;
+}
+
+.top.navbar {
+  border-bottom: 1px rgb(201, 201, 201) solid;
+}
+.navbar ul li.btn-social a span {
+  background: #808080;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+}
+.navbar ul li.btn-linkedin a {
+  padding: 5px;
+}
+.navbar .btn-linkedin img {
+  height: 30px;
+}
+
+.content {
+  margin-top: 111px;
+  width: 100%;
+  text-align: center;
+}
+.content span {
+  color: #3f64cd;
+}
+/*Customize Nabar collapse*/
+@media (max-width: 1300px) {
+  .navbar-right {
+    /*display: none;*/
+  }
+  .navbar-header {
+      float: none;
+  }
+  .navbar-left,.navbar-right {
+      /*float: none !important;*/
+  }
+  .navbar ul li a {
+    text-align: right;
+  }
+  .navbar-toggle {
+      display: block;
+  }
+  .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .navbar-fixed-top {
+      top: 0;
+      border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+      display: none!important;
+  }
+  .navbar-nav {
+      float: none!important;
+      margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+      float: none;
+  }
+  .navbar-nav>li>a {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .collapse.in{
+      display:block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-fixed-top {
+    padding: 10px;
+  }
+  .logo-large {
+    display: none;
+  }
+  .logo-medium {
+    display: none;
+  }
+  .logo-small {
+    display: initial;
+  }
+  .top .logo img {
+    margin-top: 25px;
+  }
+}

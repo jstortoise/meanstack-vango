@@ -1,0 +1,53 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Vango Insurance
+    // Bootstrap core CSS
+    link(rel='stylesheet', href='/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/customer/employees.css')
+    block pageStyle
+
+  body
+    nav.navbar.navbar-fixed-top
+      .container-fluid
+        .logo
+          img(class='logo-small' src='/images/customer/logo.png', alt='Vango')
+          img(class='logo-medium' src='/images/customer/logo1.5x.png', alt='Vango')
+          img(class='logo-large' src='/images/customer/logo2x.png', alt='Vango')
+          span EMPLEOS
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#') Corporativo
+            li
+              a(href='#') Ventas
+            li
+              a(href='#') Estudiantes
+            li.btn-social
+              a(href='#')
+                span Bolsa de trabajo
+            li.btn-linkedin
+              a(href='')
+                img(src='images/customer/employees/linkedin.png')
+    .content
+      img(src='/images/customer/employees/back.png' width='100%')
+      h1
+        | Haga el mejor trabajo de su ida aquí ahora.
+        br
+        | Con todo el mundo mirando
+      p ¿Quieres buscar un trabajo ahora?
+        span   Empezar >
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+    script(src='/bootstrap/3.3.7/js/bootstrap.min.js')
+
+    block pageScript

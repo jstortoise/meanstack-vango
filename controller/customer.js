@@ -11,6 +11,9 @@ exports.giveback = function(req, res){
 exports.claims = function(req, res){
     res.render('customer/claims');
 }
+exports.employees = function(req, res){
+    res.render('customer/employees');
+}
 exports.services = function(req, res){
     res.render('customer/services');
 }
