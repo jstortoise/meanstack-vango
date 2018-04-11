@@ -80,6 +80,7 @@ p {
   position: relative;
   font-size: 20px;
   min-width: 260px;
+  max-width: 380px;
   padding: 40px 20px 0 20px;
 }
 .section2 .inner .cause1 p {
@@ -112,6 +113,7 @@ p {
   color: #fff;
   text-transform: capitalize;
   margin-top:-85px;
+  font-size: 37px;
 }
 .section3 .inner p {
   padding: 0 30px;
@@ -335,9 +337,20 @@ p {
   .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     width: 100%;
   }
+  .section1 {
+    background-size: contain;
+    background-position: center bottom 50px;
+    padding: 60px 0;
+  }
+  .section2 .inner p {
+    font-size: 15px;
+  }
+  .section2 .inner .list-causes {
+    padding: 0;
+  }
   .section3 .inner h2 {
-    font-size: 30px;
-    margin-top: -70px;
+    font-size: 24px;
+    margin-top: -55px;
   }
   .section3 .inner img.header {
     width: 100%;

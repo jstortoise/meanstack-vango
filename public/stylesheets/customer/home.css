@@ -168,6 +168,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
+  padding: 0;
 }
 
 .section3 .inner ul.list-insurance-type li {
@@ -274,7 +275,6 @@ a {
   color: #4A4A4A;
 }
 .section4 .inner .btn-video {
-  width: 350px;
   margin-top: 30px!important;
   margin-top: 20px;
   display: block;
@@ -317,6 +317,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
+  padding: 0;
 }
 .section5 .inner ul {
   list-style: none;
@@ -378,11 +379,11 @@ a {
   padding: 0 20px 20px 20px;
 }
 .section6 .inner .bg-switching {
-  background: url(/images/customer/home/section6_back.png) 0 0 no-repeat;
-  background-size: contain;
   margin: 20px auto 40px auto;
   max-width: 582px;
-  height: 308px;
+}
+.section6 .inner .bg-switching img {
+  width: 100%;
 }
 .section6 .inner a {
   padding: 10px;
@@ -451,6 +452,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
+  padding: 0;
 }
 .section8 .inner ul {
   list-style: none;
@@ -459,8 +461,27 @@ a {
 
 .section8 .inner ul li {
   position: relative;
-  min-width: 260px;
+  max-width: 320px;
   padding: 40px 20px 0 20px;
+}
+.section8 .inner .btn-video {
+  margin: 20px auto 0;
+  display: block;
+  color: #333399;
+}
+
+.section8 .inner .btn-video i {
+  content: "";
+  background: transparent url('/images/customer/home/video1.x.png') no-repeat;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  display: inline-block;
+  top: 7px;
+  transform: scale(1.5)
 }
 
 .section9 {
@@ -563,12 +584,11 @@ a {
   }
 }
 
+@media (max-width: 1023px) {
+  
+}
+
 @media (max-width: 767px) {
-  .section1 {
-    margin-top: 60px;
-    min-height: 600px;
-    background-position: center bottom 100px;
-  }
   h1 {
     font-size: 28px;
   }
@@ -581,11 +601,26 @@ a {
   p {
     font-size: 17px;
   }
+  .section1 {
+    background-image: url(/images/customer/home/bg_combined_mobile.png);
+    background-repeat: no-repeat;
+    background-position: center bottom 100px;
+    height: 70vh;
+    min-height: 570px;
+    max-height: 800px;
+    overflow: hidden;
+    z-index: 0;
+    margin-top: 70px;
+  }
   .section2 {
-    height: 360px;
+    height: 320px;
   }
   .section2 .inner {
     margin: 50px auto 0;
+  }
+  .section2 {
+    background: url('/images/customer/home/section2_back_mobile.png') center bottom no-repeat;
+    background-size: contain;
   }
   .section3 .inner ul.list-insurance-type li {
     display: table;
@@ -615,6 +650,43 @@ a {
     text-align: left;
     padding-left: 10px
   }
+  .section4 {
+    background-size: contain;
+  }
+  .section8 .inner ul li img {
+    width: 50px;
+  }
+  .section8 .inner ul li {
+    width: 100px;
+  }
+  .section8 .inner .list-slices p {
+    padding: 0;
+    line-height: 14px;
+    font-size: 10px;
+  }
+  .section8 .inner ul li {
+    padding: 40px 4px 0;
+  }
+
+  .section9 {
+    padding: 60px 0;
+  }
+  .section9 > .inner .stats .stat {
+    flex-flow: column;
+    width: 100px;
+  }
+  .section9 .inner .stats .stat .round-circle {
+    margin-right: 0;
+    padding: 36px 10px;
+    font-size: 10px;
+  }
+  .section9 > .inner .stats .stat p {
+    text-align: center;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
 }
 
 @-webkit-keyframes MOVE-BG {

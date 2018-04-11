@@ -5,9 +5,27 @@ body {
 
 }
 h1 {
-    font: 400 2.3rem/1.3 "Merriweather", Georgia, serif;
-    color: #4A4A4A;
-
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 1.3;
+  padding-bottom: 10px;
+  color: #4A4A4A;
+}
+h2 {
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 35px;
+}
+h4 {
+  font-size: 24px;
+}
+p {
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .claims-section {
@@ -39,21 +57,17 @@ h1 {
   text-align: center;
   width: 100%;
 }
-.claims-top-fold > .inner h1 {
-  font: 400 56px/62px "Merriweather", Georgia, serif;
-}
-.claims-top-fold > .inner h2 {
-  font: 400 24px/34px "Lato", "Helvetica Neue", Arial, sans-serif;
-  padding-top: 23px;
-  text-align: center;
-}
 .claims-top-fold > .inner img.main-image-desktop {
-  width: 1324px;
+  /*width: 1324px;*/
+  width: 100%;
   position: absolute;
   bottom: 0px;
-  right: calc(50% - 661.5px);
+  /*right: calc(50% - 661.5px);*/
 }
-
+.mobile-image-desktop {
+  display: none;
+  width: 100%;
+}
 .claims-stats {
   margin: 50px 0px;
 }
@@ -81,10 +95,6 @@ h1 {
   font: 300 100px/120px "Lato", "Helvetica Neue", Arial, sans-serif;
   color: #3f64cc;
 }
-.claims-stats > .inner .stats .stat p {
-  font: 400 24px/34px "Lato", "Helvetica Neue", Arial, sans-serif;
-  margin-top: 9px;
-}
 .claims-stats > .inner .stats .stat.one {
   order: 1;
 }
@@ -99,13 +109,6 @@ h1 {
 .claims-hiw > .inner {
   max-width: 1100px;
   padding: 0px 0px 100px;
-}
-.claims-hiw > .inner h3 {
-  font: 700 46px/62px "Lato", "Helvetica Neue", Arial, sans-serif;
-}
-.claims-hiw > .inner h4 {
-  font: 400 24px/34px "Lato", "Helvetica Neue", Arial, sans-serif;
-  margin-top: 18px;
 }
 .claims-hiw > .inner .claims-hiw-steps {
   display: flex;
@@ -122,7 +125,6 @@ h1 {
 }
 .claims-hiw > .inner .claims-hiw-steps .claims-hiw-step p {
     text-align: center;
-    font: 400 20px/30px "Lato", "Helvetica Neue", Arial, sans-serif;
     margin-top: 16px;
     width: 100%;
 }
@@ -134,7 +136,7 @@ h1 {
   position: absolute;
   top: 60px;
   left: 193px;
-  background: transparent url(/images/customer/horizontal-arrow.png) no-repeat;
+  background: transparent url(/images/customer/claims/horizontal-arrow.png) no-repeat;
   background-size: contain;
   width: 32px;
   height: 18px;
@@ -148,7 +150,7 @@ h1 {
   position: absolute;
   top: 60px;
   left: 171px;
-  background: transparent url(/images/customer/horizontal-arrow.png) no-repeat;
+  background: transparent url(/images/customer/claims/horizontal-arrow.png) no-repeat;
   background-size: contain;
   width: 32px;
   height: 18px;
@@ -162,7 +164,7 @@ h1 {
   position: absolute;
   top: 13px;
   left: 210px;
-  background: transparent url(/images/customer/forked-arrow.png) no-repeat;
+  background: transparent url(/images/customer/claims/forked-arrow.png) no-repeat;
   background-size: contain;
   width: 110px;
   height: 136px;
@@ -192,19 +194,57 @@ h1 {
 }
 .claims-hiw > .inner .claims-hiw-steps .claims-hiw-step p {
   text-align: center;
-  font: 400 16px/30px "Lato", "Helvetica Neue", Arial, sans-serif;
   margin-top: 16px;
   width: 100%;
 }
 .claims-hiw > .inner .claims-hiw-steps .claims-hiw-step.instant-or-human p {
   text-align: left;
-  font: 400 16px/30px "Lato", "Helvetica Neue", Arial, sans-serif;
   margin-left: 26px;
   margin-top: -7px;
 }
 .claims-hiw > .inner .claims-hiw-steps .claims-hiw-step.instant-or-human .instant+.human,
 .claims-hiw > .inner .claims-hiw-steps .claims-hiw-step.instant-or-human .human+.human {
   margin-top: 12px;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 23px;
+  }
+  h4 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 17px;
+  }
+  .claims-top-fold {
+    min-height: 0;
+  }
+  .claims-top-fold > .inner img.main-image-desktop {
+    display: none;
+  }
+  .mobile-image-desktop {
+    display: block;
+  }
+  .claims-stats > .inner .stats .stat {
+    width: 50%
+  }
+  .claims-stats > .inner .stats .stat.two {
+    width: 50%;
+  }
+  .claims-stats > .inner .stats .stat span {
+    font-size: 50px;
+  }
+  .claims-stats > .inner .stats .stat p {
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -233,7 +273,7 @@ h1 {
     position: absolute;
     top: 240px;
     left: calc(50% - 7.5px);
-    background: transparent url(/images/customer/vertical-arrow.png) no-repeat;
+    background: transparent url(/images/customer/claims/vertical-arrow.png) no-repeat;
     background-size: contain;
     width: 17px;
     height: 29px;
@@ -243,7 +283,7 @@ h1 {
     position: absolute;
     top: 209px;
     left: calc(50% - 7.5px);
-    background: transparent url(/images/customer/vertical-arrow.png) no-repeat;
+    background: transparent url(/images/customer/claims/vertical-arrow.png) no-repeat;
     background-size: contain;
     width: 17px;
     height: 29px;
@@ -252,8 +292,8 @@ h1 {
     content: '';
     position: absolute;
     top: 209px;
-    left: calc(50% - 91.5px);
-    background: transparent url(/images/customer/vertical-forked-arrow.png) no-repeat;
+    left: calc(50% - 30px);
+    background: transparent url(/images/customer/claims/vertical-forked-arrow.png) no-repeat;
     background-size: contain;
     width: 185px;
     height: 57px;
