@@ -1,0 +1,49 @@
+.navbar {
+	background-color: #13132a;
+}
+
+.navbar ul li a {
+	color: #898995;
+}
+
+.navbar ul li.active a {
+	color: #fff;
+}
+
+.navbar-header .icon-bar {
+	background-color: #fff;
+}
+
+section {
+	width: 100%;
+	height: 100vh;
+	background: gray;
+	display: table;
+}
+.inner {
+	display: table-row;
+}
+.menu-list {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.menu-list li {
+	display: inline-block;
+	background: RGB(19,19,42, 0.9);
+	border-radius: 20px;
+	padding: 20px;
+	margin: 10px;
+	width: 195px;
+}
+.menu-list li img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.menu-list li span {
+	color: #fff;
+}
+.section1 {
+	background: url(/images/customer/services/back1.png) center top no-repeat;
+	background-size: cover;
+}

@@ -12,5 +12,6 @@ router.get('/giveback', customer.giveback);
 router.get('/claims', customer.claims);
 router.get('/employees', customer.employees);
 router.get('/services', customer.services);
+router.get('/national', customer.national);
 
 module.exports = router;

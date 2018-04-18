@@ -1,94 +1,27 @@
 extends layout
 block pageStyle
-  link(rel='stylesheet', href='/stylesheets/customer/claims.css')
+  link(rel='stylesheet', href='/stylesheets/customer/services.css')
 block pageContent
-  section.claims-section.claims-top-fold
+  section.section1
     .inner
-      h1
-        | El secreto detrás de las
-        br
-        |           Reclamaciones de Vango!
-      h2
-        | Nuestros reclamos son manejados por
-        br
-        |         nuestra AI y nuestro equipo dedicado.
-        br
-        |         Presente unn reclamo trápidamente y
-        br
-        |         sin problemas en la aplicación de
-        br
-        |         Vango!
-      img.main-image-desktop(src="/images/customer/claims_back.png" alt="Vango Claims")
-  section.claims-section.claims-stats
-    .inner
-      .stats
-        .stat.one
-          span 30 seg
-          p
-            | Récord mundial de
-            br
-            | reclamación
-        .stat.two
-          span 4.85
-          p
-            | Clasificación de
-            br
-            | reclamaciones en nuestra
-            br
-            | aplicación
-        .stat.three
-          span 26%
-          p
-            | de reclamos pagados en 3
-            br
-            | segundos
-  section.claims-section.claims-hiw
-    .inner
-      h3 ¿Cómo funcionan las reclamaciones de Vango!?
-      h4 Reclamaciones sin problemas desde tu télefono, en cualquier momento y en cualquier lugar
-      .claims-hiw-steps
-        .claims-hiw-step.tap-claim-button
-          img(src="/images/customer/tap-claim.png" alt="Submitting a claim through the Vango App")
-          p
-            | Toca el botón
-            br
-            | “Reclamar”en la
-            br
-            | aplicación de Vango
-        .claims-hiw-step.chat-what-happened
-          img(src="/images/customer/chat-what-happened.png" alt="Vango Claims AI")
-          p
-            | Cuéntanos qué
-            br
-            | pasó
-        .claims-hiw-step.ai-algorithms
-          img(src="/images/customer/ai-algorithms.png" alt="How Vango's Claims AI Works")
-          p
-            | Nuestra IA ejecuta
-            br
-            | algoritmos contra el fraude
-        .claims-hiw-step.instant-or-human
-          .claims-hiw-step.instant
-            img(src="/images/customer/how-it-works-instant.png" alt="Vango Instant Claim")
-            p
-              | Si su reclamo es aprobado
-              br
-              | instantáneamente, nuestra
-              br
-              | IA le pagará en 30 segundos
-          .claims-hiw-step.human
-            img(src="/images/customer/claims-approval-process.png" alt="Vango Claims Team")
-            p
-              | De lo contrario, nuestra IA
-              br
-              | entrega su reclamo a
-              br
-              | nuestro dedicado equipo de
-              br
-              | humanos para que se
-              br
-              | encarguen lo antes posible.
-
+      ul.menu-list
+        li
+          img(src='/images/customer/services/roadside_assist.png')
+          span ASISTENCIA VIAL
+        li
+          img(src='/images/customer/services/travel_assist.png')
+          span ASISTENCIA EN VIAJES
+        li
+          img(src='/images/customer/services/legal_assist.png')
+          span ASISTENCIA LEGAL
+        li
+          img(src='/images/customer/services/medical_assist.png')
+          span ASISTENCIA MÉDICA
+        li
+          img(src='/images/customer/services/specialized.png')
+          span ESPECIALIZADOS
+      ul.menu-list
+        a menu-list
 block pageScript
   script.
     $('.navbar').addClass('top');
@@ -107,4 +40,7 @@ block pageScript
       }
     });
 
-    $('.nav-claims').addClass('active');
+    $('.nav-services').addClass('active');
+    $('.logo-large').attr('src', '/images/customer/services/logo_lg.png');
+    $('.logo-medium').attr('src', '/images/customer/services/logo_md.png');
+    $('.logo-small').attr('src', '/images/customer/services/logo_sm.png');

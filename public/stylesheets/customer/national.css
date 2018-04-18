@@ -1,0 +1,71 @@
+.inner {
+  padding: 0 30px;
+}
+.section1 {
+  align-items: flex-start;
+  padding-top: 85px;
+}
+.section1 .inner {
+  max-width: 1000px;
+  margin: 100px auto;
+  z-index: 1;
+  text-align: center;
+}
+.section1 .inner h2 {
+  padding-bottom: 10px;
+  color: #4A4A4A;
+  text-transform: capitalize;
+}
+.section1 .inner p {
+  padding: 0 30px;
+  color: #4A4A4A;
+}
+
+.inner select, .inner input, .inner button {
+  margin: 5px;
+}
+.inner select {
+  height: 40px;
+  padding: 10px 35px 10px 15px;
+  font: 400 14px/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  border-color: #dadada;
+  background: #fff url(/images/customer/select-caret-dark.svg) right 15px center no-repeat;
+  color: #4A4A4A;
+  border: 1px solid #DADADA;
+  border-radius: 5px;
+  text-indent: 0.01px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  vertical-align: middle;
+}
+
+.inner input {
+  border: 1px #DADADA solid;
+  height: 40px;
+  width: 300px;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.inner button {
+  height: 40px;
+  text-transform: uppercase;
+  line-height: 40px;
+  padding: 0 30px;
+  background-color: #FF0083;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+#chartdiv {
+  height: 500px;
+}
+
+@media (max-width: 767px) {
+  .inner select, .inner input, .inner button {
+    width: 100%;
+  }
+}

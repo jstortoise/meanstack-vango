@@ -17,3 +17,6 @@ exports.employees = function(req, res){
 exports.services = function(req, res){
     res.render('customer/services');
 }
+exports.national = function(req, res){
+    res.render('customer/national');
+}

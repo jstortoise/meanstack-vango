@@ -1,0 +1,67 @@
+extends layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/national.css')
+  link(rel='stylesheet', href='https://www.amcharts.com/lib/3/plugins/export/export.css', type='text/css', media='all')
+block pageContent
+  .section1
+    .inner
+      h2 ¡Vango ya viene!
+      p
+        | ¡Estamos implementando seguros de llantas, impulsados por AI, a través de México!
+        br
+        | Sé el primero en saber cuándo llegamos a tu estado.
+
+      form
+        select(id='city')
+          - var cities = ['Aguascalientes', 'Baja California', 'Baja California Sur', 'Campeche', 'Chiapas', 'Chihuahua', 'Coahuila', 'Colima', 'Distrito Federal', 'Durango', 'Guanajuato', 'Guerrero', 'Hidalgo', 'Jalisco', 'México', 'Michoacán', 'Morelos', 'Nayarit', 'Nuevo León', 'Oaxaca', 'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 'Veracruz', 'Yucatán', 'Zacatecas']
+          - for(var i = 0; i < cities.length; i++) {
+          option(value="#{i}") #{cities[i]}
+          - }
+        input(type='email' placeholder='CORREO ELECTRÓNICO')
+        button HÁZMELO SABER
+      #chartdiv
+
+block pageScript
+  script(src='https://www.amcharts.com/lib/3/ammap.js')
+  script(src='https://www.amcharts.com/lib/3/maps/js/usaLow.js')
+  script(src='https://www.amcharts.com/lib/3/plugins/export/export.min.js')
+  script(src='https://www.amcharts.com/lib/3/themes/light.js')
+  script.
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if(scroll < 10){
+        $('.navbar').removeClass('top');
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      }else{
+        $('.navbar').addClass('top');
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+      }
+    });
+
+    $('.nav-giveback').addClass('active');
+
+    var currentMap = "mexicoLow";
+    var titles = [];
+    var map = AmCharts.makeChart("chartdiv", {
+      "type": "map",
+      "theme": "light",
+      "colorSteps": 10,
+      "dataProvider": {
+        "mapURL": "images/customer/national/" + currentMap + ".svg",
+        "getAreasFromMap": true,
+        "zoomLevel": 0.9,
+        "areas": []
+      },
+      "areasSettings": {
+        "autoZoom": true,
+        "balloonText": "[[title]]: <strong>[[value]]</strong>"
+      },
+      "zoomControl": {
+        "minZoomLevel": 0.9
+      },
+      "titles": titles
+    });

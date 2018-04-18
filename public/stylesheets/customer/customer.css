@@ -1,3 +1,27 @@
+* {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1 {
+  font-family: "Merriweather", Georgia, serif;
+  font-size: 55px;
+  font-weight: 400;
+  line-height: 1.3;
+  padding-bottom: 10px;
+  color: #4A4A4A;
+}
+h2 {
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.3;
+}
+h3 {
+  font-size: 35px;
+}
+p {
+  font-size: 20px;
+  line-height: 28px;
+}
 
 .navbar{
   padding: 35px 20px 25px;
@@ -153,6 +177,18 @@
 }
 
 @media (max-width: 767px) {
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h3 {
+    font-size: 23px;
+  }
+  p {
+    font-size: 16px;
+  }
   .navbar-fixed-top {
     padding: 10px;
   }
