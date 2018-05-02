@@ -27,11 +27,12 @@ module.exports = function(passport) {
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, user) {
-            if(user != null) done(err, user);
-            else {
-                Admin.findById(id, function(err, admin){
-                    if(admin != null) done(err, admin);
-                })
+            if (user != null) {
+                done(null, user);
+            } else {
+                ChatUser.findById(id, function(err, admin) {
+                    done(err, admin);
+                });
             }
         });
     });
@@ -78,30 +79,31 @@ module.exports = function(passport) {
     passport.use('chat-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
-    },
-    function(req, email, password = '123456789', done) {
-        if (email)
-            email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+        passwordField : 'password'
+    }, function(email, password, done) {
+        if (email) {
+            // Use lower-case e-mails to avoid case-sensitive e-mail matching
+            email = email.toLowerCase();
+        }
 
         // asynchronous
         process.nextTick(function() {
             ChatUser.findOne({ 'local.email' :  email }, function(err, user) {
                 // if there are any errors, return the error
-                if (err)
+                if (err) {
                     return done(err);
+                }
 
                 // if no user is found, return the message
-                if (!user)
-                    return done(null, false, req.flash('loginMessage', 'No user found.'));
+                if (!user) {
+                    return done(null, false, { message: 'No User Found.' });
+                }
 
-                if (!user.validPassword(password))
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
-
-                // all is well, return user
-                else
-                    return done(null, user);
+                if (!user.validPassword(password)) {
+                    return done(null, false, { message: 'Oops! Wrong Password.' });
+                }
+                // success
+                return done(null, user);
             });
         });
 
@@ -117,26 +119,29 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function(req, email, password = '123456789', done) {
-        if (email)
-            email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
+        if (email) {
+            // Use lower-case e-mails to avoid case-sensitive e-mail matching
+            email = email.toLowerCase();
+        }
+
         // asynchronous
         process.nextTick(function() {
             // if the user is not already logged in:
             if (!req.user) {
                 ChatUser.findOne({ 'local.email' :  email }, function(err, user) {
                     // if there are any errors, return the error
-                    if (err)
+                    if (err) {
                         return done(err);
+                    }
 
                     // check to see if theres already a user with that email
                     if (user) {
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     } else {
-
                         // create the user
-                        var newUser            = new ChatUser();
+                        var newUser = new ChatUser();
 
-                        newUser.local.email    = email;
+                        newUser.local.email = email;
                         newUser.local.password = newUser.generateHash(password);
                         newUser.status = 'active';
                         newUser.role = 'chat';
@@ -144,9 +149,9 @@ module.exports = function(passport) {
                         newUser.lastName = req.body.lastName;
 
                         newUser.save(function(err) {
-                            if (err)
+                            if (err) {
                                 return done(err);
-
+                            }
                             return done(null, newUser);
                         });
                     }
@@ -189,9 +194,7 @@ module.exports = function(passport) {
     // =========================================================================
     var fbStrategy = configAuth.facebookAuth;
     fbStrategy.passReqToCallback = true;  // allows us to pass in the req from our route (lets us check if a user is logged in or not)
-    passport.use(new FacebookStrategy(fbStrategy,
-    function(req, token, refreshToken, profile, done) {
-
+    passport.use(new FacebookStrategy(fbStrategy, function(req, token, refreshToken, profile, done) {
         // asynchronous
         process.nextTick(function() {
 

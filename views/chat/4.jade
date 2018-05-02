@@ -1,6 +1,6 @@
 extends layout
 block chatStyle
-  link(rel='stylesheet', href='/stylesheets/chat/3.css')
+  link(rel='stylesheet', href='/stylesheets/chat/4.css')
 block chatContent
   .container
     #parent
@@ -8,20 +8,80 @@ block chatContent
         p
           | Select Year Brand Model of your car
         .form-row(style='margin-top: 50px;')
-          .form-group.col-md-10.offset-md-1
-            input#inputCarModel.form-control(type='text', placeholder='e.g. 2010 Honda Civic', name='carModel', required, value='')
-        button.btn(disabled='') Next
+          //- .form-group.col-md-12
+            //- input#inputCarModel.form-control(type='text', placeholder='e.g. 2010 Honda Civic', name='carModel', required, value='', data-role='tagsinput')
+          select#inputCarModel.form-control(name='states[]', multiple='multiple')
+        button.btn(onclick="loadData()") Next
 block chatScript  
   script.
+
     var carModel = '#{carModel}';
-    if(carModel != ''){
+    if(carModel != '') {
       $('#inputCarModel').val(carModel);
       $('.btn').removeAttr('disabled');
     }
-      
-    $('#inputCarModel').on('keyup', function(){
-      if($(this).val() != '')
+    
+    function initSelect() {
+      $('#inputCarModel').select2({
+        maximumSelectionLength: 2,
+        ajax: {
+          url: '/chat/getYearList',
+          processResults: function (data) {
+            // Tranforms the top-level key of the response object from 'items' to 'results'
+            var items = [];
+            for (var i = 0; i < data.length; i++) {
+              items[items.length] = { id: data[i], text: data[i] };
+            }
+            return {
+              results: items
+            };
+          }
+        }
+      });
+    }
+
+    var step = 0;
+    function enableButton() {
+      if (step == 2) {
         $('.btn').removeAttr('disabled');
-      else
+      } else {
         $('.btn').prop('disabled', true);
-    })
+      }
+    }
+
+    function updateSelect(year) {
+      $('#inputCarModel').select2({
+        maximumSelectionLength: 2,
+        ajax: {
+          url: '/chat/getCarList?year=' + year,
+          processResults: function (data) {
+            // Tranforms the top-level key of the response object from 'items' to 'results'
+            var items = [];
+            for (var i = 0; i < data.length; i++) {
+              items[items.length] = { id: data[i], text: data[i] };
+            }
+            return {
+              results: items
+            };
+          }
+        }
+      });
+    }
+
+    initSelect();
+    var year = '';
+    $('#inputCarModel').on('select2:select', function (e) {
+      step++;
+      if (step == 1) {
+        year = e.params.data.id;
+      }
+      enableButton();
+      updateSelect(year);
+    });
+    $('#inputCarModel').on('select2:unselect', function (e) {
+      step--;
+      enableButton();
+      if (step == 0) {
+        initSelect();
+      }
+    });

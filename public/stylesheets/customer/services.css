@@ -30,7 +30,7 @@ section {
 }
 .menu-list li {
 	display: inline-block;
-	background: RGB(19,19,42, 0.9);
+	/*background: RGB(19,19,42, 0.9);*/
 	border-radius: 20px;
 	padding: 20px;
 	margin: 10px;
@@ -44,6 +44,6 @@ section {
 	color: #fff;
 }
 .section1 {
-	background: url(/images/customer/services/back1.png) center top no-repeat;
+	background: url(/images/customer/services/main_back.png) center top no-repeat;
 	background-size: cover;
 }

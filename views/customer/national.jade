@@ -43,10 +43,10 @@ block pageScript
     });
 
     $('.nav-giveback').addClass('active');
-
     var currentMap = "mexicoLow";
     var titles = [];
     var map = AmCharts.makeChart("chartdiv", {
+      "hideCredits": true,
       "type": "map",
       "theme": "light",
       "colorSteps": 10,
@@ -54,14 +54,31 @@ block pageScript
         "mapURL": "images/customer/national/" + currentMap + ".svg",
         "getAreasFromMap": true,
         "zoomLevel": 0.9,
-        "areas": []
+        "areas": [{
+          "id": "MX-YUC",
+          "color": "#5071d0"
+        }, {
+          "id": "MX-ROO",
+          "color": "#5071d0"
+        }]
       },
       "areasSettings": {
         "autoZoom": true,
-        "balloonText": "[[title]]: <strong>[[value]]</strong>"
+        "rollOverOutlineColor": "#fff",
+        "rollOverColor": "#cc0000",
+        "alpha": 0.8,
+        "unlistedAreasAlpha": 0.1
+        //- "balloonText": "[[title]]: <strong>[[value]]</strong>"
       },
       "zoomControl": {
         "minZoomLevel": 0.9
       },
-      "titles": titles
+      "titles": titles,
+      "listeners": [{
+        "event": "init",
+        "method": function(event) {
+          console.log(map.dataProvider);
+        }
+      }]
     });
+  

@@ -23,7 +23,7 @@ block chatScript
   script.
     $('.back').hide();
   script.
-    $('.submit').on('click', function(){
+    $('.submit').on('click', function() {
       var email = $('#inputEmail').val();
       if(email == '' || $('#inputFirstName').val() == '' || $('#inputLastName').val() == '')
         return;
@@ -31,7 +31,7 @@ block chatScript
         url:'/chat/chatUserCheck',
         type:'POST',
         data:{
-          email:email
+          email: email
         },
         success: function(data){
           if(data.ret == false){

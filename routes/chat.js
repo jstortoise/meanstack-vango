@@ -36,7 +36,8 @@ router.post('/13', isLoggedIn, chat.d13);
 router.get('/14', isLoggedIn, chat.d14);
 router.post('/14', isLoggedIn, chat.d14);
 router.get('/15', isLoggedIn, chat.d15);
-router.get('/16', isLoggedIn,chat.d16);
+router.get('/16', isLoggedIn, chat.d16);
+router.get('/17', isLoggedIn, chat.d17);
 
 //Check user Exist
 router.post('/chatUserCheck', chat.userCheck);
@@ -53,6 +54,15 @@ router.post('/login', passport.authenticate('chat-login', {
     failureRedirect : '/chat/loginfailure',
     failureFlash: true
 }));
+
+router.get('/loginsuccess', function(req, res) {
+    res.redirect('/chat/2');
+});
+
+router.get('/loginfailure', function(req, res){
+    res.redirect(307, '/chat/signup');
+});
+
 //User SignUp
 // process the signup form
 router.post('/signup', passport.authenticate('chat-signup', {
@@ -63,29 +73,24 @@ router.post('/signup', passport.authenticate('chat-signup', {
 
 router.get('/signupsuccess', function(req, res){
     res.redirect('/chat/2');
-})
+});
 router.get('/signupfailure', function(req, res){    
     res.redirect('/chat/1');
-})
-
-router.get('/loginsuccess', function(req, res){
-    res.redirect('/chat/2');
-})
-router.get('/loginfailure', function(req, res){
-    res.redirect(307, '/chat/signup');
-})
+});
 
 //User Log out
 router.get('/logout', function(req, res){
     res.redirect('/');
 })
 
+router.get('/getYearList', chat.getYearList);
+router.get('/getCarList', chat.getCarList);
+
 //Middleware
-function isLoggedIn(req, res, next){
+function isLoggedIn(req, res, next) {
     if(req.isAuthenticated() && req.user.role == 'chat'){
         return next();
-    }
-    else{
+    } else {
         res.redirect('/chat/1');
     }
 }
