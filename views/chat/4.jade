@@ -10,15 +10,18 @@ block chatContent
         .form-row(style='margin-top: 50px;')
           //- .form-group.col-md-12
             //- input#inputCarModel.form-control(type='text', placeholder='e.g. 2010 Honda Civic', name='carModel', required, value='', data-role='tagsinput')
-          select#inputCarModel.form-control(name='states[]', multiple='multiple')
+          select#inputCarModel.form-control(name='carModel', multiple='multiple')
         button.btn(onclick="loadData()") Next
 block chatScript  
   script.
 
     var carModel = '#{carModel}';
+    var car_year = '';
     if(carModel != '') {
-      $('#inputCarModel').val(carModel);
-      $('.btn').removeAttr('disabled');
+      var car_model = carModel.split(',');
+      car_year = car_model[0].replace("&gt;", ">");
+      $('#inputCarModel').val(car_model[0]);
+      //- $('.btn').removeAttr('disabled');
     }
     
     function initSelect() {
@@ -30,7 +33,11 @@ block chatScript
             // Tranforms the top-level key of the response object from 'items' to 'results'
             var items = [];
             for (var i = 0; i < data.length; i++) {
-              items[items.length] = { id: data[i], text: data[i] };
+              var selected = false;
+              if (car_year == data[i]) {
+                selected = true;
+              }
+              items[items.length] = { id: data[i], text: data[i], selected: selected };
             }
             return {
               results: items

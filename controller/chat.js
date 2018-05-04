@@ -105,7 +105,11 @@ exports.d5 = function(req, res) {
         res.render('chat/1');
     } else {
         if (req.body.carModel) {
-            chatuserArray[email].setCarModel(req.body.carModel);
+            var car_model = '';
+            try {
+                car_model = req.body.carModel[0] + ',' + req.body.carModel[1];
+            } catch (e) {}
+            chatuserArray[email].setCarModel(car_model);
         }
         chatuserArray[email].setStage(5);
         res.render('chat/5', {miles: chatuserArray[email].getMiles()});

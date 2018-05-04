@@ -46,6 +46,7 @@
     color: #4A4A4A;    
     border:0px #DADADA solid;
     border-left: 1px #DADADA solid;
+    border-bottom: 1px #DADADA solid;
     padding: 10px 10px;
     float: right;
 }

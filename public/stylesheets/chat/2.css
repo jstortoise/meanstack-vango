@@ -7,6 +7,7 @@
 }
 .option-wrapper img{
     max-width: 80px;
+    max-height: 80px;
     margin-top: 5px;
 }
 .option-wrapper .icon-option-wrapper{

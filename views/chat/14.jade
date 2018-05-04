@@ -9,7 +9,7 @@ block chatContent
           | Well, based on information, I recommend you to take one of these coverages.
           | (You can choose in details in next step.)
         .form-row.ans-1
-          .form-group.col-6
+          .form-group.col-3
             .option-wrapper
               img(src='/images/chatbot/1.jpg', alt='')
               .icon-option-wrapper
@@ -20,13 +20,54 @@ block chatContent
                   h2(style="font-size:3.5rem; margin-left: -25px;") $5
                   h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
                   h6(style="margin-top: 30px; font-weight:400;") PER YEAR
-
               button(type='submit').select Choose
-          .form-group.col-6
+          .form-group.col-3
             .option-wrapper
               img(src='/images/chatbot/2.jpg', alt='')
               .icon-option-wrapper
                 h4 Basic Coverage
-                img(src='/images/chatbot/5.jpg', alt='')
+              div
+                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
+                div(style='color: white;margin-top: -100px;')
+                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
+                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
+                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
               button.select Choose
+          .form-group.col-3
+            .option-wrapper
+              img(src='/images/chatbot/3.jpg', alt='')
+              .icon-option-wrapper
+                h4 Golden Coverage
+              div
+                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
+                div(style='color: white;margin-top: -100px;')
+                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
+                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
+                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+              button.select Choose
+          .form-group.col-3
+            .option-wrapper
+              img(src='/images/chatbot/4.jpg', alt='')
+              .icon-option-wrapper
+                h4 Platinum Coverage
+              div
+                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
+                div(style='color: white;margin-top: -100px;')
+                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
+                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
+                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+              button.select Choose
+
+
+        //- li
+        //-   img(src='/images/customer/home/coverage_3.jpg', alt='', style='width:150px;')
+        //-   small anual, por
+        //-   em $1495
+        //-   a(href='') COMPRAR AHORA
+        //- li
+        //-   img(src='/images/customer/home/coverage_4.jpg', alt='', style='width:150px;')
+        //-   small anual, por
+        //-   em $1999
+        //-   a(href='') COMPRAR AHORA
+
         button.btn(type='submit') More Plans
