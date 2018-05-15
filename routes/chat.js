@@ -84,7 +84,9 @@ router.get('/logout', function(req, res){
 })
 
 router.get('/getYearList', chat.getYearList);
-router.get('/getCarList', chat.getCarList);
+router.get('/getCarMakeList', chat.getCarMakeList);
+router.get('/getCarModelList', chat.getCarModelList);
+router.get('/getPlanInfo', chat.getPlanInfo);
 
 //Middleware
 function isLoggedIn(req, res, next) {

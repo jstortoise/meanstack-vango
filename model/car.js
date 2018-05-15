@@ -3,9 +3,12 @@ var mongoose = require('mongoose');
 
 // define the schema for our user model
 var carSchema = mongoose.Schema({
+    brand_id	: String,
     carmake     : String,
-    year        : String,
-    tier        : Number,
+    model 	    : String,
+    year        : Number,
+    measure     : String,
+    tires       : Number,
     sos         : String,
     basic       : String,
     platinum    : String,

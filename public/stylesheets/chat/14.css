@@ -1,31 +1,55 @@
 @media screen and (max-width: 992px) {
-    .form-row{
+    .form-row {
         padding-left:0px;
-        padding-right:0px;    
+        padding-right:0px;
     }
 }
 @media screen and (min-width: 992px) {
-    .form-row{
+    .form-row {
         padding-left:0px;
-        padding-right:0px;    
+        padding-right:0px;
     }
 }
-
-.option-wrapper{    
+.circle {
+    width: 120px;
+    height: 120px;
+    background: #ff008b;
+    border-radius: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+.circle h2 {
+    font-size: 30px;
+    margin-left: -5px;
+    margin-bottom: 0;
+    word-wrap: break-word;
+}
+.circle h5 {
+    margin-bottom: 0;
+}
+.circle h6 {
+    font-weight: 400;
+    margin-bottom: 0;
+}
+.option-wrapper {    
     padding:15px;
     border: 1px #DADADA solid
 }
-.option-wrapper.on{
+.option-wrapper.on {
     background: #F7F7F7;
 }
-.option-wrapper img{
+.option-wrapper img {
     max-width: 300px;
     margin-top: 5px;
 }
-.option-wrapper .icon-option-wrapper{
+.option-wrapper .icon-option-wrapper {
     margin-top: 20px;
 }
 
 .select{
-    background-color:#4e4e4e
+    background-color:#4e4e4e;
+    cursor: pointer;
 }

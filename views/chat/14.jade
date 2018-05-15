@@ -15,11 +15,10 @@ block chatContent
               .icon-option-wrapper
                 h4 SOS Coverage
               div
-                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
-                div(style='color: white;margin-top: -100px;')
-                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
-                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
-                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+                .circle
+                  h2#sosint $5
+                  h5#sosdec .25
+                  h6 PER YEAR
               button(type='submit').select Choose
           .form-group.col-3
             .option-wrapper
@@ -27,11 +26,10 @@ block chatContent
               .icon-option-wrapper
                 h4 Basic Coverage
               div
-                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
-                div(style='color: white;margin-top: -100px;')
-                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
-                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
-                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+                .circle
+                  h2#basicint $5
+                  h5#basicdec .25
+                  h6 PER YEAR
               button.select Choose
           .form-group.col-3
             .option-wrapper
@@ -39,11 +37,10 @@ block chatContent
               .icon-option-wrapper
                 h4 Golden Coverage
               div
-                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
-                div(style='color: white;margin-top: -100px;')
-                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
-                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
-                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+                .circle
+                  h2#goldint $5
+                  h5#golddec .25
+                  h6 PER YEAR
               button.select Choose
           .form-group.col-3
             .option-wrapper
@@ -51,23 +48,55 @@ block chatContent
               .icon-option-wrapper
                 h4 Platinum Coverage
               div
-                .circle(style="width: 120px; height: 120px; background: #ff008b; border-radius: 120px; margin-left: auto; margin-right: auto;")
-                div(style='color: white;margin-top: -100px;')
-                  h2(style="font-size:3.5rem; margin-left: -25px;") $5
-                  h5(style="margin-right:-25px; margin-right: -65px; margin-top: -63px;") .25
-                  h6(style="margin-top: 30px; font-weight:400;") PER YEAR
+                .circle
+                  h2#platint $5
+                  h5#platdec .25
+                  h6 PER YEAR
               button.select Choose
 
-
-        //- li
-        //-   img(src='/images/customer/home/coverage_3.jpg', alt='', style='width:150px;')
-        //-   small anual, por
-        //-   em $1495
-        //-   a(href='') COMPRAR AHORA
-        //- li
-        //-   img(src='/images/customer/home/coverage_4.jpg', alt='', style='width:150px;')
-        //-   small anual, por
-        //-   em $1999
-        //-   a(href='') COMPRAR AHORA
-
         button.btn(type='submit') More Plans
+
+block chatScript
+  script.
+    $.ajax({
+      url: '/chat/getPlanInfo',
+      success: function(res) {
+        if (res.sos == "") {
+          res.sos = "0.00";
+        }
+        if (res.basic == "") {
+          res.basic = "0.00";
+        }
+        if (res.golden == "") {
+          res.golden = "0.00";
+        }
+        if (res.platinum == "") {
+          res.platinum = "0.00";
+        }
+
+        console.log(res);
+
+        var sos_val = res.sos.split('.');
+        $('#sosint').html(sos_val[0]);
+        $('#sosdec').html('.' + sos_val[1]);
+
+        var basic_val = res.basic.split('.');
+        $('#basicint').html(basic_val[0]);
+        $('#basicdec').html('.' + basic_val[1]);
+
+        var gold_val = res.golden.split('.');
+        $('#goldint').html(gold_val[0]);
+        $('#golddec').html('.' + gold_val[1]);
+
+        var plat_val = res.platinum.split('.');
+        $('#platint').html(plat_val[0]);
+        $('#platdec').html('.' + plat_val[1]);
+
+        //- $('.circle h2').each(function() {
+        //-   var inner_html = $(this).html();
+        //-   if (inner_html.length == 2) {
+        //-     $(this).css('font-size', '20px');
+        //-   }
+        //- })
+      }
+    })

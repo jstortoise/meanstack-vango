@@ -12,83 +12,178 @@ block chatContent
             //- input#inputCarModel.form-control(type='text', placeholder='e.g. 2010 Honda Civic', name='carModel', required, value='', data-role='tagsinput')
           select#inputCarModel.form-control(name='carModel', multiple='multiple')
         button.btn(onclick="loadData()") Next
-block chatScript  
+block chatScript
   script.
 
-    var carModel = '#{carModel}';
-    var car_year = '';
-    if(carModel != '') {
-      var car_model = carModel.split(',');
-      car_year = car_model[0].replace("&gt;", ">");
-      $('#inputCarModel').val(car_model[0]);
-      //- $('.btn').removeAttr('disabled');
-    }
-    
-    function initSelect() {
-      $('#inputCarModel').select2({
-        maximumSelectionLength: 2,
-        ajax: {
-          url: '/chat/getYearList',
-          processResults: function (data) {
-            // Tranforms the top-level key of the response object from 'items' to 'results'
-            var items = [];
-            for (var i = 0; i < data.length; i++) {
-              var selected = false;
-              if (car_year == data[i]) {
-                selected = true;
-              }
-              items[items.length] = { id: data[i], text: data[i], selected: selected };
-            }
-            return {
-              results: items
-            };
-          }
-        }
-      });
+    var step = 0, year = null, carMake = null, carModel = null;
+
+    var car_model = '#{carModel}';
+    console.log(car_model);
+    if(car_model != '') {
+      // show values with previous value
+      try {
+        var car_models = car_model.split(',');
+        step = 0;
+        year = car_models[0];
+        carMake = car_models[1];
+        carModel = car_models[2];
+        initSelect();
+      } catch (e) {
+        updateSelect();
+      }
+    } else {
+      updateSelect();
     }
 
-    var step = 0;
     function enableButton() {
-      if (step == 2) {
+      if (step == 3) {
         $('.btn').removeAttr('disabled');
       } else {
         $('.btn').prop('disabled', true);
       }
     }
 
-    function updateSelect(year) {
-      $('#inputCarModel').select2({
-        maximumSelectionLength: 2,
-        ajax: {
-          url: '/chat/getCarList?year=' + year,
-          processResults: function (data) {
-            // Tranforms the top-level key of the response object from 'items' to 'results'
-            var items = [];
-            for (var i = 0; i < data.length; i++) {
-              items[items.length] = { id: data[i], text: data[i] };
-            }
-            return {
-              results: items
-            };
-          }
+    function makeItemResult(data) {
+      // Tranforms the top-level key of the response object from 'items' to 'results'
+      var items = [];
+      for (var i = 0; i < data.length; i++) {
+        var selected = false;
+        if (step == 0 && year == data[i]) {
+          selected = true;
+        } else if (step == 1 && carMake == data[i]) {
+          selected = true;
+        } else if (step == 2 && carModel == data[i]) {
+          selected = true;
         }
-      });
+        items[items.length] = { id: data[i], text: data[i], selected: selected };
+      }
+      return items;
     }
 
-    initSelect();
-    var year = '';
-    $('#inputCarModel').on('select2:select', function (e) {
-      step++;
-      if (step == 1) {
-        year = e.params.data.id;
+    function makeItemResult1(data) {
+      // Tranforms the top-level key of the response object from 'items' to 'results'
+      var items = [];
+      for (var i = 0; i < data.length; i++) {
+        var selected = false;
+        if (step == 0 && year == data[i]) {
+          selected = true;
+        } else if (step == 1 && carMake == data[i]) {
+          selected = true;
+        } else if (step == 2 && carModel == data[i]) {
+          selected = true;
+        }
+        items[items.length] = { id: data[i], text: data[i], selected: selected };
       }
+      return {
+        results: items
+      };
+    }
+
+    function updateSelect() {
+      var url = '';
+      if (step == 0) {
+        // init year list
+        url = '/chat/getYearList';
+      } else if (step == 1) {
+        // show carMake list
+        url = '/chat/getCarMakeList?year=' + year;
+      } else if (step == 2) {
+        // show carModel list
+        url = '/chat/getCarModelList?year=' + year + '&carMake=' + carMake;
+      }
+      if (step < 3) {
+        $('#inputCarModel').empty();
+        $.ajax({
+          url: url,
+          success: function(res) {
+            var data = makeItemResult(res);
+            if (step >= 2) {
+              var year_data = { id: carMake, text: carMake, selected: true };
+              data = pushData(data, year_data);
+            }
+            if (step >= 1) {
+              var year_data = { id: year, text: year, selected: true };
+              data = pushData(data, year_data);
+            }
+            // update select list
+            $('#inputCarModel').select2({
+              maximumSelectionLength: 3,
+              data: data
+            }).trigger("change");
+          }
+        });
+      }
+    }
+
+    function initSelect() {
+      var url = '';
+      if (step == 0) {
+        // init year list
+        url = '/chat/getYearList';
+      } else if (step == 1) {
+        // show carMake list
+        url = '/chat/getCarMakeList?year=' + year;
+      } else if (step == 2) {
+        // show carModel list
+        url = '/chat/getCarModelList?year=' + year + '&carMake=' + carMake;
+      }
+
+      if (step < 3) {
+        $('#inputCarModel').empty();
+        $.get(url, function(res) {
+          var data = makeItemResult(res);
+          if (step >= 2) {
+            var carMake_data = { id: carMake, text: carMake, selected: true, disabled: true };
+            data = pushData(data, carMake_data);
+          }
+          if (step >= 1) {
+            var year_data = { id: year, text: year, selected: true, disabled: true };
+            data = pushData(data, year_data);
+          }
+
+          // update select list
+          $('#inputCarModel').select2({
+            maximumSelectionLength: 3,
+            data: data
+          }).trigger("change");
+          step++;
+          if (step < 3) {
+            initSelect();
+          }
+        });
+      }
+    }
+
+    function pushData(data, item) {
+      var result = [];
+      result[0] = item;
+      for (var i = 0; i < data.length; i++) {
+        result[result.length] = data[i];
+      }
+      return result;
+    }
+
+    $('#inputCarModel').on('select2:select', function (e) {
+      if (step == 0) {
+        year = e.params.data.id;
+      } else if (step == 1) {
+        carMake = e.params.data.id;
+      } else if (step == 2) {
+        carModel = e.params.data.id;
+      }
+      step++;
       enableButton();
-      updateSelect(year);
+      updateSelect();
     });
     $('#inputCarModel').on('select2:unselect', function (e) {
       step--;
-      enableButton();
       if (step == 0) {
-        initSelect();
+        year = null;
+      } else if (step == 1) {
+        carMake = null;
+      } else if (step == 2) {
+        carModel = null;
       }
+      enableButton();
+      updateSelect();
     });

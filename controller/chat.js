@@ -43,7 +43,7 @@ exports.getYearList = function(req, res) {
     });
 }
 
-exports.getCarList = function(req, res) {
+exports.getCarMakeList = function(req, res) {
     var year = '';
     try {
         year = req.query.year;
@@ -53,6 +53,27 @@ exports.getCarList = function(req, res) {
     });
 }
 
+exports.getCarModelList = function(req, res) {
+    var year = '', carMake = '';
+    try {
+        year = req.query.year;
+        carMake = req.query.carMake;
+    } catch (e) {}
+    Car.distinct("model", { year: year, carmake: carMake }, function(err, car) {
+        res.json(car);
+    });
+}
+
+exports.getPlanInfo = function (req, res) {
+    // calculate plan
+    var email = req.user.local.email;
+    var car_model = chatuserArray[email].getCarModel();
+    if (car_model.length == 3) { // year, carMake, carModel
+        Car.findOne({ year: car_model[0], carmake: car_model[1], model: car_model[2] }, function(err, car) {
+            res.json(car);
+        });
+    }
+}
 exports.d1 = function(req, res) {
     res.render('chat/1');
 }
@@ -105,11 +126,8 @@ exports.d5 = function(req, res) {
         res.render('chat/1');
     } else {
         if (req.body.carModel) {
-            var car_model = '';
-            try {
-                car_model = req.body.carModel[0] + ',' + req.body.carModel[1];
-            } catch (e) {}
-            chatuserArray[email].setCarModel(car_model);
+            console.log(req.body.carModel);
+            chatuserArray[email].setCarModel(req.body.carModel);
         }
         chatuserArray[email].setStage(5);
         res.render('chat/5', {miles: chatuserArray[email].getMiles()});
