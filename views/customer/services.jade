@@ -4,24 +4,41 @@ block pageStyle
 block pageContent
   section.section1
     .inner
-      ul.menu-list
-        li
-          img(src='/images/customer/services/specialized.png')
-          //- span ESPECIALIZADOS
-        li
-          img(src='/images/customer/services/legal_assist.png')
-          //- span ASISTENCIA LEGAL
-        li
-          img(src='/images/customer/services/medical_assist.png')
-          //- span ASISTENCIA MÉDICA
-        li
-          img(src='/images/customer/services/roadside_assist.png')
-          //- span ASISTENCIA VIAL
-        li
-          img(src='/images/customer/services/travel_assist.png')
-          //- span ASISTENCIA EN VIAJES
-      ul.menu-list
-        a menu-list
+      a(href='#travelAssist' style='position: absolute; top: 9%; left: 30%;')
+        img.button(src='/images/customer/services/btn_main_travelAssist.png')
+      a(href='#specialized' style='position: absolute; top: 37%; left: 21%;')
+        img.button(src='/images/customer/services/btn_main_roadsideAssist.png')
+      a(href='#specialized' style='position: absolute; bottom: 25%; right: 9%;')
+        img.button(src='/images/customer/services/btn_main_specialized.png')
+      a(href='#specialized' style='position: absolute; top: 31%; right: 8%;')
+        img.button(src='/images/customer/services/btn_main_legalAssist.png')
+      a(href='#specialized' style='position: absolute; top: 6.7%; right: 18.5%;')
+        img.button(src='/images/customer/services/btn_main_medicalAssist.png')
+      a.main-button(href='#')
+        ¡Obtén cobertura ya!
+  
+  section#travelAssist
+    h2 asistencia en viajes
+    .inner
+      .button-group
+        .list
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_hotel.png')
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_car.png')
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_transport.png')
+        .list
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_message.png')
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_personal.png')
+        .list
+          a(href='#')
+            img.button(src='/images/customer/services/btn_travel_reference.png')
+    .bottom
+      a.main-button(href='#')
+        ¡Obtén cobertura ya!
 block pageScript
   script.
     $('.navbar').addClass('top');
