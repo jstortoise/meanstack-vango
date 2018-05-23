@@ -14,9 +14,11 @@ exports.claims = function(req, res){
 exports.employees = function(req, res){
     res.render('customer/employees');
 }
-exports.services = function(req, res){
-    res.render('customer/services');
-}
 exports.national = function(req, res){
     res.render('customer/national');
+}
+
+// service section
+exports.services = function(req, res){
+    res.render('customer/services/index');
 }

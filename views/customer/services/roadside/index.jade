@@ -1,0 +1,54 @@
+extends ../../layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/services/roadside.css')
+block pageContent
+  section#roadsideAssist
+    .blank
+    h2 asistencia vial
+    .inner
+      .button-group
+        .list
+          a(href='/services/roadside/crane')
+            img.button(src='/images/customer/services/roadside/btn_roadside_crane.png')
+          a(href='/services/roadside/pass')
+            img.button(src='/images/customer/services/roadside/btn_roadside_pass.png')
+          a(href='/services/roadside/reference')
+            img.button(src='/images/customer/services/roadside/btn_roadside_reference.png')
+          a(href='/services/roadside/lock')
+            img.button(src='/images/customer/services/roadside/btn_roadside_lock.png')
+          a(href='/services/roadside/supply')
+            img.button(src='/images/customer/services/roadside/btn_roadside_supply.png')
+          a(href='/services/roadside/warranty')
+            img.button(src='/images/customer/services/roadside/btn_roadside_warranty.png')
+          a(href='/services/roadside/tire')
+            img.button(src='/images/customer/services/roadside/btn_roadside_tire.png')
+        .list(style='margin-top: 120px;')
+          a(href='/services/roadside/driver')
+            img.button.large(src='/images/customer/services/roadside/btn_roadside_driver.png')
+    .bottom
+      a.main-button(href='#')
+        ¡Obtén cobertura ya!
+
+block pageScript
+  script.
+    $('.navbar').addClass('top');
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if(scroll < 10){
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      }else{
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+
+      }
+    });
+
+    $('.nav-services').addClass('active');
+    $('.logo-large').attr('src', '/images/customer/services/logo_lg.png');
+    $('.logo-medium').attr('src', '/images/customer/services/logo_md.png');
+    $('.logo-small').attr('src', '/images/customer/services/logo_sm.png');
+
+    $('#blogmenu').attr('href', 'https://asistenciavial.segurosvango.com');

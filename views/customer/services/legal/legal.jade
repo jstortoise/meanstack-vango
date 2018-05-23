@@ -1,0 +1,40 @@
+extends ../../layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/services/legal.css')
+block pageContent
+  section.section1
+    .blank
+    .inner
+      .header
+        h3
+          | LEGAL
+          br
+          | AUTOMOVILÍSTICA
+        p ¿TE HA OCURRIDO UN ACCIDENTE Y NECESITAS DEFENSA LEGAL? RECUERDA QUE TU COBERTURA DE LLANTAS VANGO CUENTA CON ASISTENCIA LEGAL AUTOMOVILÍSTICA PARA CASOS PENALES O CIVILES.
+    .bottom
+      a.main-button(href='#')
+        ¡Obtén cobertura ya!
+
+block pageScript
+  script.
+    $('.navbar').addClass('top');
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if(scroll < 10){
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      }else{
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+
+      }
+    });
+
+    $('.nav-services').addClass('active');
+    $('.logo-large').attr('src', '/images/customer/services/logo_lg.png');
+    $('.logo-medium').attr('src', '/images/customer/services/logo_md.png');
+    $('.logo-small').attr('src', '/images/customer/services/logo_sm.png');
+
+    $('#blogmenu').attr('href', 'https://asesorialegal.segurosvango.com');
