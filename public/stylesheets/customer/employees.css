@@ -42,6 +42,7 @@ p {
 }
 .navbar ul li a:hover{
   text-decoration: underline;
+  background: none;
 }
 .navbar-right{
   margin-top:10px;
