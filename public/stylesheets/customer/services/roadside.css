@@ -192,8 +192,30 @@ h2 {
     overflow: hidden;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1300px) {
+    img.button {
+        width: 120px;
+        height: 120px;
+    }
+    img.button.large {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media(max-width: 500px) {
 	.blank {
 		height: 70px;
 	}
+    #roadsideAssist .button-group {
+        padding: 0;
+    }
+    img.button {
+        width: 70px;
+        height: 70px;
+    }
+    img.button.large {
+        width: 150px;
+        height: 150px;
+    }
 }
