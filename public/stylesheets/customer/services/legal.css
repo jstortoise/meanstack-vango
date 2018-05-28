@@ -19,6 +19,7 @@ section {
 	background: gray;
 	position: relative;
 	height: 100vh;
+	min-height: 900px;
 }
 .blank {
 	width: 100%;
@@ -28,7 +29,6 @@ section {
 }
 .inner {
 	position: relative;
-    height: 100%;
     padding-top: 20px;
 }
 .bottom {
@@ -146,6 +146,17 @@ h2 {
     overflow: hidden;
 }
 
+.back-btn {
+	position: fixed;
+    color: #34f8cf;
+    top: 110px;
+    padding: 10px;
+    z-index: 999;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 @media(min-width: 1023px) {
 	#legalAssist .button-group {
 		max-width: 650px;
@@ -155,5 +166,8 @@ h2 {
 @media(max-width: 767px) {
 	.blank {
 		height: 70px;
+	}
+	.back-btn {
+		top: 70px;
 	}
 }
