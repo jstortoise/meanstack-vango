@@ -2,95 +2,28 @@ extends layout
 block pageStyle
   link(rel='stylesheet', href='/stylesheets/customer/faq.css')
 block pageContent
-  .faq-menu.hidden-sm.hidden-xs
+  .faq-menu
     ul
       li
-        a.icn-service.sel(href='#')
+        a.faq-title.icn-service.sel(location='#acerca-de-vango')
           span ACERCA DE Vango!
       li
-        a.icn-policy(href='#')
+        a.faq-title.icn-policy(location='#material-de-pol-tica')
           span MATERIAL DE POLÍTICA
       li
-        a.icn-claims(href='#')
+        a.faq-title.icn-claims(location='#reclamaciones')
           span RECLAMACIONES
       li
-        a.icn-general(href='#')
+        a.faq-title.icn-general(location='#cobertura-explicada')
           span SEGURO, EXPLICADO
       li
-        a.icn-coverage(href='#')
+        a.faq-title.icn-coverage(location='#preguntas-frecuentes-de-nuestra-cobertura-y-asistencias-vango-')
           span COBERTURA ADICIONAL
       li
-        a.icn-community(href='#')
+        a.faq-title.icn-community(location='#donaci-n-a-la-comunidad-para-grandes-causas')
           span DEVOLVER Y COMUNIDAD
-  .container.faq-content
-    h2 Acerca de Vango!
-    p
-      | Fundada en 2017 y lanzada oficialmente en enero de 2018, Vango Insurance Trust 
-      br
-      |         se ha convertido en el disruptor más rápido en la industria de los seguros. 
-      br
-      |         Creemos que la única manera de ayudar a las personas a sentirse cómodas 
-      br
-      |         comprando seguros en línea es construyendo un súper agente con inteligencia 
-      br
-      |         artificial través de nuestra plataforma web. 
-      br
-      br
-      |         Somos pioneros en el servicio de seguros digitales para llantas. 
-      br
-      |         Mediante la inclusión del Internet de las cosas y la adopción de tecnologías de 
-      br
-      |         vanguardia buscamos satisfacer con prontitud las necesidades de nuestros usuarios. 
-      br
-      br
-      |         Nuestros asegurados pueden, en tiempo real y de manera inmediata, recurrir a los  
-      br
-      |         beneficios de sus primas con tan solo conectarse a nuestra plataforma web inteligente.
-    p
-      | Fundada en 2017 y lanzada oficialmente en enero de 2018, Vango Insurance Trust 
-      br
-      |         se ha convertido en el disruptor más rápido en la industria de los seguros. 
-      br
-      |         Creemos que la única manera de ayudar a las personas a sentirse cómodas 
-      br
-      |         comprando seguros en línea es construyendo un súper agente con inteligencia 
-      br
-      |         artificial través de nuestra plataforma web. 
-      br
-      br
-      |         Somos pioneros en el servicio de seguros digitales para llantas. 
-      br
-      |         Mediante la inclusión del Internet de las cosas y la adopción de tecnologías de 
-      br
-      |         vanguardia buscamos satisfacer con prontitud las necesidades de nuestros usuarios. 
-      br
-      br
-      |         Nuestros asegurados pueden, en tiempo real y de manera inmediata, recurrir a los  
-      br
-      |         beneficios de sus primas con tan solo conectarse a nuestra plataforma web inteligente.
-    p
-      | Fundada en 2017 y lanzada oficialmente en enero de 2018, Vango Insurance Trust 
-      br
-      |         se ha convertido en el disruptor más rápido en la industria de los seguros. 
-      br
-      |         Creemos que la única manera de ayudar a las personas a sentirse cómodas 
-      br
-      |         comprando seguros en línea es construyendo un súper agente con inteligencia 
-      br
-      |         artificial través de nuestra plataforma web. 
-      br
-      br
-      |         Somos pioneros en el servicio de seguros digitales para llantas. 
-      br
-      |         Mediante la inclusión del Internet de las cosas y la adopción de tecnologías de 
-      br
-      |         vanguardia buscamos satisfacer con prontitud las necesidades de nuestros usuarios. 
-      br
-      br
-      |         Nuestros asegurados pueden, en tiempo real y de manera inmediata, recurrir a los  
-      br
-      |         beneficios de sus primas con tan solo conectarse a nuestra plataforma web inteligente.
-
+  .container.faq-content#faq-editor
+  .cls(style='position:relative; clear:both; width: 100%; height: 200px;')
 block pageScript
   script.
     $('.navbar').addClass('top');
@@ -99,22 +32,56 @@ block pageScript
     $('.navbar .btn-social').show();
     $( window ).scroll(function() {
       var scroll = $(window).scrollTop();
-      if(scroll < 10){
+      if (scroll < 10) {
         $('.navbar .btn-consult').hide();
         $('.navbar .btn-social').show();
-      }else{        
+      } else {
         $('.navbar .btn-consult').show();
-        $('.navbar .btn-social').hide();        
-        
+        $('.navbar .btn-social').hide();
       }
 
-      if(scroll < 128){
+      if (scroll < 128) {
         $('.faq-menu').removeClass('fix');        
-        $('.faq-content').css('margin-top', '0px');
-      }else{
+        $('.faq-content').css('top', '0px');
+        $('.faq-content').css('padding-bottom', '0px');
+      } else {
         $('.faq-menu').addClass('fix');
-        $('.faq-content').css('margin-top', '290px');
+        $('.faq-content').css('top', '325px');
+        $('.faq-content').css('padding-bottom', '165px');
       }
     });
     
     $('.nav-faq').addClass('active');
+
+    var client = new XMLHttpRequest();
+    client.open('GET', '/faq/data.md');
+    client.onreadystatechange = function() {
+      document.getElementById('faq-editor').innerHTML = marked(client.responseText);
+    }
+    client.send();
+
+    $('.faq-title').click(function() {
+      var obj = $(this);
+      var location = obj.attr('location');
+      var top = $(location).offset().top - 200;
+      
+      $('html, body').animate({
+        scrollTop: top
+      }, 800, function() {
+        history.pushState({}, '', location);
+        $('.faq-title').removeClass('sel')
+        obj.addClass('sel')
+      });
+    })
+
+    //- var navlist = [];
+    //- $('.faq-title').each(function() {
+    //-   var obj = $(this);
+    //-   var location = obj.attr('location');
+    //-   navlist[navlist.length] = location;
+    //- })
+    //- $(window).on('scroll resize', function(e) {
+    //-   for (i = 0; i < navlist.length; i++) {
+    //-     if ($(navlist[i]).offset().top + 200;
+    //-   }
+    //- })

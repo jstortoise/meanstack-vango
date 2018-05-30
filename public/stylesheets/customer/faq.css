@@ -51,6 +51,7 @@ body {
   align-items: center;
   border-bottom: 4px transparent solid;
   transition: border-color 0.3s;
+  cursor: pointer;
 }
 
 .faq-menu ul li a::before{
@@ -85,16 +86,82 @@ body {
   background-position: 0px -50px;
 }
 
-
-.faq-content h2{
-  font: 400 4rem/1.3 "Merriweather", Georgia, serif;
-  color: #4A4A4A;
-  padding-bottom: 4.5rem;
-  text-transform: capitalize;
-  margin-top: 90px;
+.faq-content {
+  padding: 45px;
+  word-wrap: break-word;
+  background-color: #fff;
+  /* border: 1px solid #ddd; */
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  position: relative;
+  display: block;
+  z-index: -1;
 }
-.faq-content p {
-  font-size: 2.2rem;
-  line-height: 3rem;
-  padding-bottom: 4rem;
+
+.faq-content {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+.faq-content h1, .faq-content h2, .faq-content h3, .faq-content h4, .faq-content h5, .faq-content h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.faq-content p, .faq-content blockquote, .faq-content ul, .faq-content ol, .faq-content dl, .faq-content table, .faq-content pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.faq-content p, .faq-content blockquote, .faq-content ul, .faq-content ol, .faq-content dl, .faq-content table, .faq-content pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.faq-content ul, .faq-content ol {
+  padding-left: 2em;
+}
+.faq-content li {
+  word-wrap: break-all;
+}
+.faq-content h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+}
+.faq-content h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+}
+a {
+  background-color: transparent;
+  color: #0366d6;
+  text-decoration: none;
+}
+table tr td {
+  border: 1px solid #000;
+  padding: 20px;
+  text-align: center;
+}
+
+.cls {
+  position:relative;
+  clear:both;
+  width: 100%;
+  height: 200px;
+}
+@media (max-width: 767px) {
+  .faq-menu.fix {
+    top: -165px;
+  }
+  .faq-menu ul li a {
+    padding: 13rem 1rem 0;
+    font-size: 14px;
+  }
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .faq-menu ul li a {
+    padding: 13rem 2rem 0;
+  }
 }
