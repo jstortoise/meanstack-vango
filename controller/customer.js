@@ -17,6 +17,15 @@ exports.employees = function(req, res){
 exports.national = function(req, res){
     res.render('customer/national');
 }
+exports.terms = function(req, res){
+    res.render('customer/terms');
+}
+exports.conditions = function(req, res){
+    res.render('customer/conditions');
+}
+exports.policy = function(req, res){
+    res.render('customer/policy');
+}
 
 // service section
 exports.services = function(req, res){

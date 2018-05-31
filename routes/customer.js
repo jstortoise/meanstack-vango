@@ -12,6 +12,9 @@ router.get('/giveback', customer.giveback);
 router.get('/claims', customer.claims);
 router.get('/employees', customer.employees);
 router.get('/national', customer.national);
+router.get('/terminos', customer.terms);
+router.get('/condiciones', customer.terms);
+router.get('/politicadeprivacidadvango', customer.policy);
 
 // service main page
 router.get('/services', customer.services);

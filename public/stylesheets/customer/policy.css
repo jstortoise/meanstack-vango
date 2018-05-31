@@ -1,0 +1,77 @@
+body {
+    background: #fff;
+    color: #4A4A4A;
+    font: 400 1.6rem/1.3 "Lato", "Helvetica Neue", Arial, sans-serif;
+}
+
+#policy-content {
+    margin-top: 170px;
+}
+
+#policy-content {
+    padding: 45px;
+    word-wrap: break-word;
+    background-color: #fff;
+    /* border: 1px solid #ddd; */
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    position: relative;
+    display: block;
+    z-index: -1;
+}
+
+#policy-content {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 16px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+#policy-content h1, #policy-content h2, #policy-content h3, #policy-content h4, #policy-content h5, #policy-content h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+#policy-content p, #policy-content blockquote, #policy-content ul, #policy-content ol, #policy-content dl, #policy-content table, #policy-content pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+#policy-content p, #policy-content blockquote, #policy-content ul, #policy-content ol, #policy-content dl, #policy-content table, #policy-content pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+#policy-content ul, #policy-content ol {
+    padding-left: 2em;
+}
+#policy-content li {
+    word-wrap: break-all;
+}
+#policy-content h1 {
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    border-bottom: 1px solid #eaecef;
+}
+#policy-content h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #eaecef;
+}
+#policy-content h3 {
+    padding-bottom: 0.3em;
+    font-size: 1.2em;
+    border-bottom: 1px solid #eaecef;
+}
+#policy-content h4 {
+    padding-bottom: 0.3em;
+    font-size: 1em;
+    border-bottom: 1px solid #eaecef;
+}
+#policy-content p {
+    font-size: 16px;
+}
+
+@media (max-width: 767px) {
+    #policy-content {
+        margin-top: 100px;
+    }
+}

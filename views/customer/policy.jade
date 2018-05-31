@@ -1,0 +1,29 @@
+extends layout
+block pageStyle
+  link(rel='stylesheet', href='/stylesheets/customer/policy.css')
+block pageContent
+  #policy-content
+block pageScript
+  script.
+    $('.navbar').addClass('top');
+    $('.faq-menu').addClass('top');
+    $('.navbar .btn-consult').hide();
+    $('.navbar .btn-social').show();
+    $( window ).scroll(function() {
+      var scroll = $(window).scrollTop();
+      if (scroll < 10) {
+        $('.navbar .btn-consult').hide();
+        $('.navbar .btn-social').show();
+      } else {
+        $('.navbar .btn-consult').show();
+        $('.navbar .btn-social').hide();
+      }
+    });
+    
+    var client = new XMLHttpRequest();
+    client.open('GET', '/data-md/policy.md');
+    client.onreadystatechange = function() {
+      document.getElementById('policy-content').innerHTML = marked(client.responseText);
+    }
+    client.send();
+
