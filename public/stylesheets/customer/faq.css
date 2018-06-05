@@ -169,3 +169,12 @@ table tr td {
     padding: 13rem 2rem 0;
   }
 }
+
+@media (max-width: 768px) {
+  .faq-menu {
+    display: none;
+  }
+  .faq-content {
+    padding-top: 60px;
+  }
+}

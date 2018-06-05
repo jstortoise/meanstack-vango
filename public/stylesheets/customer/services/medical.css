@@ -199,6 +199,9 @@ h2 {
     font-weight: bold;
     text-decoration: underline;
 }
+.mobile-comment {
+    display: none;
+}
 
 @media(max-width: 767px) {
 	.blank {
@@ -207,4 +210,20 @@ h2 {
 	.back-btn {
 		top: 70px;
 	}
+    .comment {
+        display: none;
+    }
+    .mobile-comment {
+        padding: 20px;
+        display: block;
+    }
+}
+
+@media(max-width: 450px) {
+    .header:before {
+        background-position-x: 0;
+    }
+    .header .header-back h3 {
+        margin-left: 185px;
+    }
 }

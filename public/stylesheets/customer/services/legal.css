@@ -170,6 +170,9 @@ h2 {
     font-weight: bold;
     text-decoration: underline;
 }
+.mobile-comment {
+    display: none;
+}
 
 @media(min-width: 1023px) {
 	#legalAssist .button-group {
@@ -184,4 +187,20 @@ h2 {
 	.back-btn {
 		top: 70px;
 	}
+    .comment {
+        display: none;
+    }
+    .mobile-comment {
+        padding: 20px;
+        display: block;
+    }
+}
+
+@media(max-width: 450px) {
+    .header:before {
+        background-position-x: 0;
+    }
+    .header .header-back h3 {
+        margin-left: 185px;
+    }
 }
