@@ -71,7 +71,15 @@ h2 {
 	background: url(/images/customer/services/back_main.png) center top no-repeat;
 	background-size: cover;
 }
-
+.section1 .menu-list {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 15%;
+}
+.section1 .menu-list a {
+	margin: 0 10px;
+}
 @media(max-width: 767px) {
 	.blank {
 		height: 70px;
